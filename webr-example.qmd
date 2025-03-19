@@ -1,0 +1,141 @@
+---
+webr:
+  packages: ["ggplot2", "tidyverse", "palmerpenguins", "GGally"]
+filters:
+  - webr
+---
+
+# `R` Playground
+
+```{webr-r}
+#| context: setup
+
+# Download reporter data
+download.file('https://raw.githubusercontent.com/sipbs-compbiol/BM214-Workshop-3/main/assets/data/reporter_curves.csv', 'reporter_curves.csv')
+
+library(ggplot2)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+## Introduction
+
+This page provides a `WebR` cell for you to use as a playground to experiment with some example datasets. You can use this page to explore data management and visualisation in `R`.
+
+## Playground
+
+```{webr-r}
+# Use this WebR cell to experiment with some practice biological datasets
+```
+
+## Things you can do
+
+This `WebR` instance has three packages installed:
+
+- `ggplot2`
+- `GGally`
+- `tidyverse`
+- `palmerpenguins`
+
+Open the callout boxes below to see some examples you can try in the code cell above.
+
+::: { .callout-tip collapse="true }
+## Play with data from a GitHub repository
+
+One of our [BM214 workshops](https://sipbs-compbiol.github.io/BM214-Workshop-3/) involves a `WebR`-supported interactive exercise involving simulated reporter curves. We preload this data in the `setup` cell (see source code), and you can interact with it below with the code:
+
+```r
+data <- read.csv("reporter_curves.csv")
+glimpse(data)
+```
+:::
+
+::: { .callout-tip collapse="true" }
+## Investigate Palmer's Penguins
+
+The `penguins` dataset contains data about three different species of penguins. Take a look at the format of the dataset:
+
+```r
+glimpse(penguins)
+```
+
+You'll see there are eight variables, including `species`, `weight`, `sex`, etc. - some of these variables are _categorical_ (i.e. a category, like `species`), and others are _continuous_ (i.e. numerical). You can see a visual overview of how the data is related using the `plot()` function:
+
+```r
+plot(penguins)
+```
+
+We can visualise the number of penguins of each species in a bar chart:
+
+```r
+fig <- ggplot(penguins, aes(species, fill=species)) +
+         geom_bar()
+fig
+```
+
+And break this down in a facet plot, by sex:
+
+```r
+fig <- ggplot(penguins, aes(species, fill=species)) +
+         geom_bar() +
+         facet_wrap(~sex)
+fig
+```
+
+We can make a box and whisker plot of penguin body mass by species:
+
+```r
+fig <- ggplot(penguins, aes(x=species, y=body_mass_g, fill=species)) +
+         geom_boxplot()
+fig
+```
+
+And plot the body mass for each sex side-by-side
+
+```r
+fig <- ggplot(penguins, aes(x=species, y=body_mass_g, fill=sex)) +
+         geom_boxplot()
+fig
+```
+
+We can investigate correlations, such as between body mass and flipper length:
+
+```r
+fig <- ggplot(penguins, aes(x=body_mass_g, y=flipper_length_mm)) +
+         geom_point()
+fig
+```
+
+We can colour datapoints by species:
+
+```r
+fig <- ggplot(penguins, aes(x=body_mass_g, y=flipper_length_mm, colour=species)) +
+         geom_point()
+fig
+```
+
+And fit a linear regression to each species separately:
+
+```r
+fig <- ggplot(penguins, aes(x=body_mass_g, y=flipper_length_mm, colour=species)) +
+         geom_point() +
+         geom_smooth(method="lm")
+fig
+```
+
+:::
+
+::: { .callout-note }
+`R` comes with a number of example datasets you can practice with, including:
+
+- `mtcars`: fuel consumption and other statistic for 32 automobiles
+- `Titanic`: information on the fate of passengers on the fatal maiden voyage of the ocean liner _Titanic_
+ 
+You can see a full list by running the command
+
+```r
+library(help = "datasets")
+```
+
+
+:::

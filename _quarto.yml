@@ -1,0 +1,69 @@
+# These variables define the project; they may not need to be changed
+project:
+  type: book
+  output-dir: _book
+
+# These variables define the book contents - adjust them as necessary
+book:
+  # [A] BOOK TITLE
+  title: "THE TITLE OF THE BOOK"
+  reader-mode: true
+  
+  # The cover image and favicon; these may not need to be changed
+  cover-image: sipbs_compbio_800.png
+  favicon: icon_32.png
+  
+  # Sets the page footer text/images
+  # [B] FOOTER TEXT
+  page-footer:
+    left: |
+      THIS IS A SHORT PIECE OF FOOTER TEXT NAMING THE BOOK/AUTHORS
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+
+  # Sets the URL for the repository
+  # [C] GITHUB REPOSITORY URL
+  repo-url: https://github.com/sipbs-compbiol/REPOSITORY
+  repo-branch: main
+  repo-actions: [edit, issue]
+
+  # Sets author information and publication/presentation date
+  # [D] AUTHOR INFORMATION AND PUBLICATION/PRESENTATION DATE
+  author: "AUTHOR NAME"
+  date: "DD/MM/YY"
+
+  # Define chapters and sections here
+  # [E] CHAPTERS AND SECTIONS
+  chapters:
+    - index.qmd
+    - intro.qmd
+
+    - part: early-section.qmd
+      chapters: 
+        - early-section-topic.qmd
+    
+    - part: late-section.qmd
+      chapters: 
+        - webr-example.qmd
+    
+    - references.qmd
+
+# Location of BibTeX format reference file; may not need to be changed
+bibliography: references.bib
+
+# Formatting and theme; may not need to be changed
+format:
+  html:
+    theme: cosmo
+    code-link: true
+    
+    author-meta: "Leighton Pritchard"
+  
+  pdf:
+    documentclass: scrreprt
+
+# Freeze output before pushing modifications to the repository when publishing
+# Should not need changing
+execute:
+  freeze: auto
+

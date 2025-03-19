@@ -1,0 +1,3 @@
+# Late Section {#sec-late .unnumbered}
+
+This `.qmd` file introduces a `Part` of the Quarto book. We use the `{#sec-REFERENCE}` option to make it cross-referenceable elsewhere in the text, and the `{.unnumbered}` option to avoid giving it a section number.

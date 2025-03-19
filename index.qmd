@@ -1,0 +1,7 @@
+# Preface {.unnumbered}
+
+This is a Quarto book, generated using the `sipbs-compbiol-book-template` GitHub template.
+
+The Preface page is intended as a frontispiece with brief introductory information about the book and, maybe, its authors.
+
+To learn more about Quarto books visit <https://quarto.org/docs/books>.
