@@ -1,16 +1,21 @@
 # This variable is intended to carry the Academic Year
 # [A]
-ay: "2023-24"
+ay: "2024-25"
 
 # These variables are used for identification of the book/repository administrator
 # [B] CHANGE THESE VARIABLES TO SET THE BOOK/REPO ADMIN
 admin:
-  name: "ADMINISTRATOR NAME"
-  email: "ADMINISTRATOR.EMAIL@strath.ac.uk"
-  homepage: "https://www.strath.ac.uk/staff/ADMINISTRATOR/"
+  name: "Leighton Pritchard"
+  email: "leighton.pritchardL@strath.ac.uk"
+  homepage: "https://www.strath.ac.uk/staff/pritchardleightondr/"
 
 # These variables are used for links to the book repository
 # [C] CHANGE THESE VARIABLES TO SET THE GITHUB URLS FOR THE REPO
 github:
-  repo: "https://github.com/sipbs-compbiol/REPOSITORY"
-  issues: "https://github.com/sipbs-compbiol/REPOSITORY/issues"
+  repo: "https://github.com/sipbs-compbiol/bm327-workshop-1"
+  issues: "https://github.com/sipbs-compbiol/bm327-workshop-1/issues"
+  
+# MyPlace page
+myplace:
+  url: "https://classes.myplace.strath.ac.uk/course/view.php?id=21691"
+  quiz: "https://classes.myplace.strath.ac.uk/mod/quiz/view.php?id=2073320"

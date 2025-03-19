@@ -6,7 +6,7 @@ project:
 # These variables define the book contents - adjust them as necessary
 book:
   # [A] BOOK TITLE
-  title: "THE TITLE OF THE BOOK"
+  title: "BM327 Workshop 2: Identifying UTI Adhesion Factors"
   reader-mode: true
   
   # The cover image and favicon; these may not need to be changed
@@ -17,20 +17,20 @@ book:
   # [B] FOOTER TEXT
   page-footer:
     left: |
-      THIS IS A SHORT PIECE OF FOOTER TEXT NAMING THE BOOK/AUTHORS
+      These BM327 workshop materials were written by Leighton Pritchard and Morgan Feeney
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
 
   # Sets the URL for the repository
   # [C] GITHUB REPOSITORY URL
-  repo-url: https://github.com/sipbs-compbiol/REPOSITORY
+  repo-url: https://github.com/sipbs-compbiol/bm327-workshop-2
   repo-branch: main
   repo-actions: [edit, issue]
 
   # Sets author information and publication/presentation date
   # [D] AUTHOR INFORMATION AND PUBLICATION/PRESENTATION DATE
-  author: "AUTHOR NAME"
-  date: "DD/MM/YY"
+  author: "Dr Leighton Pritchard and Dr Morgan Feeney"
+  date: "03/21/25"
 
   # Define chapters and sections here
   # [E] CHAPTERS AND SECTIONS
@@ -38,12 +38,17 @@ book:
     - index.qmd
     - intro.qmd
 
-    - part: early-section.qmd
+    - part: using_ggplot2.qmd
       chapters: 
-        - early-section-topic.qmd
+        - ggplot2_intro.qmd
     
-    - part: late-section.qmd
+    - part: experiment.qmd
       chapters: 
+        - visualising_data.qmd
+        - modelling_data.qmd
+    
+    - part: supplementary.qmd
+      chapters:
         - webr-example.qmd
     
     - references.qmd
@@ -61,6 +66,47 @@ format:
   
   pdf:
     documentclass: scrreprt
+
+# Add custom callouts
+custom-callout:
+  callout-case-study:
+    title: "Case Study"
+    icon-symbol: "🔍"
+    color: "#FFA500"
+  callout-data:
+    icon-symbol: "📊"
+    title: "Data Analysis"
+    color: "#32CD32"
+  callout-discussion:
+    title: "Discussion Questions:"
+    icon-symbol: "✨"
+    color: "#BA55D3"
+  callout-microbe:
+    title: "Microbe Profile"
+    icon-symbol: "🧫"
+    color: "#1E90FF"
+  callout-thumbs-up:
+    title: "Great job!"
+    icon-symbol: "👍"
+    color: "#008000"
+  callout-todo:
+    icon-symbol: "📝"
+    color: "pink"
+  callout-challenge:
+    title: "Challenge"
+    icon-symbol: "🧑‍🏫"
+    color: "aquamarine"
+  callout-question:
+    title: "Question"
+    icon-symbol: "🙋"
+    color: "yellow"
+  callout-questions:
+    title: "Questions"
+    icon-symbol: "🙋️"
+    color: "yellow"    
+
+filters:
+  - custom-callout
 
 # Freeze output before pushing modifications to the repository when publishing
 # Should not need changing
