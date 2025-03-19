@@ -38,18 +38,18 @@ book:
     - index.qmd
     - intro.qmd
 
-    - part: using_ggplot2.qmd
-      chapters: 
-        - ggplot2_intro.qmd
+#    - part: using_ggplot2.qmd
+#      chapters: 
+#        - ggplot2_intro.qmd
     
-    - part: experiment.qmd
-      chapters: 
-        - visualising_data.qmd
-        - modelling_data.qmd
+#    - part: experiment.qmd
+#      chapters: 
+#        - visualising_data.qmd
+#        - modelling_data.qmd
     
-    - part: supplementary.qmd
-      chapters:
-        - webr-example.qmd
+#    - part: supplementary.qmd
+#      chapters:
+#        - webr-example.qmd
     
     - references.qmd
 
