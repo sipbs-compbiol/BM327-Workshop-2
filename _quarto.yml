@@ -64,8 +64,8 @@ format:
     
     author-meta: "Leighton Pritchard"
   
-  pdf:
-    documentclass: scrreprt
+#  pdf:
+#    documentclass: scrreprt
 
 # Add custom callouts
 custom-callout:
