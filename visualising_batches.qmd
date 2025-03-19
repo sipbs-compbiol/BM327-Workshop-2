@@ -1,6 +1,6 @@
 ---
 webr:
-    packages: ["tidyverse", "lme4"]
+    packages: ["tidyverse"]
 filters:
   - webr
 ---
@@ -15,7 +15,6 @@ download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2
 download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/catheter.csv", "catheter.csv")
 
 library(tidyverse)
-library(lme4)
 ```
 
 ::: { .callout-note }
