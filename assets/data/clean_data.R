@@ -79,6 +79,8 @@ data1.mod <- data1 %>%
   mutate(complement = as.integer(label == "complement")) %>%
   mutate(label=factor(label))
   
+write_csv(data1.mod, "catheter.csv")
+
 model1a <- lm(logCFU ~ KO + empty + complement, data=data1.mod)
 model1b <- lmer(logCFU ~ KO + empty + complement + (1 | batch), data=data1.mod)
 
@@ -87,6 +89,8 @@ data2.mod <- data2 %>%
   mutate(empty = as.integer(label == "empty")) %>%
   mutate(complement = as.integer(label == "complement")) %>%
   mutate(label=factor(label))
+
+write_csv(data2.mod, "tissue.csv")
 
 model2a <- lm(logCFU ~ KO + empty + complement, data=data2.mod)
 model2b <- lmer(logCFU ~ KO + empty + complement + (1 | batch), data=data2.mod)
