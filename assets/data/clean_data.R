@@ -74,9 +74,9 @@ p2
 
 # Test fit of model to account for batch effects, etc.
 data1.mod <- data1 %>%
-  mutate(KO = as.integer(label == "KO")) %>%
-  mutate(empty = as.integer(label == "empty")) %>%
   mutate(complement = as.integer(label == "complement")) %>%
+  mutate(empty = as.integer(label %in% c("complement", "empty"))) %>%
+  mutate(KO = as.integer(label %in% c("complement", "empty", "KO"))) %>%
   mutate(label=factor(label))
   
 write_csv(data1.mod, "catheter.csv")
@@ -85,9 +85,9 @@ model1a <- lm(logCFU ~ KO + empty + complement, data=data1.mod)
 model1b <- lmer(logCFU ~ KO + empty + complement + (1 | batch), data=data1.mod)
 
 data2.mod <- data2 %>%
-  mutate(KO = as.integer(label == "KO")) %>%
-  mutate(empty = as.integer(label == "empty")) %>%
   mutate(complement = as.integer(label == "complement")) %>%
+  mutate(empty = as.integer(label %in% c("complement", "empty"))) %>%
+  mutate(KO = as.integer(label %in% c("complement", "empty", "KO"))) %>%
   mutate(label=factor(label))
 
 write_csv(data2.mod, "tissue.csv")
