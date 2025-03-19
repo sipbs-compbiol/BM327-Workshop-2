@@ -1,0 +1,13 @@
+# Correcting for batch effects
+
+In real life experiments are not always "clean," in the sense that we cannot always construct our experiments to exclude all events or factors that might influence the outcome.
+
+In this part of the workshop you will meet some real experimental data which, due to the need to spread the work over a period of months required parts of the experiment to be performed by different people at different times.
+
+::: { .callout-caution }
+The situation we consider here, where more than one researcher carries out sections of the experiment months apart, is quite obvious. The scientists involved knew that there might be an infuence on the outcome and took it into account when recording their data.
+
+However, many such interfering effects can creep into experimental data without our realising it. **It is always good practice to investigate your experimental data to look for evidence of similar kinds of effects.**
+
+As you will see, it can be possible to account and correct for these effects when they arise.
+:::

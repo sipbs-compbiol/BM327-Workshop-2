@@ -1,0 +1,294 @@
+---
+webr:
+    packages: ["tidyverse", "lme4"]
+filters:
+  - webr
+---
+
+# Modelling Batch Effects { #sec-modelling-batches }
+
+```{webr-r}
+#| context: setup
+
+# Download experiment data
+download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/tissue.csv", "tissue.csv")
+download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/catheter.csv", "catheter.csv")
+
+library(tidyverse)
+library(lme4)
+```
+
+::: { .callout-note }
+It may take a couple of minutes to install the necessary packages in `WebR` - please be patient.
+:::
+
+## Introduction
+
+The experiment that was actually run to gather data on adherence to human tissue and catheter material ran into a few problems.
+
+Ultimately the experiment was run by multiple scientists in the group, and measurements were taken in groups of five datapoints, where all five measurements were collected in the course of an afternoon.
+Each group of five measurements contained results for only _one_ of the `WT` (control), `KO` (knockout), `empty` (empty vector), and `complement` (complemented gene) groups.
+There were four such groups or _batches_ for the human tissue experiment, and eight for the catheter material experiment. with four such batches of five measurements for each 
+
+## Task 1: Load and inspect your data
+
+There are two data files containing your experimental data: `tissue.csv` and `catheter.csv`.
+
+::: { .callout-challenge title="Load your data from file"}
+Use the `WebR` cell below to load your data into two variables: `tissue` for the human tissue experiment, and `catheter` for the catheter material experiment.
+
+::: { .callout-tip collapse="true" title="Hint"}
+The column types are, in order: factor, number, integer, number, integer, integer, integer and can be expressed as `"fniniii"` for the `col_types` option in `read_csv()`
+:::
+
+:::
+
+```{webr-r}
+# Load data from "tissue.csv" into a dataframe
+# Load data from "catheter.csv" into a dataframe
+# Use glimpse() or head() to inspect your data
+
+
+```
+
+::: { .callout-tip collapse="true" title="I need a hint"}
+- Use `read_csv()` to load your data into two different dataframes
+- Use `glimpse()` or `head()` to inspect the format of your data
+:::
+
+::: { .callout-warning collapse="true" title="Help, I'm stuck!"}
+Use the `R` code below to load your data
+
+```r
+tissue <- read_csv("tissue.csv", col_types="fniniii")
+catheter <- read_csv("catheter.csv", col_types="fniniii")
+```
+
+Use the `R` code below to inspect your data
+
+```r
+glimpse(tissue)
+glimpse(catheter)
+```
+:::
+
+### The format of your dataset
+
+Your dataset has been provided in a specific format to make plotting and analysis easier for this workshop.
+
+::: { .callout-note }
+This workshop focuses on demonstrating how to visualise, analyse, and interpret experimental data. Manipulating raw data into a suitable format is outside the scope of this material.
+:::
+
+::: { .callout-todo }
+Explain the meanings of the columns and why they are the datatypes they are.
+:::
+
+## Visualise the datasets
+
+### The catheter material dataset
+
+::: { .callout-challenge title="Visualise the catheter dataset"}
+Use the `WebR` cell below to visualise the data from the catheter material experiment.
+
+See if you can give the graph these properties:
+
+- The categories/labels should be in this order on the x-axis: `WT`, `KO`, `empty`, `complement`
+- There should be one boxplot per category/label
+- Each batch should have a different colour
+
+:::
+
+```{webr-r}
+# Use ggplot2 to visualise the catheter dataset
+# Use geom_boxplot() to show overall data distribution
+# Use geom_jitter() to show individual datapoints
+# Colour the datapoints to show batch-level variation
+
+
+```
+
+::: { .callout-tip collapse="true" title="I need a hint!"}
+- You can order the categories on the x-axis by replacing `x=label` with `x=factor(label, level=c("WT", "KO", "empty", "complement")`
+- If you use `aes(colour=batch)` in the `ggplot()` base layer, then the boxplots will be split. To avoid this, use `aes(colour=factor(batch))` in `geom_jitter()` instead.
+:::
+
+::: { .callout-warning collapse="true" title="Help, I'm stuck!"}
+Use the `R` code below to render your graph:
+
+```r
+p1 <- ggplot(catheter,
+             aes(x=factor(label, level=c("WT", "KO", "empty", "complement")),
+                 y=logCFU)) +
+  geom_boxplot() +
+  geom_jitter(width=0.2,
+              aes(colour=factor(batch))) +
+  xlab("experiment")
+p1
+```
+:::
+
+### The human tissue dataset
+
+```{webr-r}
+# Use ggplot2 to visualise the tissue dataset
+# Use geom_boxplot() to show overall data distribution
+# Use geom_jitter() to show individual datapoints
+# Colour the datapoints to show batch-level variation
+
+
+```
+
+::: { .callout-tip collapse="true"}
+## I need a hint
+
+You can use almost exactly the same solution as for the `catheter` dataset, but:
+
+- change `p1` to `p2` to create a new graph rather than overwriting the old one
+- make sure you are working with the `tissue` dataset
+:::
+
+::: { .callout-warning collapse="true"}
+## Help, I'm stuck!
+
+Use the `R` code below to render your graph:
+
+```r
+p2 <- ggplot(tissue,
+             aes(x=factor(label, level=c("WT", "KO", "empty", "complement")),
+                 y=logCFU)) +
+  geom_boxplot() +
+  geom_jitter(width=0.2,
+              aes(colour=factor(batch))) +
+  xlab("experiment")
+p2
+```
+:::
+
+## Interpret the data
+
+### The catheter material dataset
+
+Your plot of the catheter data should look similar to that in @fig-catheter-boxplot.
+
+The y-axis shows the log of the colony-forming units (CFU) per millilitre, and is a measure of the amount of each type of bacteria (wild-type/control, etpD knockout, knockout with empty vector, and complemented knockout) that were recovered. The x-axis gathers the datpoints for each type of bacteria.
+
+Each boxplot shows the median value as a thick horizontal line, a box extending from the 25th and 75th percentiles, and whiskers extending to no more than 1.5 $\times$ the interquartile range (IQR) of the data. Datapoints beyond the whiskers can be considered as outliers.
+
+Examine your plot (or @fig-catheter-boxplot) and consider the questions below.
+
+::: { .column-margin }
+
+![](assets/images/catheter_boxplot.png){#fig-catheter-boxplot .lightbox}
+:::
+
+#### What is the overall effect of each bacterial variant?
+
+::: { .callout-questions }
+The median logCFU of the wild-type (`WT`) control is approximately 6.35. What is the approximate logCFU of each of the three bacterial lines?
+
+- `KO` (the _etpD_ knockout)
+- `empty` (the _etpD_ knockout carrying an empty plasmid vector)
+- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the `etpD` gene)
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+1. The `KO` line has a median logCFU of 6.13
+2. The `empty` line has a median logCFU of 5.86
+3. The `complement` line has a median logCFU of 6.46
+:::
+
+::: { .callout-questions }
+Taking the wild-type `WT` line as a baseline level of "stickiness" to the catheter material. Based only on your graph (or @fig-catheter-boxplot) Is the "stickiness" of each of the three remaining bacterial lines approximately greater than, less than, or about the same as the wild type?
+
+- `KO` (the _etpD_ knockout)
+- `empty` (the _etpD_ knockout carrying an empty plasmid vector)
+- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the `etpD` gene)
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+1. Fewer CFUs/mL are recovered from the `KO` line, so it seems to be less "sticky" than the wild type
+2. Fewer CFUs/mL are recovered from the `empty` line, so it seems to be less "sticky" than the wild type
+3. About the same CFUs/mL are recovered from the `complement` line, so it seems to be about as "sticky" as the wild type
+:::
+
+::: { .callout-question }
+Does the `empty` line appear to be more "sticky", less "sticky", or just about as "sticky" as the `KO` line?
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+Fewer CFUs/mL are recovered from the `empty` line, so it appears to be less "sticky" than the `KO` line.
+:::
+
+::: { .callout-question }
+Based on your answers above, do you think there is evidence that the _etpD_ gene might contribute to adhesion of the bacteria to catheter material?
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+When the _etpD_ gene is knocked out (`KO`) fewer CFUs are recovered from the substrate, which we can interpret as the bacteria being less "sticky."
+
+Similarly, when the _etpD_ gene is expressed from a plasmid (`complement`) more CFUs are recovered than was the case for the `KO`, so it appears that restoration of the _etpD_ gene might make the bacteria more "sticky," i.e. contribute to increased adherence.
+:::
+
+### The tissue material dataset
+
+Your plot of the tissue data should look similar to that in @fig-tissue-boxplot.
+
+The y-axis shows the log of the colony-forming units (CFU) per millilitre, and is a measure of the amount of each type of bacteria (wild-type/control, etpD knockout, knockout with empty vector, and complemented knockout) that were recovered. The x-axis gathers the datpoints for each type of bacteria.
+
+Each boxplot shows the median value as a thick horizontal line, a box extending from the 25th and 75th percentiles, and whiskers extending to no more than 1.5 $\times$ the interquartile range (IQR) of the data. Datapoints beyond the whiskers can be considered as outliers.
+
+Examine your plot (or @fig-tissue-boxplot) and consider the questions below.
+
+::: { .column-margin }
+
+![](assets/images/tissue_boxplot.png){#fig-tissue-boxplot .lightbox}
+:::
+
+#### What is the overall effect of each bacterial variant?
+
+::: { .callout-questions }
+The median logCFU of the wild-type (`WT`) control is approximately 6.61. What is the approximate logCFU of each of the three bacterial lines?
+
+- `KO` (the _etpD_ knockout)
+- `empty` (the _etpD_ knockout carrying an empty plasmid vector)
+- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the `etpD` gene)
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+1. The `KO` line has a median logCFU of 6.24
+2. The `empty` line has a median logCFU of 6.22
+3. The `complement` line has a median logCFU of 6.24
+:::
+
+::: { .callout-questions }
+Taking the wild-type `WT` line as a baseline level of "stickiness" to the catheter material. Based only on your graph (or @fig-catheter-boxplot) Is the "stickiness" of each of the three remaining bacterial lines approximately greater than, less than, or about the same as the wild type?
+
+- `KO` (the _etpD_ knockout)
+- `empty` (the _etpD_ knockout carrying an empty plasmid vector)
+- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the `etpD` gene)
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+1. Fewer CFUs/mL are recovered from the `KO` line, so it seems to be less "sticky" than the wild type
+2. Fewer CFUs/mL are recovered from the `empty` line, so it seems to be less "sticky" than the wild type
+3. Fewer CFUs/mL are recovered from the `complement` line, so it seems to be less "sticky" than the wild type
+:::
+
+::: { .callout-question }
+Does the `empty` line appear to be more "sticky", less "sticky", or just about as "sticky" as the `KO` line?
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+About the same level of CFUs/mL are recovered from the `empty` line, so it appears to be approximately as "sticky" as the `KO` line.
+:::
+
+::: { .callout-question }
+Based on your answers above, do you think there is evidence that the _etpD_ gene might contribute to adhesion of the bacteria to catheter material?
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+When the _etpD_ gene is knocked out (`KO`) fewer CFUs are recovered from the substrate, which we can interpret as the bacteria being less "sticky."
+
+However, when the _etpD_ gene is expressed from a plasmid (`complement`) no more CFUs are recovered than was the case for the `KO`, so it appears that restoration of the _etpD_ gene **does not** by itself make the bacteria more "sticky," i.e. contribute to increased adherence.
+:::
