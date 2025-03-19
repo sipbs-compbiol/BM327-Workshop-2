@@ -45,7 +45,7 @@ book:
     - part: part_03_batches.qmd
       chapters: 
         - visualising_batches.qmd
-#        - modelling_data.qmd
+        - modelling_data.qmd
     
 #    - part: supplementary.qmd
 #      chapters:

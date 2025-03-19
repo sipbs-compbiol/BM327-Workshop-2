@@ -1,0 +1,107 @@
+---
+webr:
+    packages: ["tidyverse", "lme4"]
+filters:
+  - webr
+---
+
+# Modelling Experimental Data { #sec-modelling-batches }
+
+```{webr-r}
+#| context: setup
+
+# Download experiment data
+download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/tissue.csv", "tissue.csv")
+download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/catheter.csv", "catheter.csv")
+
+library(tidyverse)
+library(lme4)
+
+tissue <- read_csv("tissue.csv", col_types="fniniii")
+catheter <- read_csv("catheter.csv", col_types="fniniii")
+```
+
+::: { .callout-note }
+It may take a couple of minutes to install the necessary packages in `WebR` - please be patient.
+
+**This page preloads the datasets as `tissue` and `catheter` for use in `R` cells.**
+:::
+
+## Introduction
+
+In @sec-visualising-data we used boxplots and scatterplots to visualise the data obtained from the adherence experiments with the wild-type (`WT`), knockout (`KO`), empty vector (`empty`), and complemented gene (`complement`) lines.
+
+We saw that there appeared to be an effect of knocking out the _etpD_ gene on the adherence (_stickiness_) of bacteria to both human tissue and to the catheter material. However, restoring the _etpD_ gene appeared only to make a difference to adherence to the catheter material.
+
+::: { .callout-important }
+We also observed an apparent batch effect in both sets of experiments, where the results obtained appeared to be strongly affected by which experimental batch they were obtained in.
+
+**We should like to remove the influence of these _batch effects_ as they make our results less reliable as a representation of the biological influence of the _etpD_ gene.**
+
+(we will do this in the next section, @sec-removing-batch-effects)
+:::
+
+::: { .callout-caution }
+All our conclusions so far have been drawn from visual inspection of graphs, but we can do better than this by _modelling_ the influence of biological factors of interest on our outcome (i.e. logCFU/mL).
+
+**By using statistical modelling approaches, we can _estimate_ the _quantitative_ influence of (i) knocking out the gene, (ii) introducing an empty plasmid, and (iii) reintroducing the gene as a complement** and we shall do this below.
+:::
+
+## The Model
+
+We can consider the measured "stickiness" or _adherence_ of the bacteria to be composed of the combined influence of a number of _factors_. We can use our experimental results and a statistical method called _linear modelling_ (or _linear regression_) to estimate the amount of influence each factor has.
+
+First though, we start with a baseline level of "stickiness…"
+
+### The baseline: wild-type adherence (`WT`)
+
+The wild-type (control) line is expected to display the baseline level of adherence for the bacteria.
+
+So, when we measure the `WT` line we are establishing the natural baseline "stickiness" of the bacterium, measured as logCFU recovered from the substrate. In statistical terms we might make this into an equation like:
+
+$$ \textrm{measured logCFU} = \textrm{baseline} $$ {#eq-baseline}
+
+and @eq-baseline says "the logCFU we measure for any wild-type bacterium is that of the baseline, wild-type organism."
+
+In reality though, we always expect some completely random experimental measurement error, which we can represent with the symbol $\epsilon$ (epsilon) as @eq-baseline-eps:
+
+$$ \textrm{measured logCFU} = \textrm{baseline} + \epsilon $$ {#eq-baseline-eps}
+
+i.e. "the logCFU we measure for any wild-type bacterium is that of the baseline, wild-type organism, plus or minus some measurement error."
+
+### The first intervention: knocking out a gene of interest (`KO`)
+
+If we don't knock out a gene from a bacterium it is just the same as the wild type. We'd expect the logCFU we recover from the substrate to be the baseline logCFU.
+
+But, if we do knock out a gene, we can represent the measured logCFU for that bacterium by @eq-ko:
+
+$$ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \epsilon $$ {#eq-ko}
+
+which says "the logCFU we measure for the bacterium is the baseline level, _plus the effect of knocking out the gene_."
+
+Essentially the difference in measured logCFU between the `WT` and `KO` groups is taken to be due to the effect of knocking out the gene of interest (plus or minus a bit of measurement error).
+
+### Introducing the empty vector (`empty`)
+
+Introducing an empty plasmid vector puts strain on a bacterium and might affect its "stickiness." As we only introduce the empty vector into a knockout strain, the measured logCFU for that bacterium is that of the baseline plus the effect of the knockout, and any effect of including the empty vector. We can describe this in @eq-empty:
+
+$$ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \epsilon $$ {#eq-empty}
+
+which says "the logCFU we measure for the bacterium is the baseline level, plus the effect of knocking out the gene of interest, and the effect of introducing an empty vector (plus or minus some measurement error)."
+
+### Complementing the gene (`complement`)
+
+Finally, reintroducing the gene on the plasmid vector (complementing the gene) is expected to change the logCFU recovered. The effect of introducing the gene is added on to the effect of knocking it out and introducing an empty plasmid, and is described in @eq-empty:
+
+$$ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \epsilon $$ {#eq-empty}
+
+### So what?
+
+By now you might be thinking: "we've made an equation that represents the quantitative influence of knocking out a gene, introducing an empty plasmid, and complementing the gene, but **so what?** - how do we get numbers for this?"
+
+To get those numbers, we can use a statistical technique called _linear modelling_ (aka _linear regression_). It is very powerful and useful, and remarkably straightforward to use in `R`.
+
+::: { .callout-note }
+We will walk through the modelling process for the catheter data, but modelling the tissue data is left as an exercise for you to solve.
+:::
+

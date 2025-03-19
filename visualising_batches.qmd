@@ -5,7 +5,7 @@ filters:
   - webr
 ---
 
-# Modelling Batch Effects { #sec-modelling-batches }
+# Visualising Experimental Data { #sec-visualising-data }
 
 ```{webr-r}
 #| context: setup
@@ -24,10 +24,10 @@ It may take a couple of minutes to install the necessary packages in `WebR` - pl
 
 ## Introduction
 
-The experiment that was actually run to gather data on adherence to human tissue and catheter material ran into a few problems.
+The experiment that was actually run to gather data on adherence to human tissue and catheter material ran into a few scheduling problems.
 
-Ultimately the experiment was run by multiple scientists in the group, and measurements were taken in groups of five datapoints, where all five measurements were collected in the course of an afternoon.
-Each group of five measurements contained results for only _one_ of the `WT` (control), `KO` (knockout), `empty` (empty vector), and `complement` (complemented gene) groups.
+Ultimately the experiment was run by multiple scientists in the group, and measurements were taken in groups of five datapoints, where all five measurements - corresponding to a single bacterial line - were collected in the course of an afternoon.
+Each group, or _batch_, of five measurements contained results for only _one_ of the `WT` (control), `KO` (knockout), `empty` (empty vector), and `complement` (complemented gene) lines.
 There were four such groups or _batches_ for the human tissue experiment, and eight for the catheter material experiment. with four such batches of five measurements for each 
 
 ## Task 1: Load and inspect your data
@@ -77,7 +77,7 @@ glimpse(catheter)
 Your dataset has been provided in a specific format to make plotting and analysis easier for this workshop.
 
 ::: { .callout-note }
-This workshop focuses on demonstrating how to visualise, analyse, and interpret experimental data. Manipulating raw data into a suitable format is outside the scope of this material.
+This workshop focuses on demonstrating how to visualise, analyse, and interpret experimental data. The principles and techniques of cleaning and manipulating raw data into a suitable form for analysis is outside the scope of this material.
 :::
 
 ::: { .callout-todo }
@@ -93,9 +93,9 @@ Use the `WebR` cell below to visualise the data from the catheter material exper
 
 See if you can give the graph these properties:
 
-- The categories/labels should be in this order on the x-axis: `WT`, `KO`, `empty`, `complement`
+- The categories/labels should be in this order on the x-axis, from left to right: `WT`, `KO`, `empty`, `complement`
 - There should be one boxplot per category/label
-- Each batch should have a different colour
+- Each batch should be assigned a different colour for easy identification
 
 :::
 
@@ -291,4 +291,35 @@ Based on your answers above, do you think there is evidence that the _etpD_ gene
 When the _etpD_ gene is knocked out (`KO`) fewer CFUs are recovered from the substrate, which we can interpret as the bacteria being less "sticky."
 
 However, when the _etpD_ gene is expressed from a plasmid (`complement`) no more CFUs are recovered than was the case for the `KO`, so it appears that restoration of the _etpD_ gene **does not** by itself make the bacteria more "sticky," i.e. contribute to increased adherence.
+:::
+
+### The influence of batch effects
+
+As noted above, the experiment as performed involved obtaining measurements in groups of five. Each group of five measurements may have been obtained on a different day, by a different scientist.
+
+Small differences between the way scientists work, or batches of chemicals, media, and reagents, can lead to _systematic_ differences in results that are due to those changes and not to the biological influence under investigation (here, the effect of the _etpD_ gene on bacterial adherence).
+
+::: { .callout-caution }
+When inspecting experimental data, you should check for potential signs of _batch effects_ using exploratory data visualisation. The visualisation you performed above is exploratory data visualisation.
+
+- Do datapoints that are meant to measure the same thing seem to form distinct and separate clusters?
+- If you colour the datapoints by a factor that is not meant to be a factor of interest in the experimental design (e.g. individual experimenter, date the measurement was obtained, media batch number) do these correlate with the clusters?
+:::
+
+::: { .callout-tip }
+Some common visualisation and ordination techniques for identifying batch effects include PCA (principal components analysis) and MDS (multidimenstional scaling).
+
+**Rigorous experimental design is the best way to avoid batch effects and confounding.** Techniques such as sample randomisation and statistical balancing can help to avoid unwanted and unanticipated batch effects.
+:::
+
+::: { .callout-question }
+Do you see evidence of batch effects in @fig-catheter-boxplot and/or @fig-tissue-boxplot? Why do you think this?
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+There is clear visual evidence of batch effects in both @fig-catheter-boxplot and/or @fig-tissue-boxplot.
+
+For example, in @fig-catheter-boxplot the logCFU values for batches 1 and 2 are obviously grouped together and differ from each other, despite apparently measuring the same values. The evidence for a batch effect is less obvious for batches 3 and 4.
+
+Likewise in @fig-tissue-boxplot the values for batch 5 are much lower than those for the other `empty` and `complement` batches. Values for batches 1 and 2 also appear to be systematically lower than for the other batches in the `WT` and `KO` lines.
 :::
