@@ -1,4 +1,4 @@
-# The Experiment
+# The Experiment { #sec-experiment }
 
 Uropathogenic _Escherichia coli_ (UPEC) employs a complex set of molecular factors that allow it to evade host defences, resist antibiotic treatment, and persist in the urinary tract, ultimately facilitating pathogenesis.
 

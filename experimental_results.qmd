@@ -1,0 +1,19 @@
+# Experimental results { #sec-experimental-results }
+
+As noted in @sec-experiment, we aim to identify UPEC-specific genes that are overrepresented in the final mixtures that have been through mouse passage, but that are not overrepresented in the control passage through culture alone.
+
+These results were obtained using a Bayesian statistical multilevel regression technique, and are presented graphically below. As the UPEC genome comprises a chromosome and an accompanying plasmid, these are shown separately.
+
+Results are shown for both post-control, and post-mouse passage arms of the experiment.
+
+::: { .callout-note }
+The statistical methodology is beyond the scope of this workshop. But please do ask if you're interested.
+:::
+
+![Post-control passage over-and under-representation of UPEC chromosomal genes in the DH10B background. "Neutral" genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).](assets/images/upec_chrom_control.png){#fig-chrom-control width=80% .lightbox}
+
+![Post-mouse passage over-and under-representation of UPEC chromosomal genes in the DH10B background. "Neutral" genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).](assets/images/upec_chrom_treat.png){#fig-chrom-treat width=80% .lightbox}
+
+![Post-control passage over-and under-representation of UPEC plasmid genes in the DH10B background. "Neutral" genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).](assets/images/upec_plasmid_control.png){#fig-plasmid-control width=80% .lightbox}
+
+![Post-mouse passage over-and under-representation of UPEC plasmid genes in the DH10B background. "Neutral" genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).](assets/images/upec_plasmid_treatment.png){#fig-plasmid-treat width=80% .lightbox}
