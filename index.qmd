@@ -28,4 +28,4 @@ By the end of this workshop, students will be able to:
 
 ## Assessment
 
-This workshop activity itself is not formally assessed although, as noted, all the material it contains is examinable. There is a [formative assessment on MyPlace]({{< var myplace.quiz >}}), which you should complete as part of the workshop.
+This workshop activity is not formally assessed.
