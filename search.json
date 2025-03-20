@@ -26,7 +26,7 @@
     "href": "index.html#learning-objectives",
     "title": "BM327 Workshop 2: Identifying UTI Adhesion Factors",
     "section": "1.2 Learning Objectives",
-    "text": "1.2 Learning Objectives\nBy the end of this workshop, students will be able to:\n\nPlot experimental data using R and ggplot2\nUse and interpret box-and-whisker, violin, and 1D scatter plots\nUse linear modelling to estimate effect sizes of biological interventions\nUse linear mixed models to correct for experimental batch effects",
+    "text": "1.2 Learning Objectives\nBy the end of this workshop, students will be able to:\n\nPlot experimental data using R and ggplot2\nUse and interpret box-and-whisker, violin, and 1D scatter plots\nUse linear modelling to estimate effect sizes of biological interventions in knockout/complement assay\nUse linear mixed models to correct for experimental batch effects in knockout/complement assay",
     "crumbs": [
       "A high-throughput genomic screen for adherence factors",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
@@ -44,8 +44,8 @@
     ]
   },
   {
-    "objectID": "part_00_experiment.html",
-    "href": "part_00_experiment.html",
+    "objectID": "part_01_experiment.html",
+    "href": "part_01_experiment.html",
     "title": "A high-throughput genomic screen for adherence factors",
     "section": "",
     "text": "In this section of the workshop we introduce the experiment that provides the data you will be working with.\nThe motivation of the experiment is to identify candidate adhesion factors in a uropathogenic Escherichia coli (UPEC). UPECs are the most common cause of community-acquired urinary tract infections (UTIs), and imfection can cause milder symptoms like discomfort, polyuria, and fever, but in some cases can lead to kidney damage, sepsis and death.\nOne of the features of UPECs that facilitaties infection is their ability to adhere (stick) to human tissue, and also to materials that might be inserted into the urinary tract, such as catheter tubes. The better, and longer, a pathogen can hang around in the urinary tract, the more chance it has to contribute to illness. If we can identify the molecular components contributing to adherence, we might be able to target them with drugs or produce materials to which they stick less well, reducing the disease burden.\nThe experiment whose data you will be working with aims to identity molecular causes of adherence through a high throughput positive selection screen, identifying genes that specifically appear to improve retention of bacteria in the urinary tract.",
@@ -109,8 +109,8 @@
     ]
   },
   {
-    "objectID": "part_03_batches.html",
-    "href": "part_03_batches.html",
+    "objectID": "part_02_batches.html",
+    "href": "part_02_batches.html",
     "title": "A gene knockout experiment",
     "section": "",
     "text": "A note about experimental data.\nIn this section of the workshop you will be working with data from a gene knockout experiment where an E. coli UPEC isolate mutant lacking the etpD gene is made.\nTo establish that this gene makes a contribution to pathogen adherence, we need to satisfy Falkow’s molecular variant of Koch’s Postulates:\nA more complete account of this experiment is given on the next page.\nIn real life experiments are not always “clean,” in the sense that we cannot always construct our experiments to exclude all events or factors that might influence the outcome.\nIn this part of the workshop you will work with real experimental data which, due to the need to spread the work over a period of months required parts of the experiment to be performed by different people at different times.",
@@ -119,8 +119,8 @@
     ]
   },
   {
-    "objectID": "part_03_batches.html#a-note-about-experimental-data.",
-    "href": "part_03_batches.html#a-note-about-experimental-data.",
+    "objectID": "part_02_batches.html#a-note-about-experimental-data.",
+    "href": "part_02_batches.html#a-note-about-experimental-data.",
     "title": "A gene knockout experiment",
     "section": "",
     "text": "Caution\n\n\n\nThe situation we consider here, where more than one researcher carries out sections of the experiment months apart, is quite obvious. The scientists involved knew that there might be an infuence on the outcome and took it into account when recording their data.\nHowever, many such interfering effects can creep into experimental data without our realising it. It is always good practice to investigate your experimental data to look for evidence of similar kinds of effects.\nAs you will see, it can be possible to account and correct for these effects when they arise.",
