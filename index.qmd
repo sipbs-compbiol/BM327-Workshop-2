@@ -23,8 +23,8 @@ By the end of this workshop, students will be able to:
 
 - Plot experimental data using `R` and `ggplot2`
 - Use and interpret box-and-whisker, violin, and 1D scatter plots
-- Use linear modelling to estimate effect sizes of biological interventions
-- Use linear mixed models to correct for experimental batch effects
+- Use linear modelling to estimate effect sizes of biological interventions in knockout/complement assay
+- Use linear mixed models to correct for experimental batch effects in knockout/complement assay
 
 ## Assessment
 
