@@ -6,6 +6,7 @@
     "section": "",
     "text": "1 Preface\nWelcome to BM327 (Being a Biomolecular Scientist 3) bioinformatics workshop 2 for 2024-25.\nThis is the first presentation of this material, and we would be very grateful to hear feedback about it by email or through the GitHub repository Issues page.",
     "crumbs": [
+      "A high-throughput genomic screen for adherence factors",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
     ]
   },
@@ -16,6 +17,7 @@
     "section": "1.1 Overview",
     "text": "1.1 Overview\nThis workshop asks you to carry out data analysis and visualisation to identify an adhesion factor important for urinary tract infection. You will be using the statistical programming language R and the widely-used graphics library ggplot2 to do this.\n\n\n\n\n\n\nImportant Note\n\n\n\nThere is new material in this workshop that is not covered in lectures, and this material is examinable. Please take care to read the text in the expandable callout boxes, as well as that for the workshop, to be sure you have understood the topic and obtain full value from the exercise.\nThe workshop material will remain live online for the duration of BM327, and you can revisit it whenever you wish, for practice or revision.\n\n\nYou should be able to complete this workshop in under two hours.",
     "crumbs": [
+      "A high-throughput genomic screen for adherence factors",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
     ]
   },
@@ -26,6 +28,7 @@
     "section": "1.2 Learning Objectives",
     "text": "1.2 Learning Objectives\nBy the end of this workshop, students will be able to:\n\nPlot experimental data using R and ggplot2\nUse and interpret box-and-whisker, violin, and 1D scatter plots\nIdentify and understand how to correct for experimental batch effects\nPlot experimental data corrected for batch effects",
     "crumbs": [
+      "A high-throughput genomic screen for adherence factors",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
     ]
   },
@@ -36,6 +39,7 @@
     "section": "1.3 Assessment",
     "text": "1.3 Assessment\nThis workshop activity itself is not formally assessed although, as noted, all the material it contains is examinable. There is a formative assessment on MyPlace, which you should complete as part of the workshop.",
     "crumbs": [
+      "A high-throughput genomic screen for adherence factors",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Preface</span>"
     ]
   },
