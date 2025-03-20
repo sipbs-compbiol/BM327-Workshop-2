@@ -61,7 +61,7 @@ book:
 #      chapters:
 #        - webr-example.qmd
     
-    - references.qmd
+#    - references.qmd
 
 # Location of BibTeX format reference file; may not need to be changed
 bibliography: references.bib
