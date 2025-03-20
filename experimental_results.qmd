@@ -17,3 +17,23 @@ The statistical methodology is beyond the scope of this workshop. But please do 
 ![Post-control passage over-and under-representation of UPEC plasmid genes in the DH10B background. "Neutral" genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).](assets/images/upec_plasmid_control.png){#fig-plasmid-control width=80% .lightbox}
 
 ![Post-mouse passage over-and under-representation of UPEC plasmid genes in the DH10B background. "Neutral" genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).](assets/images/upec_plasmid_treatment.png){#fig-plasmid-treat width=80% .lightbox}
+
+## Interpreting the experimental results
+
+We are interested in genes that are more abundant than expected after mouse passage, but not after control passage.
+
+### Chromosomal genes
+
+Comparing @fig-chrom-control and @fig-chrom-treat we can see that in both cases there are clusters of genes that appear to be overrepresented, and they are different for the control- and mouse-passaged arms of the experiment.
+
+In the mouse-passaged isolates, four regions known as "S-loops" were seen to be enriched. These encode for urea degradation, effector proteins associated with adherence to bovine tissue, a surfactin, and hæm utilisation. The known functions of these genes are consistent with a role in adherence to tissue, and infection.
+
+### Plasmid-borne genes
+
+A comparison of @fig-plasmid-control and @fig-plasmid-treat shows that no plasmid-borne genes are overrepresented in the control arm, but that a run of several genes corresponding to an operon for a Type II Secretion System (T2SS) are highlighted in the mouse arm. This T2SS has been reported to play a role in adherence to mammalian host tissues, biofilm formation, and is considered an important virulence factor. 
+
+### Identifying a candidate
+
+The T2SS was chosen as a likely candidate for investigation, given its known roles in host tissue association and infection.
+
+The 
