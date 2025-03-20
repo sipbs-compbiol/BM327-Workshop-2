@@ -46,6 +46,7 @@ book:
       chapters: 
         - visualising_batches.qmd
         - modelling_data.qmd
+        - eliminating_batches.qmd
     
 #    - part: supplementary.qmd
 #      chapters:

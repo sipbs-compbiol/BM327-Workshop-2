@@ -1,0 +1,460 @@
+---
+webr:
+    packages: ["tidyverse", "lme4"]
+filters:
+  - webr
+---
+
+# Eliminating batch effects { #sec-removing-batch-effects }
+
+```{webr-r}
+#| context: setup
+
+# Download experiment data
+download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/tissue.csv", "tissue.csv")
+download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/catheter.csv", "catheter.csv")
+
+library(tidyverse)
+library(lme4)
+
+tissue <- read_csv("tissue.csv", col_types="fniniii")
+catheter <- read_csv("catheter.csv", col_types="fniniii")
+```
+
+::: { .callout-note }
+It may take a couple of minutes to install the necessary packages in `WebR` - please be patient.
+
+**This page preloads the datasets as `tissue` and `catheter` for use in `R` cells.**
+:::
+
+## Introduction
+
+In @sec-modelling-batches we saw how to use a _linear modelling_ approach to estimate directly the influence of gene knockout and other interventions on the amount of viable bacteria recovered (and so infer a difference in "stickiness" or adherence to a substrate). 
+
+This is an extremely powerful method not just because it lets us identify the strengths of multiple effects _directly_ and _simultaneously_ from our data (rather than testing for "a difference" as with ANOVA/_t_-tests), but because we can also use them to _exclude_ the effects of interfering influences such as batch effects.
+
+In this section, we will see how to use the `R` package `lme4` to account for and remove the effects of those unwanted influences.
+
+::: { .callout-note }
+`lme4` is a linear modelling package that extends the capability of `R`'s built-in (and still extremely powerful) linear modelling function `lm()` to enable _mixed-effects models_. This extension is what allows us to account for batch effects in our experiment.
+:::
+
+## The Model
+
+We take as our starting point the model we had in @sec-modelling-batches:
+
+$$ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \epsilon $$ {#eq-base-model}
+
+We want to extend @eq-base-model to account for the influence of each individual batch, separately. That is, we want to represent a situation where all measurements in batch 1 are under a similar influence, but that influence is different to the one affecting batches 2-8, and so on.
+
+In mathematical notation, we could modify @eq-base-model to represent the measurement for a row $i$ in the table as:
+
+
+$$ \textrm{measured logCFU}_i = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \textrm{batch}_i + \epsilon  $$ {#eq-mixed-model}
+
+where $\textrm{batch}_i$ represents "influence due to the corresponding batch for measurement $i$." This is quite a small adjustment on paper (or the screen!), but it can have very wide-ranging effects.
+
+::: { .callout-caution collapse="true" }
+We're taking some liberties with formal mathematical notation here and leaving out some components of the equation to make the connection between biology and the equation clearer.
+:::
+
+## The Model in `R`
+
+The change we need to make to our model representation in `R` is similarly small. The previous model looked like this:
+
+```r
+logCFU ~ KO + empty + complement
+```
+
+and the modified model requires the addition of only one term:
+
+```r
+logCFU ~ KO + empty + complement + (1 | batch)
+```
+
+So, what does `(1 | batch)` mean?
+
+### Fixed and random effects
+
+The model we have built is now what's called a "mixed model" that incorporates _fixed effects_ and _random effects_. But what are they and why do they differ?
+
+_Fixed effects_ are the influences that we focus our practical experiments on. In our experiments we make a specific, intentional change to the system (e.g. knocking out a gene) that we expect to have a consistent effect on the outcome. The term "fixed" in "fixed effect" refers to the expectation of this effect being constant across individual runs of the experiment.
+
+_Random effects_ are influences on the outcome that can vary between individual runs (such as the "measurement error $\epsilon$ which reflects small random variations in each measurement), or between groups of runs - such as the batch-level differences we saw in @sec-modelling-batches. We expect that every measurement in the same batch is affected in approximately the same way, with some random error, but that the effect can differ between batches.
+
+The part of the `R` model expressed by `(1 | batch)` represents this _random effect_ due to a measurement being made in a particular batch.
+
+
+::: { .callout-note }
+As before, we will walk through the modelling process for the catheter data, but modelling the tissue data is left as an exercise for you to solve.
+:::
+
+## Fitting the catheter model
+
+We will use the `lme4` function `lmer()` to fit the model in @eq-mixed-model to our `catheter` dataset in the `WebR` cells below.
+
+### Load the data
+
+::: { .callout-important }
+**We have preloaded the data for you as the dataframes `tissue` and `catheter`.**
+
+Use the `WebR` cell below to confirm the catheter data is loaded
+:::
+
+```{webr-r}
+# Use head(catheter) to inspect the catheter data
+
+
+```
+
+Note that the data contains three columns: `KO`, `empty`, and `complement` that contain either a `1` or `0` value, and a `batch` column that indicates the batch to which the measurement belongs
+
+The `KO`, `empty`, and `complement` columns describe whether the logCFU measurement in the row corresponds to a line that is affected by a gene knockout (`KO` = `1`), the presence of a plasmid vector (`empty` = `1`), or the reintroduced gene (`complement` = `1`). **These columns allow us to use the `lmer()` function to estimate the influence of each biological intervention.**
+
+The `batch` column contains a number representing the batch to which the measurement belongs. The `R` model uses this to estimate (and remove) the effect on measurement that appears to be due only to it belonging to that batch.
+
+::: { .callout-note }
+We again assume that measurements of the bacteria all share the same (wild-type) baseline.
+:::
+
+### Define the model
+
+As noted above, `R`'s model syntax lets us include the influence of batches as a _random effect_.
+
+Here, our measured value is in the column `logCFU`, and is assumed to be influenced by factors in the columns `KO`, `empty`, and `complement` (where they apply/are equal to one), and also by a random influence shared by all members of the same `batch` number. We represent this with the `R` statement below:
+
+```r
+logCFU ~ KO + empty + complement + (1 | batch)
+```
+
+which reads: "`logCFU` is influenced by (`~`) the sum of effects of `KO`, `empty`, and `complement` (where they apply), and by a batch-specific effect corresponding to `batch`."
+
+### Fit the model
+
+To fit our data to this model, we use this _model definition_ in the `lmer()` function as below (specifying that the dataframe we're using is `catheter`):
+
+```r
+catheter_model <- lmer(logCFU ~ KO + empty + complement + (1 | batch), data=catheter)
+```
+
+::: { .callout-challenge }
+**Fit the catheter data to this model in the `WebR` cell below.**
+
+Use the `R` code:
+
+```r
+catheter_mixed_model <- lmer(logCFU ~ KO + empty + complement + (1 | batch), data=catheter)
+```
+:::
+
+```{webr-r}
+# Fit the catheter data to the model
+# Use the R function below
+# catheter_mixed_model <- lmer(logCFU ~ KO + empty + complement + (1 | batch), data=catheter)
+
+
+```
+
+## Interpreting the catheter model
+
+The fitted model is stored in the variable `catheter_mixed_model` and, just as before, we can obtain useful information from it in a number of ways.
+
+### Coefficients and confidence intervals
+
+The _coefficients_ that the model reports are the estimated effects of each factor of interest. To obtain the coefficients, use the `R` code below to produce a summary of the fitted model:
+
+```r
+summary(catheter_mixed_model)
+```
+
+::: { .callout-note }
+We use `summary()` instead of `coef()` because the mixed-effects model is more complex and the output is not quite the same.
+:::
+
+The _confidence intervals_ reported by the model are the range of values that the model thinks are most likely for the _coefficients_. These work the same way as coefficients for _t_-tests and similar statistical methods: the range of values bounded by the 2.5% and 97.5% confidence limits is a 95% confidence interval. We would expect that the _true_ value of the coefficient being estimated would lie in this range 95% of the time.
+
+To find the confidence intervals for the coefficients of the model, use the `R` code below:
+
+```r
+confint(catheter_mixed_model)
+```
+
+::: { .callout-challenge }
+**Find the estimated coefficients and corresponding confidence intervals for the catheter model in the `WebR` cell below.**
+
+Use the `R` code:
+
+```r
+summary(catheter_mixed_model)
+confint(catheter_mixed_model)
+```
+:::
+
+```{webr-r}
+# Find the estimated values for the model coefficients
+# summary(catheter_mixed_model)
+# confint(catheter_mixed_model)
+
+
+```
+
+### Reading the output
+
+You should see output that resembles the data below:
+
+```text
+Linear mixed model fit by REML ['lmerMod']
+Formula: logCFU ~ KO + empty + complement + (1 | batch)
+   Data: catheter
+
+REML criterion at convergence: 18.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.4164 -0.5003  0.1475  0.5460  1.9160 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ batch    (Intercept) 0.11587  0.3404  
+ Residual             0.06385  0.2527  
+Number of obs: 40, groups:  batch, 4
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)   6.3383     0.2536  24.992
+KO           -0.3213     0.1130  -2.843
+empty        -0.1466     0.3587  -0.409
+complement    0.3987     0.1130   3.528
+
+Correlation of Fixed Effects:
+           (Intr) KO     empty 
+KO         -0.223              
+empty      -0.637 -0.158       
+complement  0.000  0.000 -0.158
+Computing profile confidence intervals ...
+                 2.5 %     97.5 %
+.sig01       0.1163306  0.6012999
+.sigma       0.1981686  0.3153956
+(Intercept)  5.8858767  6.7906885
+KO          -0.5424385 -0.1001904
+empty       -0.7863870  0.4932101
+complement   0.1775290  0.6197772
+```
+
+#### Coefficients
+
+The output of `summary(catheter_mixed_model)` shows more information than for the output of `lm()` with `coef()`, but we can focus on the important section, which is in the section titled `Fixed Effects`:
+
+```text
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)   6.3383     0.2536  24.992
+KO           -0.3213     0.1130  -2.843
+empty        -0.1466     0.3587  -0.409
+complement    0.3987     0.1130   3.528
+```
+
+- `(Intercept)` is again the wild-type (`WT`)/control logCFU value coefficient estimate. Here this is `6.34`, which looks to be a reasonable value by visual comparison with @fig-catheter-boxplot.
+- The `KO` coefficient estimate is `-0.32`, which indicates that knocking out the _etpD_ gene reduces the logCFU value by 0.32 units (as this is a log scale, that corresponds approximately to halving the number of recovered CFUs).
+- The `empty` coefficient estimate is `-0.15`, which indicates a further reduction in bacterial recovery is seen due to inserting the plasmid.
+- The `complement` coefficient estimate is `0.40` - of the same order as the reduction in logCFU seen for the gene knockout. This implies that returning the gene also restores bacterial recovery to the original, wild-type level.
+
+#### Confidence intervals
+
+The `confint(catheter_mixed_model)` output lists the expected 95% confidence intervals for the coefficients.
+
+```text
+                 2.5 %     97.5 %
+.sig01       0.1163306  0.6012999
+.sigma       0.1981686  0.3153956
+(Intercept)  5.8858767  6.7906885
+KO          -0.5424385 -0.1001904
+empty       -0.7863870  0.4932101
+complement   0.1775290  0.6197772
+```
+
+We can ignore the `.sig01` and `.sigma` rows to focus on our fixed effects of interest.
+
+- The `(Intercept)`/`WT`/baseline logCFU is likely to lie between `5.89` and `6.79` units
+- The effect of knocking out the gene (`KO`) is likely to lie between `-0.54` and `0.010` units. **The interval does not include zero so we can be confident that this is a negative effect.**
+- Introduction of the plasmid vector changes logCFU by between `-0.79` and `0.49` units which includes zero, and so we can't rule out that there is no effect on logCFU due to presence of the plasmid
+- Complementing the _etpD_ gene (`complement`) increases logCFU by between `0.18` and `0.62` units, enhancing recovery of bacteria. **This interval does not include zero so we can be confident that this is a positive effect.**
+
+::: { .callout-question }
+Compare the estimated effects (coefficients) for our fixed effects when fitting both models (the model above, and that in @sec-modelling-batches). How different are they and what can we conclude about the relative usefulness of each model?
+
+- `WT`/`(Intercept)`
+- `KO`
+- `empty`
+- `complement`
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+```r
+> coef(catheter_model)
+(Intercept)          KO       empty  complement 
+  6.3382829  -0.3213144  -0.1465880   0.3986531 
+
+> summary(catheter_mixed_model)
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)   6.3383     0.2536  24.992
+KO           -0.3213     0.1130  -2.843
+empty        -0.1466     0.3587  -0.409
+complement    0.3987     0.1130   3.528
+```
+
+The estimated coefficients for the `(Intercept)`/`WT`, `KO`, `empty`, and `complement` fixed effects are essentially identical to four decimal places.
+
+There is no difference between the two models in their estimates of effect sizes. This suggests that both models converge to consistent estimates which gives confidence in the result.
+:::
+
+::: { .callout-question }
+Compare the _confidence intervals_ for the estimated effects (coefficients) of our fixed effects when fitting both models (the model above, and that in @sec-modelling-batches). How different are they and what can we conclude about the relative usefulness of each model?
+
+- `WT`/`(Intercept)`
+- `KO`
+- `empty`
+- `complement`
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+```r
+> confint(catheter_model)
+                  2.5 %      97.5 %
+(Intercept)  6.10862926 6.567936607
+KO          -0.64609377 0.003464903
+empty       -0.47136735 0.178191328
+complement   0.07387378 0.723432458
+
+> confint(catheter_mixed_model)
+                  2.5 %      97.5 %
+(Intercept)  5.8858767  6.7906885
+KO          -0.5424385 -0.1001904
+empty       -0.7863870  0.4932101
+complement   0.1775290  0.6197772
+```
+
+- The confidence interval for `(Intercept)`/`WT` is wider for the mixed model, but both models estimate an interval that does not include zero (so is confidently positive), and they estimate the same `logCFU` of `6.3383`.
+- The confidence interval for `KO` includes zero in the original model (`catheter_model`) and so cannot confidently be assumed to be negative. The mixed model (`catheter_mixed_model`) confidence interval does not include zero, and is narrower. We can be more confident that the data shows a reduction in `logCFU` when correcting for batch effects.
+- The confidence interval for `empty` is wider for the mixed model, but both models estimate an interval that includes zero, so we cannot exclude that there is no effect on `logCFU` of introducing the plasmid, in either model. Both models estimate the same `logCFU` of `-0.1466`.
+- The confidence interval for `complement` is positive and does not include zero in both model results, so we can be confident that the data shows complementation increases the `logCFU`. The confidence interval is narrower for the mixed model suggesting that our estimate is more precise, though both models estimate the same effect size.
+:::
+
+::: { .callout-tip collapse="true" title="A note on the answer"}
+The mixed model that accounts for systematic errors introduced by batching has not affected our estimate of effect sizes for each _fixed effect_ (e.g. knocking out the _etpD_ gene), but it has affected our _confidence_ in each estimate.
+
+Specifically, by taking batches into account we have made the estimates of the effect of knocking out and complementing the _etpD_ gene more _precise_ (i.e. there is _less uncertainty_ about whether the effect is nonzero, and about the size of the effect).
+:::
+
+## Fitting and interpreting the tissue model
+
+::: { .callout-challenge }
+**Fit the tissue data to the mixed-effects model, using the `WebR` cell below.**
+:::
+
+```{webr-r}
+# Fit the tissue data to the model
+# Use the WebR cells and instructions above
+# as a guide
+
+
+```
+
+::: { .callout-tip collapse="true" title="I need a hint"}
+Use the same functions as for the catheter model, but be sure to use the `tissue` dataset instead
+
+- Use `lmer()` to fit the model
+- Use `summary()` and `confint()` to find the coefficients for the `WT`, `KO`, `empty`, and `complement` factors of interest
+:::
+
+::: { .callout-warning collapse="true" title="Help, I'm stuck!"}
+Use the `R` code below to fit the model
+
+```r
+tissue_mixed_model <- lmer(logCFU ~ KO + empty + complement + (1 | batch), data=tissue)
+```
+
+Use the `R` code below to see the estimated coefficients and confidence intervals
+
+```r
+summary(tissue_mixed_model)
+confint(tissue_mixed_model)
+```
+:::
+
+### Interpreting the results
+
+::: { .callout-questions }
+What are the coefficients of the four factors of interest, and what do they imply about the effects of each factor? How do they compare to the estimates made by the model that did not take batching into account?
+
+- `WT`/`(Intercept)`
+- `KO`
+- `empty`
+- `complement`
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+```r
+> summary(tissue_mixed_model)
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)  6.54455    0.14185  46.137
+KO          -0.30835    0.06142  -5.020
+empty       -0.06357    0.20061  -0.317
+complement  -0.05806    0.06142  -0.945
+```
+
+- The `(Intercept)` value is `6.54`, which is consistent with the baseline recovery from the catheter experiment, and the previous model.
+- The `KO` value is `-0.31`, which is negative, so consistent with _etpD_ deletion resulting in reduced recovery of bacteria/reduced adhesion, and the previous model.
+- The `empty` value is `-0.06` which is close to zero and consistent with there being no strong effect on logCFU due to incorporation of the plasmid vector, and the previous model.
+- The `complement` value is `-0.06` which is also small and close to zero, consistent with there being no strong effect on logCFU due to reintroduction of the _etpD_ gene, and also the previous model.
+:::
+
+::: { .callout-questions }
+What are the confidence intervals for the coefficients of the four factors of interest, and what do they imply about the effects of each factor? How do they compare to those of the previous model?
+
+- `WT`/`(Intercept)`
+- `KO`
+- `empty`
+- `complement`
+:::
+
+::: { .callout-tip collapse="true" title="Answers"}
+```r
+> confint(tissue_model)
+                 2.5 %      97.5 %
+(Intercept)  6.2729898  6.81611414
+KO          -0.4286512 -0.18804344
+empty       -0.4476160  0.32047790
+complement  -0.1783650  0.06224276
+```
+
+- The `(Intercept)` value lies between `6.27` and `6.81`, which is consistent with the baseline recovery from the catheter experiment, and slightly wider than the original model without batching.
+- The `KO` value lies between `-0.42` and `-0.18`, which are both negative so this is consistent with _etpD_ deletion resulting in reduced recovery of bacteria/reduced adhesion. It is also much narrower than the original model's interval, implying a more precise estimate.
+- The `empty` confidence interval includes zero and is consistent with there being no strong effect on logCFU due to incorporation of the plasmid vector. It is wider than the interval estimated by the original model.
+- The `complement` confidence interval includes zero and is consistent with there being no strong effect on logCFU due to reintroduction of the _etpD_ gene. It is also much narrower than the original model's interval, implying a more precise estimate.
+:::
+
+::: { .callout-tip collapse="true" title="A note on the answer"}
+The mixed model that accounts for systematic errors introduced by batching has, again, not affected our estimate of effect sizes for each _fixed effect_ (e.g. knocking out the _etpD_ gene), but it has once more affected our _confidence_ in each estimate.
+
+Specifically, by taking batches into account we have made the estimates of the effect of knocking out and complementing the _etpD_ gene more _precise_ (i.e. there is _less uncertainty_ about whether the effect is nonzero, and about the size of the effect).
+
+Here, the results give us confidence that knocking out _etpD_ results in reduced `logCFU`, but that restoring/complementing the gene does not affect `logCFU`. This is an intriguing result that requires explanation and, because we have been able to account for systematic sources of experimental error, i.e. batch effects, we can be confident in our conclusions and that there is a new question to be answered:
+
+Why does knocking out _etpD_ reduce recovery from catheter material and human tissue, but only restore recovery from catheter material?
+:::
+
+## Summary
+
+::: { .callout-thumbs-up }
+In this section taken real experimental data through a fairly advanced statistical analysis to eliminate unwanted sources of error, and improved your confidence in your results. You have:
+
+- understood how to build up a statistical model that represents multiple experimental factors of interest in `R`
+- used `R` to model experimental data with mixed effects (_fixed_ and _random_)
+- obtained estimates of the sizes of effects due to multiple experimental interventions
+- obtained estimates of _confidence_ in the sizes of those effects, including whether the effects are really different from zero
+:::
+
+Now proceed to @sec-conclusions to wrap up the workshop.
