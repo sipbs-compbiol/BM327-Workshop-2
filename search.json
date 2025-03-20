@@ -40,13 +40,46 @@
     ]
   },
   {
+    "objectID": "part_00_experiment.html",
+    "href": "part_00_experiment.html",
+    "title": "A high-throughput genomic screen for adherence factors",
+    "section": "",
+    "text": "In this section of the workshop we introduce the experiment that provides the data you will be working with.\nThe motivation of the experiment is to identify candidate adhesion factors in a uropathogenic Escherichia coli (UPEC). UPECs are the most common cause of community-acquired urinary tract infections (UTIs), and imfection can cause milder symptoms like discomfort, polyuria, and fever, but in some cases can lead to kidney damage, sepsis and death.\nOne of the features of UPECs that facilitaties infection is their ability to adhere (stick) to human tissue, and also to materials that might be inserted into the urinary tract, such as catheter tubes. The better, and longer, a pathogen can hang around in the urinary tract, the more chance it has to contribute to illness. If we can identify the molecular components contributing to adherence, we might be able to target them with drugs or produce materials to which they stick less well, reducing the disease burden.\nThe experiment whose data you will be working with aims to identity molecular causes of adherence through a high throughput positive selection screen, identifying genes that specifically appear to improve retention of bacteria in the urinary tract.",
+    "crumbs": [
+      "A high-throughput genomic screen for adherence factors"
+    ]
+  },
+  {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "2  Introduction",
+    "title": "2  The Experiment",
     "section": "",
-    "text": "The Introduction page is intended as a short introduction to the book.\nLike most Quarto books, this is a book created from markdown and executable code.\nThis kind of book is an example of literate programming - the intertwining of nicely-formatted text and images, and executable code. For example, the R code cell below executes and produces output when the book is compiled:\n\n1 + 1\n\n[1] 2\n\n\nBut the R code cell below does not:\n\nsummary(cars)\n\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "text": "2.1 Experimental overview\nUropathogenic Escherichia coli (UPEC) employs a complex set of molecular factors that allow it to evade host defences, resist antibiotic treatment, and persist in the urinary tract, ultimately facilitating pathogenesis.\nTo remain in the urinary tract UPEC employs adherence factors, molecules that act to help UPEC adhere to the tissue of the channel itself, or to material in that channel, such as catheter tubes. If we can intervene to reduce this adherence, we can shorten the dwell time of the microbe and reduce the impact of disease.\nThe overall plan of the experiment is sketched in Figure 2.1.\nA bacterial artificial chromosome (BAC) library is constructed for an E. coli UPEC isolate.\nThe BAC library is then passaged through a mouse model (catheterised mouse) to emulate introduction to the human catheterised urinary tract. After passage and washing of the extracted catheter tube, the tube was used as inoculum for a further round of incubation to culture adherent bacteria.\nAfter passage, the total gDNA from the three control and three mouse system cultures is sequenced. This produces read counts corresponding to three kinds of genes:",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+      "A high-throughput genomic screen for adherence factors",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Experiment</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#experimental-overview",
+    "href": "intro.html#experimental-overview",
+    "title": "2  The Experiment",
+    "section": "",
+    "text": "Figure 2.1: Overview of the experimental protocol. 1: a BAC library is constructed for UPEC in a DH10B E.coli background. 2: a triplicate library of 384clones is produced. The library is passaged three times through (3a) a control arm or (3b) a mouse/catheter model. 4: After serial passage, total gDNA from the resulting cultures is Illumina sequenced.\n\n\n\n\n\n\n\n\n\n\nBacterial artificial chromosomes (BACs)\n\n\n\nA bacterial artificial chromosome is a DNA construct that introduces a large genomic region (typically 150-350kbp) from a genome of interest into a “neutral” background genome. In this experiment, genomic regions from UPEC are introduced into a “neutral” background E. coli (DH10B). This allows us to investigate the effect of genes from UPEC when expressed by an otherwise non-pathogenic E. coli.\n\n\n\n\n\n\n\n\nExperimental detail\n\n\n\n\n\nThe UPEC genome was partially digested with _Hind_III and cloned into a pV41 vector. This was used to generate three pools of 384 BAC clones to facilitate replication.\n\n\n\n\n\n\n\n\n\n\nPassage\n\n\n\nPassage is the serial, iterated growth of bacteria under a particular environment or series of environments. This approach is usually taken to subject the bacteria to a specific selection pressure so that we can observe how it evolves in response to that pressure.\nThis is a relatively common approach to investigating bacterial virulence factors.\n\n\n\n\n\n\n\n\nExperimental detail\n\n\n\n\n\nMouse passage was allowed to proceed for 18h. Subsequent culturing was performed in LB media at 37 degC for 18h between passages.\nA parallel control passage, identical except that bacteria were cultured in LP for 18h rather than in the mouse model, was also performed.\nThree rounds of passage were performed.\n\n\n\n\n\ngenes present only in the background DH10B\ngenes present in both DH10B and UPEC\ngenes present only in UPEC and carried through passage",
+    "crumbs": [
+      "A high-throughput genomic screen for adherence factors",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Experiment</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#expected-interpretation",
+    "href": "intro.html#expected-interpretation",
+    "title": "2  The Experiment",
+    "section": "2.2 Expected interpretation",
+    "text": "2.2 Expected interpretation\nWe are most interested in the genes that are present only in UPEC, but which form part of the BAC library.\nWe expect that the serial passage process enriches our cultures for bacteria that adhere better to the urinary tract and/or catheter material. As individual clones contain only fragments of the UPEC genome, those clones that don’t contain adherence factors are expected to be selected out of the mixture, leaving only clones with UPEC genes that promote adherence.\nBy statistical analysis of the read counts, we aim to identify UPEC-specific genes that are overrepresented in the final mixtures that have been through mouse passage, but that are not overrepresented in the control passage through culture alone.\n\n\n\n\n\n\nHow did that work out?\n\n\n\nYou can see how well this worked, if at all, in the next section.",
+    "crumbs": [
+      "A high-throughput genomic screen for adherence factors",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Experiment</span>"
     ]
   },
   {
@@ -266,16 +299,6 @@
     "crumbs": [
       "Correcting for batch effects",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Eliminating batch effects</span>"
-    ]
-  },
-  {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
-    "crumbs": [
-      "References"
     ]
   }
 ]
