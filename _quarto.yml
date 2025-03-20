@@ -47,6 +47,7 @@ book:
     
     - part: part_03_batches.qmd
       chapters: 
+        - experiment_2.qmd
         - visualising_batches.qmd
         - modelling_data.qmd
         - eliminating_batches.qmd

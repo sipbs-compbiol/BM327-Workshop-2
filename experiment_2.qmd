@@ -1,0 +1,47 @@
+# The Experiment { #sec-experiment }
+
+Having selected the _etpD_ gene as a likely contributor to adherence, and so pathogenicity, an experiment was devised that could establish whether this gene makes a contribution to pathogen adherence. The experiment aims to satisfy [Falkow's molecular variant of _Koch's Postulates_](https://en.wikipedia.org/wiki/Koch's_postulates#Molecular_Koch's_postulates):
+
+1. The wild-type/control pathogen containing _etpD_ must be able to adhere to human tissue/catheter material
+2. The mutant organism lacking only _etpD_ must not adhere to human tissue/catheter material
+3. A _complemented_ mutant, with _etpD_ restored, must be able to adhere to human tissue/catheter material
+
+## Testing the postulates
+
+The first of these postulates can be tested using the wild-type/control strain of UPEC.
+
+::: { .callout-warning }
+It is not straightforward to measure _adherence_ directly, so an **indirect** assay is performed.
+
+Rather than measuring adherence directly, **the amount of bacteria recovered from material exposed to the bacteria** is measured (as log(CFU) - log of the colony forming unit/mL count)
+
+The assumption is made that if the bacteria do not adhere well to a substrate, like catheter material, then after exposure fewer bacteria can be recovered from that material. If the bacteria do adhere well, then we should be able to recover more bacteria. In this way, logCFU is expected to be a proxy for bacterial adherence.
+:::
+
+For this experiment either (i) strips of catheter tubing or (ii) human urinary tract tissue samples were washed and incubated in bacterial suspension (about $10^7$ CFU in phosphate-buffered saline (PBS), OD=0.02) for two hours at 18degC. On removal from suspension the material was vigorously washed three times with sterile PBS on a vortexer, weighed and homogenised. The samples were then serially diluted and plated on MacConkey's agar for bacterial counts.
+
+### Making a knockout
+
+The _etpD_ sequence was obtained from the sequencing reads in the earlier experiment, and a defined deletion was constructed using allelic exchange. The deletion was confirmed to be successful using PCR (polymerase chain reaction) and Sanger sequencing. The resulting strain is $\Delta$_etpD_, and can be used to test the second part of the postulates above.
+
+### Making a complemented strain
+
+To test the third and final postulate, the $\Delta$_etpD_ strain must be complemented with an additional plasmid that reintroduces the _etpD_ gene.
+
+Merely having the gene is not sufficient, though - the gene must also be _expressed_ and produce the corresponding _gene product_ (i.e. the protein EtpD). To ensure this happens, the _etpD_ gene is introduced on a plasmid that contains an upstream promoter. It is convenient to make this promoter respond to a chemical signal that the experimenters provide, turning on expression of the gene and production of the EtpD protein.
+
+In this experiment, the _etpD_ gene was cloned into the IPTG (Isopropyl β-d-1-thiogalactopyranoside, a lactose mimic)-inducible plasmid pSE380, and this was transformed into the mutant $\Delta$_etpD_ strain.
+
+### One more control
+
+To establish whether or not the plasmid vector pSE380 by itself makes any contribution to adherence, the $\Delta$_etpD_ strain was also transformed with an "empty" pSE380 plasmid vector containing **no** _etpD_ gene. 
+
+This was not necessary to test the postulates above, but it is good practice to eliminate an unexpected effect due only to the plasmid.
+
+::: { .callout-important }
+Recovery of bacteria, measured as logCFU, was performed identically for wild-type/control, knockout, empty vector, and complemented strains.
+:::
+
+## What next?
+
+Having collected the bacterial counts for all of these experiments, it now falls to you to carry out the analysis and determine whether the postulates are satisfied.
