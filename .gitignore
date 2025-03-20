@@ -16,3 +16,6 @@ _freeze/
 
 # macOS cruft
 .DS_Store
+
+# Office bobbins
+~*
