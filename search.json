@@ -54,18 +54,73 @@
     "href": "ggplot.html",
     "title": "2  The Grammar of Graphics",
     "section": "",
-    "text": "2.1 Loading data\nIn this section you will meet ggplot2, a very popular and powerful data visualisation package in R. We will also learn about the “grammar of graphics,” a way of thinking about constructing data visualisations that also is the source of the gg in ggplot2.\nIn order to visualise data using ggplot2 in R, we have to load it. We have provided the data for this walkthrough in the file gapminder.csv, which can be loaded with the command:",
+    "text": "2.1 Load in the data\nIn this section you will meet ggplot2, a very popular and powerful data visualisation package in R. We will also learn about the “grammar of graphics,” a way of thinking about constructing data visualisations that also is the source of the gg in ggplot2.\nThe grammar of graphics is a set of concepts relevant to visualising data. It separates the data from the way the data is represented, which may be a new approach to you - it’s certainly different to the way Excel and Graphpad Prism choose to control visualisation. It is, though, highly effective for generating powerful visualisations.\nIn order to visualise data using ggplot2 in R, we have to load it. We have provided the data for this walkthrough in the file gapminder.csv, which can be loaded with the command:",
     "crumbs": [
       "An introduction to `ggplot2`",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Grammar of Graphics</span>"
     ]
   },
   {
-    "objectID": "ggplot.html#loading-data",
-    "href": "ggplot.html#loading-data",
+    "objectID": "ggplot.html#load-in-the-data",
+    "href": "ggplot.html#load-in-the-data",
     "title": "2  The Grammar of Graphics",
     "section": "",
-    "text": "gapminder &lt;- read_csv(\"gapminder.csv\")\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "gapminder &lt;- read_csv(\"gapminder.csv\", col_types=\"fnnfnn\")\n\n\n\n\n\n\nHint\n\n\n\n\n\nThe column types are, in order: factor, number, number, factor, number, number and can be expressed as \"fnnfnn\" for the col_types option in read_csv().\nUsing the col_types option means that R “knows” what the data in each column should be, and report problems if they arise.\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "An introduction to `ggplot2`",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Grammar of Graphics</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot.html#inspect-the-data",
+    "href": "ggplot.html#inspect-the-data",
+    "title": "2  The Grammar of Graphics",
+    "section": "2.2 Inspect the data",
+    "text": "2.2 Inspect the data\nIt is always good practice to visually examine your dataset, to become familiar with your data and check for obvious problems. With the data loaded in, let’s take a look at it and see what it contains, using the commands:\nstr(gapminder)\nsummary(gapminder)\n\n\n\n\n\n\nTip\n\n\n\nHere, str is an abbreviation of “structure” and the command will show us the structure of the dataset\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "An introduction to `ggplot2`",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Grammar of Graphics</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot.html#a-basic-scatterplot",
+    "href": "ggplot.html#a-basic-scatterplot",
+    "title": "2  The Grammar of Graphics",
+    "section": "2.3 A basic scatterplot",
+    "text": "2.3 A basic scatterplot\nYou can use ggplot2 in a similar way to other tools (like Excel and Prism) to produce “canned” visualisations like scatterplots. Here, we need to specify which data go on the x and y axes, and the dataframe we’re using, and some options like which variable to use to colour datapoints. For example, the code:\nqplot(lifeExp, gdpPercap, data=gapminder, colour=continent)\nwill generate a (quick, hence qplot()) scatterplot of GDP per capita (gdpPercap, y-axis) against life expectancy (lifeExp, x-axis) from the corresponding columns in the gapminder dataframe. Each different continent in the dataset will be plotted with its own colour.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAlthough the plot looks to be nice enough, it’s still constraining and doesn’t really express the power of ggplot2.",
+    "crumbs": [
+      "An introduction to `ggplot2`",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Grammar of Graphics</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot.html#the-grammar-of-graphics",
+    "href": "ggplot.html#the-grammar-of-graphics",
+    "title": "2  The Grammar of Graphics",
+    "section": "2.4 The grammar of graphics",
+    "text": "2.4 The grammar of graphics\nTo really get to grips with ggplot2 we need to talk about what makes up a plot. We can use the example of the scatterplot you’ve just generated (reproduced in Figure 2.1)\n\n\n\n\n\n\n\n\nFigure 2.1: The result of the qplot() command showing GDP per capita against life expectancy, with points coloured by continent\n\n\n\n\n2.4.1 Aesthetics\nIn this plot, every row in the table (we call each row an observation) is represented by a single point. How that point is rendered in the plot is determined by its aesthetics:\n\nThe x position aesthetic determines where the point is rendered in relation to the side of the graph\nThe y position aesthetic determines where the point is rendered in relation to the bottom of the graph\nThe size of the point is an aesthetic\nThe shape of the point is an aesthetic\nThe colour of the point is an aesthetic\nThe transparency of the point is an aesthetic\n\nIn ggplot2 these aesthetics can be constant (like shape in Figure 2.1), or mapped to - under the control of - variables in the dataset (like colour in Figure 2.1).\n\n\n\n\n\n\nTip\n\n\n\nWe can generate many different kinds of plot from the same data just by changing the aesthetics\n\n\n\n\n2.4.2 geoms\nThe other key thing to know about in ggplot2 is the idea of a geometry, or geom. The geom determines the kind of data representation for the plot. There are many kinds of geom in ggplot2, and combinations of aesthetic and geom can reproduce several kinds of plot (as in Figure 2.2).\nAll ggplot2 graphs are combinations of geoms and aesthetics.\n\n\n\n\n\n\n\n\nFigure 2.2: Combinations of aesthetic and geom that make different plot types.\n\n\n\nWe can demonstrate this in the WebR cell below. Use the following code to create a scatterplot:\np &lt;- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))\np + geom_point()\n\n\n\n\n\n\nNote\n\n\n\nThe first line uses the ggplot() command to create the plot from the dataset (data=gapminder) with a set of aesthetics (aes(x=lifeExp, y=gdpPercap, color=continent)). This plot is put into a variable (p) for convenience so that we can experiment in the workshop.\nJust defining the graph isn’t enough to show it. To do this we also need a geom\nBecause the plot is in the variable p, we can “add” a geom to it. We’ll add geom_point() so that it gives us a scatterplot, like that in Figure 2.1.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nChallenge\n\n\n\nReplace the geom_point() in the WebR code with geom_line(). Does this give a better representation of the dataset?\n\n\n\n\n2.4.3 Layers\nWithout even thinking about it, we’ve been using the concept of layers.\n\n\n\n\n\n\nImportant\n\n\n\nAll ggplot2 plots are built from layers.\n\n\nAll layers have two components:\n\ndata that will be shown, and aesthetics for showing the data\na geom the defines the type of plot on that layer\n\nThe layers in the plot you created above are shown in Figure 2.3.\n\n\n\n\n\n\nNote\n\n\n\nThe ggplot() layer is the “base layer” and contains data and aesthetics (aes()). These are inherited by the other layers in the plot, such as the geom_point() layer (unless overridden).\n\n\n\n\n\n\n\n\nFigure 2.3: The layers present in the scatterplot you created. The blue ggplot() layer is the “base layer” and contains data and aesthetics (aes()). These are inherited by the other layers in the plot, such as the orange geom_point() layer (unless overridden).\n\n\n\n\n\n\n\n\n\nChallenge\n\n\n\nUsing the WebR cell below, create a plot showing how life expectancy (lifeExp) changes as a function of time (year), as a scatterplot.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nI need a hint\n\n\n\n\n\n\nCan you generate the graph by just changing variables in the code you’ve already written?\n\n\n\n\n\n\n\n\n\n\nHelp, I’m stuck!\n\n\n\n\n\nUse the same code as above, but put year on the x aesthetic/axis, and lifeExp on the y aesthetic/axis.\np &lt;- ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent))\np + geom_point()\n\n\n\nWe can build up additional layers of geoms to create more complex plots, and to apply aesthetics specifically to different layers. For example, we can plot GDP per capita (gdpPercap) against life expectancy (lifeExp) as a line plot (geom_line()), grouping points by country, but coloured by continent. The code for this is:\np &lt;- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))\np + geom_line(aes(group=country))\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe layer structure of this plot is shown in Figure 2.4 (and the result in Figure 2.5)\n\n\n\n\n\n\nFigure 2.4: The layers of the line plot. The blue ggplot() layer is the “base layer” and contains data and aesthetics (aes()). These are inherited by the other layers in the plot, such as the orange geom_line() layer, but an additional aesthetic grouping points by country is added.\n\n\n\n\n\n\n\n\n\n\n\nFigure 2.5: Line plot showing data grouped by country, but coloured by continent\n\n\n\nWe can go on to add a top-level geom_point() scatterplot with each datapoint shown as a semitransparent (alpha=0.4) point by changing this code - in the same WebR cell to:\np &lt;- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))\np + geom_line(aes(group=country)) + geom_point(alpha=0.4)\nThis gives the plot in Figure 2.6, which has the layer structure in Figure 2.7.\n\n\n\n\n\n\n\n\nFigure 2.6: Line plot showing data grouped by country, but coloured by continent\n\n\n\n\n\n\n\n\n\nFigure 2.7: The layers of the line plot with scatterplot layer. The blue ggplot() layer is the “base layer” and contains data and aesthetics (aes()). These are inherited by the other layers in the plot, such as the orange geom_line() and green geom_point() layers, but additional aesthetics grouping points by country and changing the transparency of points is added.\n\n\n\n\n\n\n\n\n\nChallenge\n\n\n\nUsing the WebR cell below, create a plot showing how life expectancy (lifeExp) changes as a function of time (year), coloured by continent, with two layers:\n\na line plot, grouping points by country\na scatterplot showing each data point, with 35% opacity\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nI need a hint\n\n\n\n\n\n\nCan you generate the graph by just changing variables in the code you’ve already written?\n\n\n\n\n\n\n\n\n\n\nHelp, I’m stuck!\n\n\n\n\n\nUse the same code as above, but put year on the x aesthetic/axis, and lifeExp on the y aesthetic/axis, and changing the alpha parameter to 0.35.\np &lt;- ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent))\np + geom_line(aes(group=country)) + geom_point(alpha=0.35)",
+    "crumbs": [
+      "An introduction to `ggplot2`",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Grammar of Graphics</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot.html#multi-panel-figures",
+    "href": "ggplot.html#multi-panel-figures",
+    "title": "2  The Grammar of Graphics",
+    "section": "2.5 Multi-panel figures",
+    "text": "2.5 Multi-panel figures\nAll the plots we have made so far have been single-panel figures. With large datasets, this can get a bit messy and obscure the story you want to tell with data.\nggplot2 has a layer called facet_wrap() which allows us to split data into panels on the basis of a variable. For example, the code below allows us to split the plot in Figure 2.6 into separate panels for each continent:\np &lt;- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))\np + geom_line(aes(group=country)) + geom_point(alpha=0.4) + facet_wrap(~continent)\n\n\n\n\n\n\nChallenge\n\n\n\nUsing the WebR cell below, create a plot showing how life expectancy (lifeExp) changes as a function of time (year), coloured by continent, with two layers:\n\na line plot, grouping points by country\na scatterplot showing each data point, with 35% opacity\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nI need a hint\n\n\n\n\n\n\nCan you generate the graph by just changing variables in the code you’ve already written?\n\n\n\n\n\n\n\n\n\n\nHelp, I’m stuck!\n\n\n\n\n\nUse the same code as above, but put year on the x aesthetic/axis, and lifeExp on the y aesthetic/axis, and changing the alpha parameter to 0.35, and adding a facet_wrap() layer:\np &lt;- ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent))\np + geom_line(aes(group=country)) + geom_point(alpha=0.35) + facet_wrap(~continent)",
+    "crumbs": [
+      "An introduction to `ggplot2`",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Grammar of Graphics</span>"
+    ]
+  },
+  {
+    "objectID": "ggplot.html#whats-next",
+    "href": "ggplot.html#whats-next",
+    "title": "2  The Grammar of Graphics",
+    "section": "2.6 What’s next?",
+    "text": "2.6 What’s next?\nNow that you have learned some of the key features of how to make a ggplot2 figure, we’re ready to think about the experiment that’s providing us with data for this workshop, which you’ll meet in the next section.",
     "crumbs": [
       "An introduction to `ggplot2`",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>The Grammar of Graphics</span>"

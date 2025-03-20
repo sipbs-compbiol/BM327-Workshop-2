@@ -77,6 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-a34d670291f06f286357e447776a572a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,17 +108,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-div.callout-callout-thumbs-up.callout {
-  border-left-color: #008000;
-}
-div.callout-callout-thumbs-up.callout-style-default > .callout-header {
-  background-color: rgba(0, 128, 0, 0.13);
-}
-div.callout-callout-thumbs-up .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-thumbs-up.callout-style-default .callout-icon::before, div.callout-callout-thumbs-up.callout-titled .callout-icon::before {
-  content: '👍';
-  background-image: none;
-}
 div.callout-callout-questions.callout {
   border-left-color: yellow;
 }
@@ -125,28 +117,6 @@ div.callout-callout-questions.callout-style-default > .callout-header {
 div.callout-callout-questions .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-callout-questions.callout-style-default .callout-icon::before, div.callout-callout-questions.callout-titled .callout-icon::before {
   content: '🙋️';
-  background-image: none;
-}
-div.callout-callout-microbe.callout {
-  border-left-color: #1E90FF;
-}
-div.callout-callout-microbe.callout-style-default > .callout-header {
-  background-color: rgba(30, 144, 255, 0.13);
-}
-div.callout-callout-microbe .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-microbe.callout-style-default .callout-icon::before, div.callout-callout-microbe.callout-titled .callout-icon::before {
-  content: '🧫';
-  background-image: none;
-}
-div.callout-callout-discussion.callout {
-  border-left-color: #BA55D3;
-}
-div.callout-callout-discussion.callout-style-default > .callout-header {
-  background-color: rgba(186, 85, 211, 0.13);
-}
-div.callout-callout-discussion .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-discussion.callout-style-default .callout-icon::before, div.callout-callout-discussion.callout-titled .callout-icon::before {
-  content: '✨';
   background-image: none;
 }
 div.callout-callout-todo.callout {
@@ -160,6 +130,28 @@ div.callout-callout-todo.callout-style-default .callout-icon::before, div.callou
   content: '📝';
   background-image: none;
 }
+div.callout-callout-discussion.callout {
+  border-left-color: #BA55D3;
+}
+div.callout-callout-discussion.callout-style-default > .callout-header {
+  background-color: rgba(186, 85, 211, 0.13);
+}
+div.callout-callout-discussion .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-discussion.callout-style-default .callout-icon::before, div.callout-callout-discussion.callout-titled .callout-icon::before {
+  content: '✨';
+  background-image: none;
+}
+div.callout-callout-thumbs-up.callout {
+  border-left-color: #008000;
+}
+div.callout-callout-thumbs-up.callout-style-default > .callout-header {
+  background-color: rgba(0, 128, 0, 0.13);
+}
+div.callout-callout-thumbs-up .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-thumbs-up.callout-style-default .callout-icon::before, div.callout-callout-thumbs-up.callout-titled .callout-icon::before {
+  content: '👍';
+  background-image: none;
+}
 div.callout-callout-challenge.callout {
   border-left-color: aquamarine;
 }
@@ -171,17 +163,6 @@ div.callout-callout-challenge.callout-style-default .callout-icon::before, div.c
   content: '🧑‍🏫';
   background-image: none;
 }
-div.callout-callout-case-study.callout {
-  border-left-color: #FFA500;
-}
-div.callout-callout-case-study.callout-style-default > .callout-header {
-  background-color: rgba(255, 165, 0, 0.13);
-}
-div.callout-callout-case-study .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-case-study.callout-style-default .callout-icon::before, div.callout-callout-case-study.callout-titled .callout-icon::before {
-  content: '🔍';
-  background-image: none;
-}
 div.callout-callout-question.callout {
   border-left-color: yellow;
 }
@@ -191,6 +172,28 @@ div.callout-callout-question.callout-style-default > .callout-header {
 div.callout-callout-question .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-callout-question.callout-style-default .callout-icon::before, div.callout-callout-question.callout-titled .callout-icon::before {
   content: '🙋';
+  background-image: none;
+}
+div.callout-callout-microbe.callout {
+  border-left-color: #1E90FF;
+}
+div.callout-callout-microbe.callout-style-default > .callout-header {
+  background-color: rgba(30, 144, 255, 0.13);
+}
+div.callout-callout-microbe .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-microbe.callout-style-default .callout-icon::before, div.callout-callout-microbe.callout-titled .callout-icon::before {
+  content: '🧫';
+  background-image: none;
+}
+div.callout-callout-case-study.callout {
+  border-left-color: #FFA500;
+}
+div.callout-callout-case-study.callout-style-default > .callout-header {
+  background-color: rgba(255, 165, 0, 0.13);
+}
+div.callout-callout-case-study .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-case-study.callout-style-default .callout-icon::before, div.callout-callout-case-study.callout-titled .callout-icon::before {
+  content: '🔍';
   background-image: none;
 }
 div.callout-callout-data.callout {
@@ -505,7 +508,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Download experiment data\ndownload.file(\"https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/gapminder.csv\", \"gapminder.csv\")\n\nlibrary(tidyverse)","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Load data from \"gapminder.csv\" into a dataframe in R\n# gapminder <- read_csv(\"gapminder.csv\")\n","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"# Download experiment data\ndownload.file(\"https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/gapminder.csv\", \"gapminder.csv\")\n\nlibrary(tidyverse)","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Load data from \"gapminder.csv\" into a dataframe in R\n# gapminder <- read_csv(\"gapminder.csv\", col_types=\"fnnfnn\")\n","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Inspect the dataset structure\n# str(gapminder)\n# summary(gapminder)\n","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Make a scatterplot\n# qplot(lifeExp, gdpPercap, data=gapminder, colour=continent)\n","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Generate plot of GDP per capita against life Expectancy\n# p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))\n# p + geom_point()\n","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Create a plot showing how _life expectancy_ (`lifeExp`) changes as a function of time (`year`), as a scatterplot.\n","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Generate plot of GDP per capita against life Expectancy\n# p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))\n# p + geom_line(aes(group=country))\n","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Using the `WebR` cell below, create a plot showing \n# how _life expectancy_ (`lifeExp`) changes as a function \n# of time (`year`), coloured by continent, with two layers:\n#\n# - a line plot, grouping points by country\n# - a scatterplot showing each data point, with 35% opacity\n","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Using the `WebR` cell below, create a plot showing \n# how _life expectancy_ (`lifeExp`) changes as a function \n# of time (`year`), coloured by continent, with two layers:\n#\n# - a line plot, grouping points by country\n# - a scatterplot showing each data point, with 35% opacity\n#\n# and split into facets by continent\n","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1762,7 +1765,7 @@ globalThis.qwebrExecuteCode = async function (
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -1901,12 +1904,22 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#loading-data" id="toc-loading-data" class="nav-link active" data-scroll-target="#loading-data"><span class="header-section-number">2.1</span> Loading data</a></li>
+  <li><a href="#load-in-the-data" id="toc-load-in-the-data" class="nav-link active" data-scroll-target="#load-in-the-data"><span class="header-section-number">2.1</span> Load in the data</a></li>
+  <li><a href="#inspect-the-data" id="toc-inspect-the-data" class="nav-link" data-scroll-target="#inspect-the-data"><span class="header-section-number">2.2</span> Inspect the data</a></li>
+  <li><a href="#a-basic-scatterplot" id="toc-a-basic-scatterplot" class="nav-link" data-scroll-target="#a-basic-scatterplot"><span class="header-section-number">2.3</span> A basic scatterplot</a></li>
+  <li><a href="#the-grammar-of-graphics" id="toc-the-grammar-of-graphics" class="nav-link" data-scroll-target="#the-grammar-of-graphics"><span class="header-section-number">2.4</span> The grammar of graphics</a>
+  <ul class="collapse">
+  <li><a href="#aesthetics" id="toc-aesthetics" class="nav-link" data-scroll-target="#aesthetics"><span class="header-section-number">2.4.1</span> Aesthetics</a></li>
+  <li><a href="#geoms" id="toc-geoms" class="nav-link" data-scroll-target="#geoms"><span class="header-section-number">2.4.2</span> <code>geom</code>s</a></li>
+  <li><a href="#layers" id="toc-layers" class="nav-link" data-scroll-target="#layers"><span class="header-section-number">2.4.3</span> Layers</a></li>
+  </ul></li>
+  <li><a href="#multi-panel-figures" id="toc-multi-panel-figures" class="nav-link" data-scroll-target="#multi-panel-figures"><span class="header-section-number">2.5</span> Multi-panel figures</a></li>
+  <li><a href="#whats-next" id="toc-whats-next" class="nav-link" data-scroll-target="#whats-next"><span class="header-section-number">2.6</span> What’s next?</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/ggplot.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
@@ -2227,12 +2240,424 @@ Note
 </div>
 </div>
 <p>In this section you will meet <code>ggplot2</code>, a very popular and powerful data visualisation package in <code>R</code>. We will also learn about the “grammar of graphics,” a way of thinking about constructing data visualisations that also is the source of the <code>gg</code> in <code>ggplot2</code>.</p>
-<section id="loading-data" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="loading-data"><span class="header-section-number">2.1</span> Loading data</h2>
+<p>The grammar of graphics is a set of concepts relevant to visualising data. It separates the data from the way the data is represented, which may be a new approach to you - it’s certainly different to the way Excel and Graphpad Prism choose to control visualisation. It is, though, highly effective for generating powerful visualisations.</p>
+<section id="load-in-the-data" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="load-in-the-data"><span class="header-section-number">2.1</span> Load in the data</h2>
 <p>In order to visualise data using <code>ggplot2</code> in <code>R</code>, we have to load it. We have provided the data for this walkthrough in the file <code>gapminder.csv</code>, which can be loaded with the command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"gapminder.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"gapminder.csv"</span>, <span class="at">col_types=</span><span class="st">"fnnfnn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Hint">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The column types are, in order: factor, number, number, factor, number, number and can be expressed as <code>"fnnfnn"</code> for the <code>col_types</code> option in <code>read_csv()</code>.</p>
+<p>Using the <code>col_types</code> option means that <code>R</code> “knows” what the data in each column should be, and report problems if they arise.</p>
+</div>
+</div>
+</div>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="inspect-the-data" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="inspect-the-data"><span class="header-section-number">2.2</span> Inspect the data</h2>
+<p>It is always good practice to visually examine your dataset, to become familiar with your data and check for obvious problems. With the data loaded in, let’s take a look at it and see what it contains, using the commands:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(gapminder)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gapminder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here, <code>str</code> is an abbreviation of “structure” and the command will show us the structure of the dataset</p>
+</div>
+</div>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="a-basic-scatterplot" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="a-basic-scatterplot"><span class="header-section-number">2.3</span> A basic scatterplot</h2>
+<p>You can use <code>ggplot2</code> in a similar way to other tools (like Excel and Prism) to produce “canned” visualisations like scatterplots. Here, we need to specify which data go on the <em>x</em> and <em>y</em> axes, and the dataframe we’re using, and some options like which variable to use to colour datapoints. For example, the code:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(lifeExp, gdpPercap, <span class="at">data=</span>gapminder, <span class="at">colour=</span>continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>will generate a (quick, hence <code>qplot()</code>) scatterplot of GDP per capita (<code>gdpPercap</code>, y-axis) against life expectancy (<code>lifeExp</code>, x-axis) from the corresponding columns in the <code>gapminder</code> dataframe. Each different <code>continent</code> in the dataset will be plotted with its own colour.</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Although the plot looks to be nice enough, it’s still constraining and doesn’t really express the power of <code>ggplot2</code>.</p>
+</section>
+<section id="the-grammar-of-graphics" class="level2 page-columns page-full" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="the-grammar-of-graphics"><span class="header-section-number">2.4</span> The grammar of graphics</h2>
+<p>To really get to grips with <code>ggplot2</code> we need to talk about what makes up a plot. We can use the example of the scatterplot you’ve just generated (reproduced in <a href="#fig-scatterplot" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>)</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div id="fig-scatterplot" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/images/ggplot_scatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;2.1: The result of the qplot() command showing GDP per capita against life expectancy, with points coloured by continent"><img src="assets/images/ggplot_scatter.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: The result of the <code>qplot()</code> command showing GDP per capita against life expectancy, with points coloured by continent
+</figcaption>
+</figure>
+</div>
+</div></div><section id="aesthetics" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="aesthetics"><span class="header-section-number">2.4.1</span> Aesthetics</h3>
+<p>In this plot, every row in the table (we call each row an <em>observation</em>) is represented by a single point. How that point is rendered in the plot is determined by its <em>aesthetics</em>:</p>
+<ul>
+<li>The <em>x</em> position aesthetic determines where the point is rendered in relation to the side of the graph</li>
+<li>The <em>y</em> position aesthetic determines where the point is rendered in relation to the bottom of the graph</li>
+<li>The size of the point is an aesthetic</li>
+<li>The shape of the point is an aesthetic</li>
+<li>The colour of the point is an aesthetic</li>
+<li>The transparency of the point is an aesthetic</li>
+</ul>
+<p>In <code>ggplot2</code> these <em>aesthetics</em> can be constant (like shape in <a href="#fig-scatterplot" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>), or <em>mapped</em> to - under the control of - variables in the dataset (like colour in <a href="#fig-scatterplot" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We can generate many different kinds of plot from the same data just by changing the <em>aesthetics</em></p>
+</div>
+</div>
+</section>
+<section id="geoms" class="level3 page-columns page-full" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="geoms"><span class="header-section-number">2.4.2</span> <code>geom</code>s</h3>
+<p>The other key thing to know about in <code>ggplot2</code> is the idea of a geometry, or <code>geom</code>. The <code>geom</code> determines the kind of data representation for the plot. There are many kinds of <code>geom</code> in <code>ggplot2</code>, and combinations of aesthetic and geom can reproduce several kinds of plot (as in <a href="#fig-geom-types" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>).</p>
+<p>All <code>ggplot2</code> graphs are combinations of <code>geom</code>s and aesthetics.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div id="fig-geom-types" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geom-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/images/geom_types.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2.2: Combinations of aesthetic and geom that make different plot types."><img src="assets/images/geom_types.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geom-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.2: Combinations of aesthetic and geom that make different plot types.
+</figcaption>
+</figure>
+</div>
+</div></div><p>We can demonstrate this in the <code>WebR</code> cell below. Use the following code to create a scatterplot:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>gapminder, <span class="fu">aes</span>(<span class="at">x=</span>lifeExp, <span class="at">y=</span>gdpPercap, <span class="at">color=</span>continent))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The first line uses the <code>ggplot()</code> command to create the plot from the dataset (<code>data=gapminder</code>) with a set of aesthetics (<code>aes(x=lifeExp, y=gdpPercap, color=continent)</code>). This plot is put into a variable (<code>p</code>) for convenience so that we can experiment in the workshop.</p>
+<p><strong>Just defining the graph isn’t enough to show it. To do this we also need a <code>geom</code></strong></p>
+<p>Because the plot is in the variable <code>p</code>, we can “add” a <code>geom</code> to it. We’ll add <code>geom_point()</code> so that it gives us a scatterplot, like that in <a href="#fig-scatterplot" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
+</div>
+</div>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-callout-challenge callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Replace the <code>geom_point()</code> in the <code>WebR</code> code with <code>geom_line()</code>. Does this give a better representation of the dataset?</p>
+</div>
+</div>
+</section>
+<section id="layers" class="level3 page-columns page-full" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="layers"><span class="header-section-number">2.4.3</span> Layers</h3>
+<p>Without even thinking about it, we’ve been using the concept of <em>layers</em>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All <code>ggplot2</code> plots are built from <em>layers</em>.</p>
+</div>
+</div>
+<p>All <em>layers</em> have two components:</p>
+<ol type="1">
+<li><em>data</em> that will be shown, and <em>aesthetics</em> for showing the data</li>
+<li>a <code>geom</code> the defines the type of plot on that layer</li>
+</ol>
+<p>The layers in the plot you created above are shown in <a href="#fig-ggplot-layers-1" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>ggplot()</code> layer is the “base layer” and contains <code>data</code> and <em>aesthetics</em> (<code>aes()</code>). These are inherited by the other layers in the plot, such as the <code>geom_point()</code> layer (unless overridden).</p>
+</div>
+</div>
+<div id="fig-ggplot-layers-1" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ggplot-layers-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/images/ggplot_layers_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;2.3: The layers present in the scatterplot you created. The blue ggplot() layer is the “base layer” and contains data and aesthetics (aes()). These are inherited by the other layers in the plot, such as the orange geom_point() layer (unless overridden)."><img src="assets/images/ggplot_layers_1.png" class="img-fluid figure-img" style="width:80.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggplot-layers-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: The layers present in the scatterplot you created. The blue <code>ggplot()</code> layer is the “base layer” and contains <code>data</code> and <em>aesthetics</em> (<code>aes()</code>). These are inherited by the other layers in the plot, such as the orange <code>geom_point()</code> layer (unless overridden).
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-callout-challenge callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using the <code>WebR</code> cell below, create a plot showing how <em>life expectancy</em> (<code>lifeExp</code>) changes as a function of time (<code>year</code>), as a scatterplot.</p>
+</div>
+</div>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled" title="I need a hint">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+I need a hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Can you generate the graph by just changing variables in the code you’ve already written?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Help, I'm stuck!">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Help, I’m stuck!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use the same code as above, but put <code>year</code> on the <code>x</code> aesthetic/axis, and <code>lifeExp</code> on the <code>y</code> aesthetic/axis.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>gapminder, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p>We can build up additional layers of <code>geom</code>s to create more complex plots, and to apply aesthetics specifically to different layers. For example, we can plot GDP per capita (<code>gdpPercap</code>) against life expectancy (<code>lifeExp</code>) as a line plot (<code>geom_line()</code>), grouping points by <code>country</code>, but coloured by continent. The code for this is:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>gapminder, <span class="fu">aes</span>(<span class="at">x=</span>lifeExp, <span class="at">y=</span>gdpPercap, <span class="at">color=</span>continent))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>country))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>The layer structure of this plot is shown in <a href="#fig-ggplot-layers-2" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> (and the result in <a href="#fig-geom-line-1" class="quarto-xref">Figure&nbsp;<span>2.5</span></a>)</p>
+<div id="fig-ggplot-layers-2" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ggplot-layers-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/images/ggplot_layers_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;2.4: The layers of the line plot. The blue ggplot() layer is the “base layer” and contains data and aesthetics (aes()). These are inherited by the other layers in the plot, such as the orange geom_line() layer, but an additional aesthetic grouping points by country is added."><img src="assets/images/ggplot_layers_2.png" class="img-fluid figure-img" style="width:80.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggplot-layers-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: The layers of the line plot. The blue <code>ggplot()</code> layer is the “base layer” and contains <code>data</code> and <em>aesthetics</em> (<code>aes()</code>). These are inherited by the other layers in the plot, such as the orange <code>geom_line()</code> layer, but an additional aesthetic <code>group</code>ing points by country is added.
+</figcaption>
+</figure>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div id="fig-geom-line-1" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geom-line-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/images/ggplot_line_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;2.5: Line plot showing data grouped by country, but coloured by continent"><img src="assets/images/ggplot_line_1.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geom-line-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.5: Line plot showing data grouped by country, but coloured by continent
+</figcaption>
+</figure>
+</div>
+</div></div><p>We can go on to <em>add</em> a top-level <code>geom_point()</code> scatterplot with each datapoint shown as a semitransparent (<code>alpha=0.4</code>) point by changing this code - in the same <code>WebR</code> cell to:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>gapminder, <span class="fu">aes</span>(<span class="at">x=</span>lifeExp, <span class="at">y=</span>gdpPercap, <span class="at">color=</span>continent))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>country)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This gives the plot in <a href="#fig-geom-line-2" class="quarto-xref">Figure&nbsp;<span>2.6</span></a>, which has the layer structure in <a href="#fig-ggplot-layers-3" class="quarto-xref">Figure&nbsp;<span>2.7</span></a>.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div id="fig-geom-line-2" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geom-line-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/images/ggplot_line_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;2.6: Line plot showing data grouped by country, but coloured by continent"><img src="assets/images/ggplot_line_2.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geom-line-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.6: Line plot showing data grouped by country, but coloured by continent
+</figcaption>
+</figure>
+</div>
+</div></div><div id="fig-ggplot-layers-3" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ggplot-layers-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/images/ggplot_layers_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;2.7: The layers of the line plot with scatterplot layer. The blue ggplot() layer is the “base layer” and contains data and aesthetics (aes()). These are inherited by the other layers in the plot, such as the orange geom_line() and green geom_point() layers, but additional aesthetics grouping points by country and changing the transparency of points is added."><img src="assets/images/ggplot_layers_3.png" class="img-fluid figure-img" style="width:80.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ggplot-layers-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.7: The layers of the line plot with scatterplot layer. The blue <code>ggplot()</code> layer is the “base layer” and contains <code>data</code> and <em>aesthetics</em> (<code>aes()</code>). These are inherited by the other layers in the plot, such as the orange <code>geom_line()</code> and green <code>geom_point()</code> layers, but additional aesthetics <code>group</code>ing points by country and changing the transparency of points is added.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-callout-challenge callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using the <code>WebR</code> cell below, create a plot showing how <em>life expectancy</em> (<code>lifeExp</code>) changes as a function of time (<code>year</code>), coloured by continent, with two layers:</p>
+<ul>
+<li>a line plot, grouping points by country</li>
+<li>a scatterplot showing each data point, with 35% opacity</li>
+</ul>
+</div>
+</div>
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled" title="I need a hint">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+I need a hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Can you generate the graph by just changing variables in the code you’ve already written?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Help, I'm stuck!">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Help, I’m stuck!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use the same code as above, but put <code>year</code> on the <code>x</code> aesthetic/axis, and <code>lifeExp</code> on the <code>y</code> aesthetic/axis, and changing the <code>alpha</code> parameter to <code>0.35</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>gapminder, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>country)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="multi-panel-figures" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="multi-panel-figures"><span class="header-section-number">2.5</span> Multi-panel figures</h2>
+<p>All the plots we have made so far have been single-panel figures. With large datasets, this can get a bit messy and obscure the story you want to tell with data.</p>
+<p><code>ggplot2</code> has a layer called <code>facet_wrap()</code> which allows us to split data into panels on the basis of a variable. For example, the code below allows us to split the plot in <a href="#fig-geom-line-2" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> into separate panels for each continent:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>gapminder, <span class="fu">aes</span>(<span class="at">x=</span>lifeExp, <span class="at">y=</span>gdpPercap, <span class="at">color=</span>continent))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>country)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.4</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-callout-challenge callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using the <code>WebR</code> cell below, create a plot showing how <em>life expectancy</em> (<code>lifeExp</code>) changes as a function of time (<code>year</code>), coloured by continent, with two layers:</p>
+<ul>
+<li>a line plot, grouping points by country</li>
+<li>a scatterplot showing each data point, with 35% opacity</li>
+</ul>
+</div>
+</div>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled" title="I need a hint">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+I need a hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Can you generate the graph by just changing variables in the code you’ve already written?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Help, I'm stuck!">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Help, I’m stuck!
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use the same code as above, but put <code>year</code> on the <code>x</code> aesthetic/axis, and <code>lifeExp</code> on the <code>y</code> aesthetic/axis, and changing the <code>alpha</code> parameter to <code>0.35</code>, and adding a <code>facet_wrap()</code> layer:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>gapminder, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>country)) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.35</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="whats-next" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="whats-next"><span class="header-section-number">2.6</span> What’s next?</h2>
+<p>Now that you have learned some of the key features of how to make a <code>ggplot2</code> figure, we’re ready to think about the experiment that’s providing us with data for this workshop, which you’ll meet in the next section.</p>
 
 
 </section>
@@ -2797,6 +3222,38 @@ qwebrInstance.then(
   }
 );
 </script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
