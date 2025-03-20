@@ -31,7 +31,7 @@ This is a relatively common approach to investigating bacterial virulence factor
 ::: { .callout-note collapse="true" title="Experimental detail" }
 Mouse passage was allowed to proceed for 18h. Subsequent culturing was performed in LB media at 37 degC for 18h between passages.
 
-A parallel control passage, identical except that bacteria were cultured in LP for 18h rather than in the mouse model, was also performed.
+A parallel control passage, identical except that bacteria were cultured in LB for 18h rather than in the mouse model, was also performed.
 
 Three rounds of passage were performed.
 :::
