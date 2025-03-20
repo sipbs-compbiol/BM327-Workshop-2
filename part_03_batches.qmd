@@ -1,8 +1,20 @@
-# Correcting for batch effects
+# A gene knockout experiment
+
+In this section of the workshop you will be working with data from a gene knockout experiment where an _E. coli_ UPEC isolate mutant lacking the _etpD_ gene is made.
+
+To establish that this gene makes a contribution to pathogen adherence, we need to satisfy [Falkow's molecular variant of _Koch's Postulates_](https://en.wikipedia.org/wiki/Koch's_postulates#Molecular_Koch's_postulates):
+
+1. The wild-type/control pathogen containing the gene must be able to adhere to human tissue/catheter material
+2. The mutant organism lacking only that gene must not adhere to human tissue/catheter material
+3. A _complemented_ mutant, with the gene restored, must be able to adhere to human tissue/catheter material
+
+A more complete account of this experiment is given on the next page.
+
+## A note about experimental data.
 
 In real life experiments are not always "clean," in the sense that we cannot always construct our experiments to exclude all events or factors that might influence the outcome.
 
-In this part of the workshop you will meet some real experimental data which, due to the need to spread the work over a period of months required parts of the experiment to be performed by different people at different times.
+In this part of the workshop you will work with real experimental data which, due to the need to spread the work over a period of months required parts of the experiment to be performed by different people at different times.
 
 ::: { .callout-caution }
 The situation we consider here, where more than one researcher carries out sections of the experiment months apart, is quite obvious. The scientists involved knew that there might be an infuence on the outcome and took it into account when recording their data.

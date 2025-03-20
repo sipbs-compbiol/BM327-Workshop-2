@@ -34,6 +34,10 @@ A comparison of @fig-plasmid-control and @fig-plasmid-treat shows that no plasmi
 
 ### Identifying a candidate
 
-The T2SS was chosen as a likely candidate for investigation, given its known roles in host tissue association and infection.
+The T2SS was chosen as a likely candidate for investigation, given its known roles in host tissue association and infection. The _etpD_ gene is a secretin that is critical for constructing the type II secretion apparatus, and knocking out this gene in a UPEC mutant is expected to prevent construction of a working type II secretion system.
 
-The 
+To investigate the role of the type II secretion system in adherence to the urinary tract and/or catheter material, it was decided to construct a knockout mutant lacking the _etpD_ gene: $\Delta$_etpD_ and to test experimentally its role in adherence.
+
+::: { .callout-note }
+You will be visualising and analysing the data from this experiment in the next section of the workshop.
+:::
