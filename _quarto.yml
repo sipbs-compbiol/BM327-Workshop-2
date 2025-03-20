@@ -35,9 +35,14 @@ book:
   # Define chapters and sections here
   # [E] CHAPTERS AND SECTIONS
   chapters:
+    - index.qmd
+    
+    - part: part_00_ggplot.qmd
+      chapters:
+      - ggplot.qmd
+    
     - part: part_01_experiment.qmd
       chapters:
-      - index.qmd
       - intro.qmd
       - experimental_results.qmd
 

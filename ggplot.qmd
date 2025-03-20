@@ -1,0 +1,38 @@
+---
+webr:
+    packages: ["tidyverse"]
+filters:
+  - webr
+---
+
+# The Grammar of Graphics  { #sec-ggplot2 }
+
+```{webr-r}
+#| context: setup
+
+# Download experiment data
+download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/gapminder.csv", "gapminder.csv")
+
+library(tidyverse)
+```
+
+::: { .callout-note }
+It may take a couple of minutes to install the necessary packages in `WebR` - please be patient.
+:::
+
+In this section you will meet `ggplot2`, a very popular and powerful data visualisation package in `R`. We will also learn about the "grammar of graphics," a way of thinking about constructing data visualisations that also is the source of the `gg` in `ggplot2`.
+
+## Loading data
+
+In order to visualise data using `ggplot2` in `R`, we have to load it. We have provided the data for this walkthrough in the file `gapminder.csv`, which can be loaded with the command:
+
+```r
+gapminder <- read_csv("gapminder.csv")
+```
+
+```{webr-r}
+# Load data from "gapminder.csv" into a dataframe in R
+# gapminder <- read_csv("gapminder.csv")
+
+
+```
