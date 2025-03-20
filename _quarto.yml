@@ -36,7 +36,10 @@ book:
   # [E] CHAPTERS AND SECTIONS
   chapters:
     - index.qmd
-    - intro.qmd
+    
+    - part: part_00_experiment.qmd
+      chapters:
+      - intro.qmd
 
 #    - part: using_ggplot2.qmd
 #      chapters: 
