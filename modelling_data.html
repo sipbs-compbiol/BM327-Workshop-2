@@ -8,7 +8,7 @@
 
 <meta name="author" content="Leighton Pritchard">
 
-<title>6&nbsp; Modelling Experimental Data – BM327 Workshop 2: Identifying UTI Adhesion Factors</title>
+<title>7&nbsp; Modelling Experimental Data – BM327 Workshop 2: Identifying UTI Adhesion Factors</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,28 +105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
-div.callout-callout-case-study.callout {
-  border-left-color: #FFA500;
-}
-div.callout-callout-case-study.callout-style-default > .callout-header {
-  background-color: rgba(255, 165, 0, 0.13);
-}
-div.callout-callout-case-study .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-case-study.callout-style-default .callout-icon::before, div.callout-callout-case-study.callout-titled .callout-icon::before {
-  content: '🔍';
-  background-image: none;
-}
-div.callout-callout-microbe.callout {
-  border-left-color: #1E90FF;
-}
-div.callout-callout-microbe.callout-style-default > .callout-header {
-  background-color: rgba(30, 144, 255, 0.13);
-}
-div.callout-callout-microbe .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-microbe.callout-style-default .callout-icon::before, div.callout-callout-microbe.callout-titled .callout-icon::before {
-  content: '🧫';
-  background-image: none;
-}
 div.callout-callout-question.callout {
   border-left-color: yellow;
 }
@@ -138,48 +116,15 @@ div.callout-callout-question.callout-style-default .callout-icon::before, div.ca
   content: '🙋';
   background-image: none;
 }
-div.callout-callout-discussion.callout {
-  border-left-color: #BA55D3;
+div.callout-callout-microbe.callout {
+  border-left-color: #1E90FF;
 }
-div.callout-callout-discussion.callout-style-default > .callout-header {
-  background-color: rgba(186, 85, 211, 0.13);
+div.callout-callout-microbe.callout-style-default > .callout-header {
+  background-color: rgba(30, 144, 255, 0.13);
 }
-div.callout-callout-discussion .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-discussion.callout-style-default .callout-icon::before, div.callout-callout-discussion.callout-titled .callout-icon::before {
-  content: '✨';
-  background-image: none;
-}
-div.callout-callout-challenge.callout {
-  border-left-color: aquamarine;
-}
-div.callout-callout-challenge.callout-style-default > .callout-header {
-  background-color: rgb(from aquamarine r g b / 13%);
-}
-div.callout-callout-challenge .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-challenge.callout-style-default .callout-icon::before, div.callout-callout-challenge.callout-titled .callout-icon::before {
-  content: '🧑‍🏫';
-  background-image: none;
-}
-div.callout-callout-thumbs-up.callout {
-  border-left-color: #008000;
-}
-div.callout-callout-thumbs-up.callout-style-default > .callout-header {
-  background-color: rgba(0, 128, 0, 0.13);
-}
-div.callout-callout-thumbs-up .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-thumbs-up.callout-style-default .callout-icon::before, div.callout-callout-thumbs-up.callout-titled .callout-icon::before {
-  content: '👍';
-  background-image: none;
-}
-div.callout-callout-data.callout {
-  border-left-color: #32CD32;
-}
-div.callout-callout-data.callout-style-default > .callout-header {
-  background-color: rgba(50, 205, 50, 0.13);
-}
-div.callout-callout-data .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-data.callout-style-default .callout-icon::before, div.callout-callout-data.callout-titled .callout-icon::before {
-  content: '📊';
+div.callout-callout-microbe .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-microbe.callout-style-default .callout-icon::before, div.callout-callout-microbe.callout-titled .callout-icon::before {
+  content: '🧫';
   background-image: none;
 }
 div.callout-callout-questions.callout {
@@ -202,6 +147,61 @@ div.callout-callout-todo.callout-style-default > .callout-header {
 div.callout-callout-todo .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-callout-todo.callout-style-default .callout-icon::before, div.callout-callout-todo.callout-titled .callout-icon::before {
   content: '📝';
+  background-image: none;
+}
+div.callout-callout-case-study.callout {
+  border-left-color: #FFA500;
+}
+div.callout-callout-case-study.callout-style-default > .callout-header {
+  background-color: rgba(255, 165, 0, 0.13);
+}
+div.callout-callout-case-study .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-case-study.callout-style-default .callout-icon::before, div.callout-callout-case-study.callout-titled .callout-icon::before {
+  content: '🔍';
+  background-image: none;
+}
+div.callout-callout-discussion.callout {
+  border-left-color: #BA55D3;
+}
+div.callout-callout-discussion.callout-style-default > .callout-header {
+  background-color: rgba(186, 85, 211, 0.13);
+}
+div.callout-callout-discussion .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-discussion.callout-style-default .callout-icon::before, div.callout-callout-discussion.callout-titled .callout-icon::before {
+  content: '✨';
+  background-image: none;
+}
+div.callout-callout-data.callout {
+  border-left-color: #32CD32;
+}
+div.callout-callout-data.callout-style-default > .callout-header {
+  background-color: rgba(50, 205, 50, 0.13);
+}
+div.callout-callout-data .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-data.callout-style-default .callout-icon::before, div.callout-callout-data.callout-titled .callout-icon::before {
+  content: '📊';
+  background-image: none;
+}
+div.callout-callout-thumbs-up.callout {
+  border-left-color: #008000;
+}
+div.callout-callout-thumbs-up.callout-style-default > .callout-header {
+  background-color: rgba(0, 128, 0, 0.13);
+}
+div.callout-callout-thumbs-up .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-thumbs-up.callout-style-default .callout-icon::before, div.callout-callout-thumbs-up.callout-titled .callout-icon::before {
+  content: '👍';
+  background-image: none;
+}
+div.callout-callout-challenge.callout {
+  border-left-color: aquamarine;
+}
+div.callout-callout-challenge.callout-style-default > .callout-header {
+  background-color: rgb(from aquamarine r g b / 13%);
+}
+div.callout-callout-challenge .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-challenge.callout-style-default .callout-icon::before, div.callout-callout-challenge.callout-titled .callout-icon::before {
+  content: '🧑‍🏫';
   background-image: none;
 }
 </style>
@@ -1800,7 +1800,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./modelling_data.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./modelling_data.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1833,10 +1833,16 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./part_01_experiment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">A high-throughput genomic screen for adherence factors</span></a>
+            <a href="./part_00_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">An introduction to `ggplot2`</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -1844,20 +1850,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  <a href="./ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Grammar of Graphics</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_01_experiment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A high-throughput genomic screen for adherence factors</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Experiment</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Experiment</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./experimental_results.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimental results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Experimental results</span></span></a>
   </div>
 </li>
       </ul>
@@ -1866,33 +1883,33 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./part_02_batches.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A gene knockout experiment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./experiment_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Experiment</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Experiment</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualising_batches.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./modelling_data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./eliminating_batches.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Eliminating batch effects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Eliminating batch effects</span></span></a>
   </div>
 </li>
       </ul>
@@ -1913,31 +1930,31 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a></li>
-  <li><a href="#the-model" id="toc-the-model" class="nav-link" data-scroll-target="#the-model"><span class="header-section-number">6.2</span> The Model</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
+  <li><a href="#the-model" id="toc-the-model" class="nav-link" data-scroll-target="#the-model"><span class="header-section-number">7.2</span> The Model</a>
   <ul class="collapse">
-  <li><a href="#the-baseline-wild-type-adherence-wt" id="toc-the-baseline-wild-type-adherence-wt" class="nav-link" data-scroll-target="#the-baseline-wild-type-adherence-wt"><span class="header-section-number">6.2.1</span> The baseline: wild-type adherence (<code>WT</code>)</a></li>
-  <li><a href="#the-first-intervention-knocking-out-a-gene-of-interest-ko" id="toc-the-first-intervention-knocking-out-a-gene-of-interest-ko" class="nav-link" data-scroll-target="#the-first-intervention-knocking-out-a-gene-of-interest-ko"><span class="header-section-number">6.2.2</span> The first intervention: knocking out a gene of interest (<code>KO</code>)</a></li>
-  <li><a href="#introducing-the-empty-vector-empty" id="toc-introducing-the-empty-vector-empty" class="nav-link" data-scroll-target="#introducing-the-empty-vector-empty"><span class="header-section-number">6.2.3</span> Introducing the empty vector (<code>empty</code>)</a></li>
-  <li><a href="#complementing-the-gene-complement" id="toc-complementing-the-gene-complement" class="nav-link" data-scroll-target="#complementing-the-gene-complement"><span class="header-section-number">6.2.4</span> Complementing the gene (<code>complement</code>)</a></li>
-  <li><a href="#so-what" id="toc-so-what" class="nav-link" data-scroll-target="#so-what"><span class="header-section-number">6.2.5</span> So what?</a></li>
+  <li><a href="#the-baseline-wild-type-adherence-wt" id="toc-the-baseline-wild-type-adherence-wt" class="nav-link" data-scroll-target="#the-baseline-wild-type-adherence-wt"><span class="header-section-number">7.2.1</span> The baseline: wild-type adherence (<code>WT</code>)</a></li>
+  <li><a href="#the-first-intervention-knocking-out-a-gene-of-interest-ko" id="toc-the-first-intervention-knocking-out-a-gene-of-interest-ko" class="nav-link" data-scroll-target="#the-first-intervention-knocking-out-a-gene-of-interest-ko"><span class="header-section-number">7.2.2</span> The first intervention: knocking out a gene of interest (<code>KO</code>)</a></li>
+  <li><a href="#introducing-the-empty-vector-empty" id="toc-introducing-the-empty-vector-empty" class="nav-link" data-scroll-target="#introducing-the-empty-vector-empty"><span class="header-section-number">7.2.3</span> Introducing the empty vector (<code>empty</code>)</a></li>
+  <li><a href="#complementing-the-gene-complement" id="toc-complementing-the-gene-complement" class="nav-link" data-scroll-target="#complementing-the-gene-complement"><span class="header-section-number">7.2.4</span> Complementing the gene (<code>complement</code>)</a></li>
+  <li><a href="#so-what" id="toc-so-what" class="nav-link" data-scroll-target="#so-what"><span class="header-section-number">7.2.5</span> So what?</a></li>
   </ul></li>
-  <li><a href="#fitting-the-catheter-model" id="toc-fitting-the-catheter-model" class="nav-link" data-scroll-target="#fitting-the-catheter-model"><span class="header-section-number">6.3</span> Fitting the catheter model</a>
+  <li><a href="#fitting-the-catheter-model" id="toc-fitting-the-catheter-model" class="nav-link" data-scroll-target="#fitting-the-catheter-model"><span class="header-section-number">7.3</span> Fitting the catheter model</a>
   <ul class="collapse">
-  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data"><span class="header-section-number">6.3.1</span> Load the data</a></li>
-  <li><a href="#define-the-model" id="toc-define-the-model" class="nav-link" data-scroll-target="#define-the-model"><span class="header-section-number">6.3.2</span> Define the model</a></li>
-  <li><a href="#fit-the-model" id="toc-fit-the-model" class="nav-link" data-scroll-target="#fit-the-model"><span class="header-section-number">6.3.3</span> Fit the model</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data"><span class="header-section-number">7.3.1</span> Load the data</a></li>
+  <li><a href="#define-the-model" id="toc-define-the-model" class="nav-link" data-scroll-target="#define-the-model"><span class="header-section-number">7.3.2</span> Define the model</a></li>
+  <li><a href="#fit-the-model" id="toc-fit-the-model" class="nav-link" data-scroll-target="#fit-the-model"><span class="header-section-number">7.3.3</span> Fit the model</a></li>
   </ul></li>
-  <li><a href="#interpreting-the-catheter-model" id="toc-interpreting-the-catheter-model" class="nav-link" data-scroll-target="#interpreting-the-catheter-model"><span class="header-section-number">6.4</span> Interpreting the catheter model</a>
+  <li><a href="#interpreting-the-catheter-model" id="toc-interpreting-the-catheter-model" class="nav-link" data-scroll-target="#interpreting-the-catheter-model"><span class="header-section-number">7.4</span> Interpreting the catheter model</a>
   <ul class="collapse">
-  <li><a href="#coefficients-and-confidence-intervals" id="toc-coefficients-and-confidence-intervals" class="nav-link" data-scroll-target="#coefficients-and-confidence-intervals"><span class="header-section-number">6.4.1</span> Coefficients and confidence intervals</a></li>
-  <li><a href="#reading-the-output" id="toc-reading-the-output" class="nav-link" data-scroll-target="#reading-the-output"><span class="header-section-number">6.4.2</span> Reading the output</a></li>
+  <li><a href="#coefficients-and-confidence-intervals" id="toc-coefficients-and-confidence-intervals" class="nav-link" data-scroll-target="#coefficients-and-confidence-intervals"><span class="header-section-number">7.4.1</span> Coefficients and confidence intervals</a></li>
+  <li><a href="#reading-the-output" id="toc-reading-the-output" class="nav-link" data-scroll-target="#reading-the-output"><span class="header-section-number">7.4.2</span> Reading the output</a></li>
   </ul></li>
-  <li><a href="#fitting-and-interpreting-the-tissue-model" id="toc-fitting-and-interpreting-the-tissue-model" class="nav-link" data-scroll-target="#fitting-and-interpreting-the-tissue-model"><span class="header-section-number">6.5</span> Fitting and interpreting the tissue model</a>
+  <li><a href="#fitting-and-interpreting-the-tissue-model" id="toc-fitting-and-interpreting-the-tissue-model" class="nav-link" data-scroll-target="#fitting-and-interpreting-the-tissue-model"><span class="header-section-number">7.5</span> Fitting and interpreting the tissue model</a>
   <ul class="collapse">
-  <li><a href="#interpreting-the-results" id="toc-interpreting-the-results" class="nav-link" data-scroll-target="#interpreting-the-results"><span class="header-section-number">6.5.1</span> Interpreting the results</a></li>
+  <li><a href="#interpreting-the-results" id="toc-interpreting-the-results" class="nav-link" data-scroll-target="#interpreting-the-results"><span class="header-section-number">7.5.1</span> Interpreting the results</a></li>
   </ul></li>
-  <li><a href="#but-wait" id="toc-but-wait" class="nav-link" data-scroll-target="#but-wait"><span class="header-section-number">6.6</span> But wait!</a></li>
+  <li><a href="#but-wait" id="toc-but-wait" class="nav-link" data-scroll-target="#but-wait"><span class="header-section-number">7.6</span> But wait!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/modelling_data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -2228,9 +2245,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./modelling_data.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./modelling_data.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-modelling-batches" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></span></h1>
+<h1 class="title"><span id="sec-modelling-batches" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></span></h1>
 </div>
 
 
@@ -2263,9 +2280,9 @@ Note
 <p><strong>This page preloads the datasets as <code>tissue</code> and <code>catheter</code> for use in <code>R</code> cells.</strong></p>
 </div>
 </div>
-<section id="introduction" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
-<p>In <a href="visualising_batches.html" class="quarto-xref"><span>Chapter 5</span></a> we used boxplots and scatterplots to visualise the data obtained from the adherence experiments with the wild-type (<code>WT</code>), knockout (<code>KO</code>), empty vector (<code>empty</code>), and complemented gene (<code>complement</code>) lines.</p>
+<section id="introduction" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">7.1</span> Introduction</h2>
+<p>In <a href="visualising_batches.html" class="quarto-xref"><span>Chapter 6</span></a> we used boxplots and scatterplots to visualise the data obtained from the adherence experiments with the wild-type (<code>WT</code>), knockout (<code>KO</code>), empty vector (<code>empty</code>), and complemented gene (<code>complement</code>) lines.</p>
 <p>We saw that there appeared to be an effect of knocking out the <em>etpD</em> gene on the adherence (<em>stickiness</em>) of bacteria to both human tissue and to the catheter material. However, restoring the <em>etpD</em> gene appeared only to make a difference to adherence to the catheter material.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2279,7 +2296,7 @@ Important
 <div class="callout-body-container callout-body">
 <p>We also observed an apparent batch effect in both sets of experiments, where the results obtained appeared to be strongly affected by which experimental batch they were obtained in.</p>
 <p><strong>We should like to remove the influence of these <em>batch effects</em> as they make our results less reliable as a representation of the biological influence of the <em>etpD</em> gene.</strong></p>
-<p>(we will do this in the next section, <a href="eliminating_batches.html" class="quarto-xref"><span>Chapter 7</span></a>)</p>
+<p>(we will do this in the next section, <a href="eliminating_batches.html" class="quarto-xref"><span>Chapter 8</span></a>)</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -2297,41 +2314,41 @@ Caution
 </div>
 </div>
 </section>
-<section id="the-model" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="the-model"><span class="header-section-number">6.2</span> The Model</h2>
+<section id="the-model" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-model"><span class="header-section-number">7.2</span> The Model</h2>
 <p>We can consider the measured “stickiness” or <em>adherence</em> of the bacteria to be composed of the combined influence of a number of <em>factors</em>. We can use our experimental results and a statistical method called <em>linear modelling</em> (or <em>linear regression</em>) to estimate the amount of influence each factor has.</p>
 <p>First though, we start with a baseline level of “stickiness…”</p>
-<section id="the-baseline-wild-type-adherence-wt" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="the-baseline-wild-type-adherence-wt"><span class="header-section-number">6.2.1</span> The baseline: wild-type adherence (<code>WT</code>)</h3>
+<section id="the-baseline-wild-type-adherence-wt" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="the-baseline-wild-type-adherence-wt"><span class="header-section-number">7.2.1</span> The baseline: wild-type adherence (<code>WT</code>)</h3>
 <p>The wild-type (control) line is expected to display the baseline level of adherence for the bacteria.</p>
 <p>So, when we measure the <code>WT</code> line we are establishing the natural baseline “stickiness” of the bacterium, measured as logCFU recovered from the substrate. In statistical terms we might make this into an equation like:</p>
-<p><span id="eq-baseline"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline}  \tag{6.1}\]</span></span></p>
-<p>and <a href="#eq-baseline" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> says “the logCFU we measure for any wild-type bacterium is that of the baseline, wild-type organism.”</p>
-<p>In reality though, we always expect some completely random experimental measurement error, which we can represent with the symbol <span class="math inline">\(\epsilon\)</span> (epsilon) as <a href="#eq-baseline-eps" class="quarto-xref">Equation&nbsp;<span>6.2</span></a>:</p>
-<p><span id="eq-baseline-eps"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline} + \epsilon  \tag{6.2}\]</span></span></p>
+<p><span id="eq-baseline"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline}  \tag{7.1}\]</span></span></p>
+<p>and <a href="#eq-baseline" class="quarto-xref">Equation&nbsp;<span>7.1</span></a> says “the logCFU we measure for any wild-type bacterium is that of the baseline, wild-type organism.”</p>
+<p>In reality though, we always expect some completely random experimental measurement error, which we can represent with the symbol <span class="math inline">\(\epsilon\)</span> (epsilon) as <a href="#eq-baseline-eps" class="quarto-xref">Equation&nbsp;<span>7.2</span></a>:</p>
+<p><span id="eq-baseline-eps"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline} + \epsilon  \tag{7.2}\]</span></span></p>
 <p>i.e.&nbsp;“the logCFU we measure for any wild-type bacterium is that of the baseline, wild-type organism, plus or minus some measurement error.”</p>
 </section>
-<section id="the-first-intervention-knocking-out-a-gene-of-interest-ko" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="the-first-intervention-knocking-out-a-gene-of-interest-ko"><span class="header-section-number">6.2.2</span> The first intervention: knocking out a gene of interest (<code>KO</code>)</h3>
+<section id="the-first-intervention-knocking-out-a-gene-of-interest-ko" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="the-first-intervention-knocking-out-a-gene-of-interest-ko"><span class="header-section-number">7.2.2</span> The first intervention: knocking out a gene of interest (<code>KO</code>)</h3>
 <p>If we don’t knock out a gene from a bacterium it is just the same as the wild type. We’d expect the logCFU we recover from the substrate to be the baseline logCFU.</p>
-<p>But, if we do knock out a gene, we can represent the measured logCFU for that bacterium by <a href="#eq-ko" class="quarto-xref">Equation&nbsp;<span>6.3</span></a>:</p>
-<p><span id="eq-ko"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \epsilon  \tag{6.3}\]</span></span></p>
+<p>But, if we do knock out a gene, we can represent the measured logCFU for that bacterium by <a href="#eq-ko" class="quarto-xref">Equation&nbsp;<span>7.3</span></a>:</p>
+<p><span id="eq-ko"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \epsilon  \tag{7.3}\]</span></span></p>
 <p>which says “the logCFU we measure for the bacterium is the baseline level, <em>plus the effect of knocking out the gene</em>.”</p>
 <p>Essentially the difference in measured logCFU between the <code>WT</code> and <code>KO</code> groups is taken to be due to the effect of knocking out the gene of interest (plus or minus a bit of measurement error).</p>
 </section>
-<section id="introducing-the-empty-vector-empty" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="introducing-the-empty-vector-empty"><span class="header-section-number">6.2.3</span> Introducing the empty vector (<code>empty</code>)</h3>
-<p>Introducing an empty plasmid vector puts strain on a bacterium and might affect its “stickiness.” As we only introduce the empty vector into a knockout strain, the measured logCFU for that bacterium is that of the baseline plus the effect of the knockout, and any effect of including the empty vector. We can describe this in <a href="#eq-empty" class="quarto-xref">Equation&nbsp;<span>6.4</span></a>:</p>
-<p><span id="eq-empty"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \epsilon  \tag{6.4}\]</span></span></p>
+<section id="introducing-the-empty-vector-empty" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="introducing-the-empty-vector-empty"><span class="header-section-number">7.2.3</span> Introducing the empty vector (<code>empty</code>)</h3>
+<p>Introducing an empty plasmid vector puts strain on a bacterium and might affect its “stickiness.” As we only introduce the empty vector into a knockout strain, the measured logCFU for that bacterium is that of the baseline plus the effect of the knockout, and any effect of including the empty vector. We can describe this in <a href="#eq-empty" class="quarto-xref">Equation&nbsp;<span>7.4</span></a>:</p>
+<p><span id="eq-empty"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \epsilon  \tag{7.4}\]</span></span></p>
 <p>which says “the logCFU we measure for the bacterium is the baseline level, plus the effect of knocking out the gene of interest, and the effect of introducing an empty vector (plus or minus some measurement error).”</p>
 </section>
-<section id="complementing-the-gene-complement" class="level3" data-number="6.2.4">
-<h3 data-number="6.2.4" class="anchored" data-anchor-id="complementing-the-gene-complement"><span class="header-section-number">6.2.4</span> Complementing the gene (<code>complement</code>)</h3>
-<p>Finally, reintroducing the gene on the plasmid vector (complementing the gene) is expected to change the logCFU recovered. The effect of introducing the gene is added on to the effect of knocking it out and introducing an empty plasmid, and is described in <a href="#eq-complement" class="quarto-xref">Equation&nbsp;<span>6.5</span></a>:</p>
-<p><span id="eq-complement"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \epsilon  \tag{6.5}\]</span></span></p>
+<section id="complementing-the-gene-complement" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="complementing-the-gene-complement"><span class="header-section-number">7.2.4</span> Complementing the gene (<code>complement</code>)</h3>
+<p>Finally, reintroducing the gene on the plasmid vector (complementing the gene) is expected to change the logCFU recovered. The effect of introducing the gene is added on to the effect of knocking it out and introducing an empty plasmid, and is described in <a href="#eq-complement" class="quarto-xref">Equation&nbsp;<span>7.5</span></a>:</p>
+<p><span id="eq-complement"><span class="math display">\[ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \epsilon  \tag{7.5}\]</span></span></p>
 </section>
-<section id="so-what" class="level3" data-number="6.2.5">
-<h3 data-number="6.2.5" class="anchored" data-anchor-id="so-what"><span class="header-section-number">6.2.5</span> So what?</h3>
+<section id="so-what" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="so-what"><span class="header-section-number">7.2.5</span> So what?</h3>
 <p>By now you might be thinking: “we’ve made an equation that represents the quantitative influence of knocking out a gene, introducing an empty plasmid, and complementing the gene, but <strong>so what?</strong> - how do we get numbers for this?”</p>
 <p>To get those numbers, we can use a statistical technique called <em>linear modelling</em> (aka <em>linear regression</em>). It is very powerful and useful, and remarkably straightforward to use in <code>R</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -2349,11 +2366,11 @@ Note
 </div>
 </section>
 </section>
-<section id="fitting-the-catheter-model" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="fitting-the-catheter-model"><span class="header-section-number">6.3</span> Fitting the catheter model</h2>
-<p>We will use the <code>R</code> built-in function <code>lm()</code> to fit the model in <a href="#eq-complement" class="quarto-xref">Equation&nbsp;<span>6.5</span></a> to our <code>catheter</code> dataset in the <code>WebR</code> cells below.</p>
-<section id="load-the-data" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="load-the-data"><span class="header-section-number">6.3.1</span> Load the data</h3>
+<section id="fitting-the-catheter-model" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="fitting-the-catheter-model"><span class="header-section-number">7.3</span> Fitting the catheter model</h2>
+<p>We will use the <code>R</code> built-in function <code>lm()</code> to fit the model in <a href="#eq-complement" class="quarto-xref">Equation&nbsp;<span>7.5</span></a> to our <code>catheter</code> dataset in the <code>WebR</code> cells below.</p>
+<section id="load-the-data" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="load-the-data"><span class="header-section-number">7.3.1</span> Load the data</h3>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2386,15 +2403,15 @@ Note
 </div>
 </div>
 </section>
-<section id="define-the-model" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="define-the-model"><span class="header-section-number">6.3.2</span> Define the model</h3>
+<section id="define-the-model" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="define-the-model"><span class="header-section-number">7.3.2</span> Define the model</h3>
 <p><code>R</code> uses a specific syntax for defining a <em>model</em>, where factors of interest influence a measured value.</p>
 <p>Here, our measured value is in the column <code>logCFU</code>, and is assumed to be influenced by factors in the columns <code>KO</code>, <code>empty</code>, and <code>complement</code> (where they apply/are equal to one). We represent this with the <code>R</code> statement below:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>logCFU <span class="sc">~</span> KO <span class="sc">+</span> empty <span class="sc">+</span> complement</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>which reads: “<code>logCFU</code> is influenced by (<code>~</code>) the sum of effects of <code>KO</code>, <code>empty</code>, and <code>complement</code> (where they apply).”</p>
 </section>
-<section id="fit-the-model" class="level3" data-number="6.3.3">
-<h3 data-number="6.3.3" class="anchored" data-anchor-id="fit-the-model"><span class="header-section-number">6.3.3</span> Fit the model</h3>
+<section id="fit-the-model" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="fit-the-model"><span class="header-section-number">7.3.3</span> Fit the model</h3>
 <p>To fit our data to this model, we use this <em>model definition</em> in the <code>lm()</code> function as below (specifying that the dataframe we’re using is <code>catheter</code>):</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>catheter_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(logCFU <span class="sc">~</span> KO <span class="sc">+</span> empty <span class="sc">+</span> complement, <span class="at">data=</span>catheter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-callout-challenge callout-titled">
@@ -2416,11 +2433,11 @@ Challenge
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
-<section id="interpreting-the-catheter-model" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="interpreting-the-catheter-model"><span class="header-section-number">6.4</span> Interpreting the catheter model</h2>
+<section id="interpreting-the-catheter-model" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="interpreting-the-catheter-model"><span class="header-section-number">7.4</span> Interpreting the catheter model</h2>
 <p>The fitted model is stored in the variable <code>catheter_model</code>, and we can obtain useful information from it in a number of ways.</p>
-<section id="coefficients-and-confidence-intervals" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="coefficients-and-confidence-intervals"><span class="header-section-number">6.4.1</span> Coefficients and confidence intervals</h3>
+<section id="coefficients-and-confidence-intervals" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="coefficients-and-confidence-intervals"><span class="header-section-number">7.4.1</span> Coefficients and confidence intervals</h3>
 <p>The <em>coefficients</em> that the model reports are the estimated effects of each factor of interest. To obtain the coefficients, use the <code>R</code> code below to produce a summary of the fitted model:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(catheter_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <em>confidence intervals</em> reported by the model are the range of values that the model thinks are most likely for the <em>coefficients</em>. These work the same way as coefficients for <em>t</em>-tests and similar statistical methods: the range of values bounded by the 2.5% and 97.5% confidence limits is a 95% confidence interval. We would expect that the <em>true</em> value of the coefficient being estimated would lie in this range 95% of the time.</p>
@@ -2445,8 +2462,8 @@ Challenge
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="reading-the-output" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="reading-the-output"><span class="header-section-number">6.4.2</span> Reading the output</h3>
+<section id="reading-the-output" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="reading-the-output"><span class="header-section-number">7.4.2</span> Reading the output</h3>
 <p>You should see output that resembles the data below:</p>
 <pre class="text"><code>(Intercept)          KO       empty  complement 
   6.3382829  -0.3213144  -0.1465880   0.3986531 
@@ -2456,20 +2473,20 @@ Challenge
 KO          -0.64609377 0.003464903
 empty       -0.47136735 0.178191328
 complement   0.07387378 0.723432458</code></pre>
-<section id="coefficients" class="level4" data-number="6.4.2.1">
-<h4 data-number="6.4.2.1" class="anchored" data-anchor-id="coefficients"><span class="header-section-number">6.4.2.1</span> Coefficients</h4>
+<section id="coefficients" class="level4" data-number="7.4.2.1">
+<h4 data-number="7.4.2.1" class="anchored" data-anchor-id="coefficients"><span class="header-section-number">7.4.2.1</span> Coefficients</h4>
 <p>The output of <code>coef(catheter_model)</code> shows values for each factor of interest in the column <code>Estimate</code>, plus a value for “<code>(Intercept)</code>.”</p>
 <pre class="text"><code>(Intercept)          KO       empty  complement 
   6.3382829  -0.3213144  -0.1465880   0.3986531 </code></pre>
 <ul>
-<li><code>(Intercept)</code> is the wild-type (<code>WT</code>)/control logCFU value coefficient estimate. Here this is <code>6.34</code>, which looks to be a reasonable value by visual comparison with <a href="visualising_batches.html#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>.</li>
+<li><code>(Intercept)</code> is the wild-type (<code>WT</code>)/control logCFU value coefficient estimate. Here this is <code>6.34</code>, which looks to be a reasonable value by visual comparison with <a href="visualising_batches.html#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>.</li>
 <li>The <code>KO</code> coefficient estimate is <code>-0.32</code>, which indicates that knocking out the <em>etpD</em> gene reduces the logCFU value by 0.32 units (as this is a log scale, that corresponds approximately to halving the number of recovered CFUs).</li>
 <li>The <code>empty</code> coefficient estimate is <code>-0.15</code>, which indicates a further reduction in bacterial recovery is seen due to inserting the plasmid.</li>
 <li>The <code>complement</code> coefficient estimate is <code>0.40</code> - of the same order as the reduction in logCFU seen for the gene knockout. This implies that returning the gene also restores bacterial recovery to the original, wild-type level.</li>
 </ul>
 </section>
-<section id="confidence-intervals" class="level4" data-number="6.4.2.2">
-<h4 data-number="6.4.2.2" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">6.4.2.2</span> Confidence intervals</h4>
+<section id="confidence-intervals" class="level4" data-number="7.4.2.2">
+<h4 data-number="7.4.2.2" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">7.4.2.2</span> Confidence intervals</h4>
 <p>The <code>confint(catheter_model)</code> output lists the expected 95% confidence intervals for the coefficients.</p>
 <pre class="text"><code>                  2.5 %      97.5 %
 (Intercept)  6.10862926 6.567936607
@@ -2526,8 +2543,8 @@ Caution
 </section>
 </section>
 </section>
-<section id="fitting-and-interpreting-the-tissue-model" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="fitting-and-interpreting-the-tissue-model"><span class="header-section-number">6.5</span> Fitting and interpreting the tissue model</h2>
+<section id="fitting-and-interpreting-the-tissue-model" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="fitting-and-interpreting-the-tissue-model"><span class="header-section-number">7.5</span> Fitting and interpreting the tissue model</h2>
 <div class="callout callout-style-default callout-callout-challenge callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2583,8 +2600,8 @@ Help, I’m stuck!
 </div>
 </div>
 </div>
-<section id="interpreting-the-results" class="level3" data-number="6.5.1">
-<h3 data-number="6.5.1" class="anchored" data-anchor-id="interpreting-the-results"><span class="header-section-number">6.5.1</span> Interpreting the results</h3>
+<section id="interpreting-the-results" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="interpreting-the-results"><span class="header-section-number">7.5.1</span> Interpreting the results</h3>
 <div class="callout callout-style-default callout-callout-questions callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2676,9 +2693,9 @@ Answers
 </div>
 </section>
 </section>
-<section id="but-wait" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="but-wait"><span class="header-section-number">6.6</span> But wait!</h2>
-<p>Back in <a href="visualising_batches.html" class="quarto-xref"><span>Chapter 5</span></a> we saw that the experimental data was affected by <em>batch effects</em> - systematic influences on the measured values that seemed to come from the way the experiment was conducted, not the biological factors whose influence we actually wanted to measure.</p>
+<section id="but-wait" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="but-wait"><span class="header-section-number">7.6</span> But wait!</h2>
+<p>Back in <a href="visualising_batches.html" class="quarto-xref"><span>Chapter 6</span></a> we saw that the experimental data was affected by <em>batch effects</em> - systematic influences on the measured values that seemed to come from the way the experiment was conducted, not the biological factors whose influence we actually wanted to measure.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3118,12 +3135,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./visualising_batches.html" class="pagination-link" aria-label="Visualising Experimental Data">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./eliminating_batches.html" class="pagination-link" aria-label="Eliminating batch effects">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Eliminating batch effects</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Eliminating batch effects</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

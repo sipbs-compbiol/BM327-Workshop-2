@@ -8,7 +8,7 @@
 
 <meta name="author" content="Leighton Pritchard">
 
-<title>3&nbsp; Experimental results – BM327 Workshop 2: Identifying UTI Adhesion Factors</title>
+<title>4&nbsp; Experimental results – BM327 Workshop 2: Identifying UTI Adhesion Factors</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,6 +74,17 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
+div.callout-callout-microbe.callout {
+  border-left-color: #1E90FF;
+}
+div.callout-callout-microbe.callout-style-default > .callout-header {
+  background-color: rgba(30, 144, 255, 0.13);
+}
+div.callout-callout-microbe .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-microbe.callout-style-default .callout-icon::before, div.callout-callout-microbe.callout-titled .callout-icon::before {
+  content: '🧫';
+  background-image: none;
+}
 div.callout-callout-case-study.callout {
   border-left-color: #FFA500;
 }
@@ -83,50 +94,6 @@ div.callout-callout-case-study.callout-style-default > .callout-header {
 div.callout-callout-case-study .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-callout-case-study.callout-style-default .callout-icon::before, div.callout-callout-case-study.callout-titled .callout-icon::before {
   content: '🔍';
-  background-image: none;
-}
-div.callout-callout-discussion.callout {
-  border-left-color: #BA55D3;
-}
-div.callout-callout-discussion.callout-style-default > .callout-header {
-  background-color: rgba(186, 85, 211, 0.13);
-}
-div.callout-callout-discussion .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-discussion.callout-style-default .callout-icon::before, div.callout-callout-discussion.callout-titled .callout-icon::before {
-  content: '✨';
-  background-image: none;
-}
-div.callout-callout-thumbs-up.callout {
-  border-left-color: #008000;
-}
-div.callout-callout-thumbs-up.callout-style-default > .callout-header {
-  background-color: rgba(0, 128, 0, 0.13);
-}
-div.callout-callout-thumbs-up .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-thumbs-up.callout-style-default .callout-icon::before, div.callout-callout-thumbs-up.callout-titled .callout-icon::before {
-  content: '👍';
-  background-image: none;
-}
-div.callout-callout-todo.callout {
-  border-left-color: pink;
-}
-div.callout-callout-todo.callout-style-default > .callout-header {
-  background-color: rgb(from pink r g b / 13%);
-}
-div.callout-callout-todo .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-todo.callout-style-default .callout-icon::before, div.callout-callout-todo.callout-titled .callout-icon::before {
-  content: '📝';
-  background-image: none;
-}
-div.callout-callout-data.callout {
-  border-left-color: #32CD32;
-}
-div.callout-callout-data.callout-style-default > .callout-header {
-  background-color: rgba(50, 205, 50, 0.13);
-}
-div.callout-callout-data .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-data.callout-style-default .callout-icon::before, div.callout-callout-data.callout-titled .callout-icon::before {
-  content: '📊';
   background-image: none;
 }
 div.callout-callout-question.callout {
@@ -140,15 +107,26 @@ div.callout-callout-question.callout-style-default .callout-icon::before, div.ca
   content: '🙋';
   background-image: none;
 }
-div.callout-callout-microbe.callout {
-  border-left-color: #1E90FF;
+div.callout-callout-data.callout {
+  border-left-color: #32CD32;
 }
-div.callout-callout-microbe.callout-style-default > .callout-header {
-  background-color: rgba(30, 144, 255, 0.13);
+div.callout-callout-data.callout-style-default > .callout-header {
+  background-color: rgba(50, 205, 50, 0.13);
 }
-div.callout-callout-microbe .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-microbe.callout-style-default .callout-icon::before, div.callout-callout-microbe.callout-titled .callout-icon::before {
-  content: '🧫';
+div.callout-callout-data .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-data.callout-style-default .callout-icon::before, div.callout-callout-data.callout-titled .callout-icon::before {
+  content: '📊';
+  background-image: none;
+}
+div.callout-callout-todo.callout {
+  border-left-color: pink;
+}
+div.callout-callout-todo.callout-style-default > .callout-header {
+  background-color: rgb(from pink r g b / 13%);
+}
+div.callout-callout-todo .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-todo.callout-style-default .callout-icon::before, div.callout-callout-todo.callout-titled .callout-icon::before {
+  content: '📝';
   background-image: none;
 }
 div.callout-callout-questions.callout {
@@ -162,6 +140,17 @@ div.callout-callout-questions.callout-style-default .callout-icon::before, div.c
   content: '🙋️';
   background-image: none;
 }
+div.callout-callout-thumbs-up.callout {
+  border-left-color: #008000;
+}
+div.callout-callout-thumbs-up.callout-style-default > .callout-header {
+  background-color: rgba(0, 128, 0, 0.13);
+}
+div.callout-callout-thumbs-up .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-thumbs-up.callout-style-default .callout-icon::before, div.callout-callout-thumbs-up.callout-titled .callout-icon::before {
+  content: '👍';
+  background-image: none;
+}
 div.callout-callout-challenge.callout {
   border-left-color: aquamarine;
 }
@@ -171,6 +160,17 @@ div.callout-callout-challenge.callout-style-default > .callout-header {
 div.callout-callout-challenge .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-callout-challenge.callout-style-default .callout-icon::before, div.callout-callout-challenge.callout-titled .callout-icon::before {
   content: '🧑‍🏫';
+  background-image: none;
+}
+div.callout-callout-discussion.callout {
+  border-left-color: #BA55D3;
+}
+div.callout-callout-discussion.callout-style-default > .callout-header {
+  background-color: rgba(186, 85, 211, 0.13);
+}
+div.callout-callout-discussion .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-discussion.callout-style-default .callout-icon::before, div.callout-callout-discussion.callout-titled .callout-icon::before {
+  content: '✨';
   background-image: none;
 }
 </style>
@@ -216,7 +216,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_01_experiment.html">A high-throughput genomic screen for adherence factors</a></li><li class="breadcrumb-item"><a href="./experimental_results.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimental results</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_01_experiment.html">A high-throughput genomic screen for adherence factors</a></li><li class="breadcrumb-item"><a href="./experimental_results.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Experimental results</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -249,10 +249,16 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./part_01_experiment.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">A high-throughput genomic screen for adherence factors</span></a>
+            <a href="./part_00_ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">An introduction to `ggplot2`</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -260,20 +266,31 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  <a href="./ggplot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Grammar of Graphics</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./part_01_experiment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A high-throughput genomic screen for adherence factors</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Experiment</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Experiment</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./experimental_results.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimental results</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Experimental results</span></span></a>
   </div>
 </li>
       </ul>
@@ -282,33 +299,33 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="./part_02_batches.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A gene knockout experiment</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./experiment_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">The Experiment</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Experiment</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualising_batches.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./modelling_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./eliminating_batches.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Eliminating batch effects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Eliminating batch effects</span></span></a>
   </div>
 </li>
       </ul>
@@ -329,11 +346,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#interpreting-the-experimental-results" id="toc-interpreting-the-experimental-results" class="nav-link active" data-scroll-target="#interpreting-the-experimental-results"><span class="header-section-number">3.1</span> Interpreting the experimental results</a>
+  <li><a href="#interpreting-the-experimental-results" id="toc-interpreting-the-experimental-results" class="nav-link active" data-scroll-target="#interpreting-the-experimental-results"><span class="header-section-number">4.1</span> Interpreting the experimental results</a>
   <ul class="collapse">
-  <li><a href="#chromosomal-genes" id="toc-chromosomal-genes" class="nav-link" data-scroll-target="#chromosomal-genes"><span class="header-section-number">3.1.1</span> Chromosomal genes</a></li>
-  <li><a href="#plasmid-borne-genes" id="toc-plasmid-borne-genes" class="nav-link" data-scroll-target="#plasmid-borne-genes"><span class="header-section-number">3.1.2</span> Plasmid-borne genes</a></li>
-  <li><a href="#identifying-a-candidate" id="toc-identifying-a-candidate" class="nav-link" data-scroll-target="#identifying-a-candidate"><span class="header-section-number">3.1.3</span> Identifying a candidate</a></li>
+  <li><a href="#chromosomal-genes" id="toc-chromosomal-genes" class="nav-link" data-scroll-target="#chromosomal-genes"><span class="header-section-number">4.1.1</span> Chromosomal genes</a></li>
+  <li><a href="#plasmid-borne-genes" id="toc-plasmid-borne-genes" class="nav-link" data-scroll-target="#plasmid-borne-genes"><span class="header-section-number">4.1.2</span> Plasmid-borne genes</a></li>
+  <li><a href="#identifying-a-candidate" id="toc-identifying-a-candidate" class="nav-link" data-scroll-target="#identifying-a-candidate"><span class="header-section-number">4.1.3</span> Identifying a candidate</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/experimental_results.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -341,9 +358,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_01_experiment.html">A high-throughput genomic screen for adherence factors</a></li><li class="breadcrumb-item"><a href="./experimental_results.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimental results</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_01_experiment.html">A high-throughput genomic screen for adherence factors</a></li><li class="breadcrumb-item"><a href="./experimental_results.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Experimental results</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-experimental-results" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Experimental results</span></span></h1>
+<h1 class="title"><span id="sec-experimental-results" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Experimental results</span></span></h1>
 </div>
 
 
@@ -360,7 +377,7 @@ window.Quarto = {
 </header>
 
 
-<p>As noted in <a href="experiment_2.html" class="quarto-xref"><span>Chapter 4</span></a>, we aim to identify UPEC-specific genes that are overrepresented in the final mixtures that have been through mouse passage, but that are not overrepresented in the control passage through culture alone.</p>
+<p>As noted in <a href="experiment_2.html" class="quarto-xref"><span>Chapter 5</span></a>, we aim to identify UPEC-specific genes that are overrepresented in the final mixtures that have been through mouse passage, but that are not overrepresented in the control passage through culture alone.</p>
 <p>These results were obtained using a Bayesian statistical multilevel regression technique, and are presented graphically below. As the UPEC genome comprises a chromosome and an accompanying plasmid, these are shown separately.</p>
 <p>Results are shown for both post-control, and post-mouse passage arms of the experiment.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -379,57 +396,57 @@ Note
 <div id="fig-chrom-control" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-chrom-control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/images/upec_chrom_control.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;3.1: Post-control passage over-and under-representation of UPEC chromosomal genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence)."><img src="assets/images/upec_chrom_control.png" class="img-fluid figure-img" style="width:80.0%"></a>
+<a href="assets/images/upec_chrom_control.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;4.1: Post-control passage over-and under-representation of UPEC chromosomal genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence)."><img src="assets/images/upec_chrom_control.png" class="img-fluid figure-img" style="width:80.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chrom-control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.1: Post-control passage over-and under-representation of UPEC chromosomal genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).
+Figure&nbsp;4.1: Post-control passage over-and under-representation of UPEC chromosomal genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).
 </figcaption>
 </figure>
 </div>
 <div id="fig-chrom-treat" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-chrom-treat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/images/upec_chrom_treat.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;3.2: Post-mouse passage over-and under-representation of UPEC chromosomal genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence)."><img src="assets/images/upec_chrom_treat.png" class="img-fluid figure-img" style="width:80.0%"></a>
+<a href="assets/images/upec_chrom_treat.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;4.2: Post-mouse passage over-and under-representation of UPEC chromosomal genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence)."><img src="assets/images/upec_chrom_treat.png" class="img-fluid figure-img" style="width:80.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chrom-treat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.2: Post-mouse passage over-and under-representation of UPEC chromosomal genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).
+Figure&nbsp;4.2: Post-mouse passage over-and under-representation of UPEC chromosomal genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).
 </figcaption>
 </figure>
 </div>
 <div id="fig-plasmid-control" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-plasmid-control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/images/upec_plasmid_control.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3.3: Post-control passage over-and under-representation of UPEC plasmid genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence)."><img src="assets/images/upec_plasmid_control.png" class="img-fluid figure-img" style="width:80.0%"></a>
+<a href="assets/images/upec_plasmid_control.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;4.3: Post-control passage over-and under-representation of UPEC plasmid genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence)."><img src="assets/images/upec_plasmid_control.png" class="img-fluid figure-img" style="width:80.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plasmid-control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.3: Post-control passage over-and under-representation of UPEC plasmid genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).
+Figure&nbsp;4.3: Post-control passage over-and under-representation of UPEC plasmid genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).
 </figcaption>
 </figure>
 </div>
 <div id="fig-plasmid-treat" class="lightbox quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-plasmid-treat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/images/upec_plasmid_treatment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;3.4: Post-mouse passage over-and under-representation of UPEC plasmid genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence)."><img src="assets/images/upec_plasmid_treatment.png" class="img-fluid figure-img" style="width:80.0%"></a>
+<a href="assets/images/upec_plasmid_treatment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4.4: Post-mouse passage over-and under-representation of UPEC plasmid genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence)."><img src="assets/images/upec_plasmid_treatment.png" class="img-fluid figure-img" style="width:80.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plasmid-treat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3.4: Post-mouse passage over-and under-representation of UPEC plasmid genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).
+Figure&nbsp;4.4: Post-mouse passage over-and under-representation of UPEC plasmid genes in the DH10B background. “Neutral” genes that occur at the expected frequency are indicated in blue. Under-represented genes are indicated in purple, and over-represented genes are indicated in green (lines indicate confidence intervals for observed occurrence).
 </figcaption>
 </figure>
 </div>
-<section id="interpreting-the-experimental-results" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="interpreting-the-experimental-results"><span class="header-section-number">3.1</span> Interpreting the experimental results</h2>
+<section id="interpreting-the-experimental-results" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="interpreting-the-experimental-results"><span class="header-section-number">4.1</span> Interpreting the experimental results</h2>
 <p>We are interested in genes that are more abundant than expected after mouse passage, but not after control passage.</p>
-<section id="chromosomal-genes" class="level3" data-number="3.1.1">
-<h3 data-number="3.1.1" class="anchored" data-anchor-id="chromosomal-genes"><span class="header-section-number">3.1.1</span> Chromosomal genes</h3>
-<p>Comparing <a href="#fig-chrom-control" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> and <a href="#fig-chrom-treat" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> we can see that in both cases there are clusters of genes that appear to be overrepresented, and they are different for the control- and mouse-passaged arms of the experiment.</p>
+<section id="chromosomal-genes" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="chromosomal-genes"><span class="header-section-number">4.1.1</span> Chromosomal genes</h3>
+<p>Comparing <a href="#fig-chrom-control" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> and <a href="#fig-chrom-treat" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> we can see that in both cases there are clusters of genes that appear to be overrepresented, and they are different for the control- and mouse-passaged arms of the experiment.</p>
 <p>In the mouse-passaged isolates, four regions known as “S-loops” were seen to be enriched. These encode for urea degradation, effector proteins associated with adherence to bovine tissue, a surfactin, and hæm utilisation. The known functions of these genes are consistent with a role in adherence to tissue, and infection.</p>
 </section>
-<section id="plasmid-borne-genes" class="level3" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="plasmid-borne-genes"><span class="header-section-number">3.1.2</span> Plasmid-borne genes</h3>
-<p>A comparison of <a href="#fig-plasmid-control" class="quarto-xref">Figure&nbsp;<span>3.3</span></a> and <a href="#fig-plasmid-treat" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> shows that no plasmid-borne genes are overrepresented in the control arm, but that a run of several genes corresponding to an operon for a Type II Secretion System (T2SS) are highlighted in the mouse arm. This T2SS has been reported to play a role in adherence to mammalian host tissues, biofilm formation, and is considered an important virulence factor.</p>
+<section id="plasmid-borne-genes" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="plasmid-borne-genes"><span class="header-section-number">4.1.2</span> Plasmid-borne genes</h3>
+<p>A comparison of <a href="#fig-plasmid-control" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> and <a href="#fig-plasmid-treat" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> shows that no plasmid-borne genes are overrepresented in the control arm, but that a run of several genes corresponding to an operon for a Type II Secretion System (T2SS) are highlighted in the mouse arm. This T2SS has been reported to play a role in adherence to mammalian host tissues, biofilm formation, and is considered an important virulence factor.</p>
 </section>
-<section id="identifying-a-candidate" class="level3" data-number="3.1.3">
-<h3 data-number="3.1.3" class="anchored" data-anchor-id="identifying-a-candidate"><span class="header-section-number">3.1.3</span> Identifying a candidate</h3>
+<section id="identifying-a-candidate" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="identifying-a-candidate"><span class="header-section-number">4.1.3</span> Identifying a candidate</h3>
 <p>The T2SS was chosen as a likely candidate for investigation, given its known roles in host tissue association and infection. The <em>etpD</em> gene is a secretin that is critical for constructing the type II secretion apparatus, and knocking out this gene in a UPEC mutant is expected to prevent construction of a working type II secretion system.</p>
 <p>To investigate the role of the type II secretion system in adherence to the urinary tract and/or catheter material, it was decided to construct a knockout mutant lacking the <em>etpD</em> gene: <span class="math inline">\(\Delta\)</span><em>etpD</em> and to test experimentally its role in adherence.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -871,7 +888,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./intro.html" class="pagination-link" aria-label="The Experiment">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">The Experiment</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Experiment</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
