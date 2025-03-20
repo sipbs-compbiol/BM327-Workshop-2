@@ -224,7 +224,7 @@ complement   0.07387378 0.723432458
 
 #### Coefficients
 
-The output of `summary(catheter)` shows values for each factor of interest in the column `Estimate`, plus a value for "`(Intercept)`."
+The output of `coef(catheter_model)` shows values for each factor of interest in the column `Estimate`, plus a value for "`(Intercept)`."
 
 ```text
 (Intercept)          KO       empty  complement 
@@ -238,7 +238,7 @@ The output of `summary(catheter)` shows values for each factor of interest in th
 
 #### Confidence intervals
 
-The `confint(catheter)` output lists the expected 95% confidence intervals for the coefficients.
+The `confint(catheter_model)` output lists the expected 95% confidence intervals for the coefficients.
 
 ```text
                   2.5 %      97.5 %
@@ -273,12 +273,6 @@ We can, however, be reasonably certain that addition of the empty vector does no
 
 ::: { .callout-challenge }
 **Fit the tissue data to this model, using the `WebR` cell below.**
-
-Use the `R` code:
-
-```r
-catheter_model <- lm(logCFU ~ KO + empty + complement, data=catheter)
-```
 :::
 
 ```{webr-r}
