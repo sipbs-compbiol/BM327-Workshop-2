@@ -22,17 +22,300 @@ It may take a couple of minutes to install the necessary packages in `WebR` - pl
 
 In this section you will meet `ggplot2`, a very popular and powerful data visualisation package in `R`. We will also learn about the "grammar of graphics," a way of thinking about constructing data visualisations that also is the source of the `gg` in `ggplot2`.
 
-## Loading data
+The grammar of graphics is a set of concepts relevant to visualising data. It separates the data from the way the data is represented, which may be a new approach to you - it's certainly different to the way Excel and Graphpad Prism choose to control visualisation. It is, though, highly effective for generating powerful visualisations.
+
+## Load in the data
 
 In order to visualise data using `ggplot2` in `R`, we have to load it. We have provided the data for this walkthrough in the file `gapminder.csv`, which can be loaded with the command:
 
 ```r
-gapminder <- read_csv("gapminder.csv")
+gapminder <- read_csv("gapminder.csv", col_types="fnnfnn")
 ```
+
+::: { .callout-tip collapse="true" title="Hint"}
+The column types are, in order: factor, number, number, factor, number, number and can be expressed as `"fnnfnn"` for the `col_types` option in `read_csv()`.
+
+Using the `col_types` option means that `R` "knows" what the data in each column should be, and report problems if they arise.
+:::
+
 
 ```{webr-r}
 # Load data from "gapminder.csv" into a dataframe in R
-# gapminder <- read_csv("gapminder.csv")
+# gapminder <- read_csv("gapminder.csv", col_types="fnnfnn")
 
 
 ```
+
+## Inspect the data
+
+It is always good practice to visually examine your dataset, to become familiar with your data and check for obvious problems. With the data loaded in, let's take a look at it and see what it contains, using the commands:
+
+```r
+str(gapminder)
+summary(gapminder)
+```
+
+::: { .callout-tip }
+Here, `str` is an abbreviation of "structure" and the command will show us the structure of the dataset
+:::
+
+```{webr-r}
+# Inspect the dataset structure
+# str(gapminder)
+# summary(gapminder)
+
+
+```
+
+## A basic scatterplot
+
+You can use `ggplot2` in a similar way to other tools (like Excel and Prism) to produce "canned" visualisations like scatterplots. Here, we need to specify which data go on the _x_ and _y_ axes, and the dataframe we're using, and some options like which variable to use to colour datapoints. For example, the code:
+
+```r
+qplot(lifeExp, gdpPercap, data=gapminder, colour=continent)
+```
+
+will generate a (quick, hence `qplot()`) scatterplot of GDP per capita (`gdpPercap`, y-axis) against life expectancy (`lifeExp`, x-axis) from the corresponding columns in the `gapminder` dataframe. Each different `continent` in the dataset will be plotted with its own colour.
+
+```{webr-r}
+# Make a scatterplot
+# qplot(lifeExp, gdpPercap, data=gapminder, colour=continent)
+
+
+```
+
+Although the plot looks to be nice enough, it's still constraining and doesn't really express the power of `ggplot2`. 
+
+## The grammar of graphics
+
+To really get to grips with `ggplot2` we need to talk about what makes up a plot. We can use the example of the scatterplot you've just generated (reproduced in @fig-scatterplot)
+
+::: { .column-margin }
+
+![The result of the `qplot()` command showing GDP per capita against life expectancy, with points coloured by continent](assets/images/ggplot_scatter.png){#fig-scatterplot .lightbox}
+
+:::
+
+### Aesthetics
+
+In this plot, every row in the table (we call each row an _observation_) is represented by a single point. How that point is rendered in the plot is determined by its _aesthetics_:
+
+- The _x_ position aesthetic determines where the point is rendered in relation to the side of the graph
+- The _y_ position aesthetic determines where the point is rendered in relation to the bottom of the graph
+- The size of the point is an aesthetic
+- The shape of the point is an aesthetic
+- The colour of the point is an aesthetic
+- The transparency of the point is an aesthetic
+
+In `ggplot2` these _aesthetics_ can be constant (like shape in @fig-scatterplot), or _mapped_ to - under the control of - variables in the dataset (like colour in @fig-scatterplot).
+
+::: { .callout-tip }
+We can generate many different kinds of plot from the same data just by changing the _aesthetics_
+:::
+
+### `geom`s
+
+The other key thing to know about in `ggplot2` is the idea of a geometry, or `geom`. The `geom` determines the kind of data representation for the plot. There are many kinds of `geom` in `ggplot2`, and combinations of aesthetic and geom can reproduce several kinds of plot (as in @fig-geom-types).
+
+All `ggplot2` graphs are combinations of `geom`s and aesthetics.
+
+::: { .column-margin }
+
+![Combinations of aesthetic and geom that make different plot types.](assets/images/geom_types.png){#fig-geom-types .lightbox}
+
+:::
+
+We can demonstrate this in the `WebR` cell below. Use the following code to create a scatterplot:
+
+```r
+p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))
+p + geom_point()
+```
+
+::: { .callout-note }
+The first line uses the `ggplot()` command to create the plot from the dataset (`data=gapminder`) with a set of aesthetics (`aes(x=lifeExp, y=gdpPercap, color=continent)`). This plot is put into a variable (`p`) for convenience so that we can experiment in the workshop.
+
+**Just defining the graph isn't enough to show it. To do this we also need a `geom`**
+
+Because the plot is in the variable `p`, we can "add" a `geom` to it. We'll add `geom_point()` so that it gives us a scatterplot, like that in @fig-scatterplot.
+:::
+
+```{webr-r}
+# Generate plot of GDP per capita against life Expectancy
+# p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))
+# p + geom_point()
+
+
+```
+
+::: { .callout-challenge }
+Replace the `geom_point()` in the `WebR` code with `geom_line()`. Does this give a better representation of the dataset?
+:::
+
+### Layers
+
+Without even thinking about it, we've been using the concept of _layers_.
+
+::: { .callout-important }
+All `ggplot2` plots are built from _layers_.
+:::
+
+All _layers_ have two components:
+
+1. _data_ that will be shown, and _aesthetics_ for showing the data
+2. a `geom` the defines the type of plot on that layer
+
+The layers in the plot you created above are shown in @fig-ggplot-layers-1.
+
+::: { .callout-note }
+The `ggplot()` layer is the "base layer" and contains `data` and _aesthetics_ (`aes()`). These are inherited by the other layers in the plot, such as the `geom_point()` layer (unless overridden).
+:::
+
+![The layers present in the scatterplot you created. The blue `ggplot()` layer is the "base layer" and contains `data` and _aesthetics_ (`aes()`). These are inherited by the other layers in the plot, such as the orange `geom_point()` layer (unless overridden).](assets/images/ggplot_layers_1.png){#fig-ggplot-layers-1 width=80% .lightbox}
+
+
+::: { .callout-challenge }
+Using the `WebR` cell below, create a plot showing how _life expectancy_ (`lifeExp`) changes as a function of time (`year`), as a scatterplot.
+:::
+
+```{webr-r}
+# Create a plot showing how _life expectancy_ (`lifeExp`) changes as a function of time (`year`), as a scatterplot.
+
+
+```
+
+::: { .callout-tip collapse="true" title="I need a hint"}
+- Can you generate the graph by just changing variables in the code you've already written?
+:::
+
+::: { .callout-warning collapse="true" title="Help, I'm stuck!"}
+Use the same code as above, but put `year` on the `x` aesthetic/axis, and `lifeExp` on the `y` aesthetic/axis.
+
+```r
+p <- ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent))
+p + geom_point()
+```
+:::
+
+We can build up additional layers of `geom`s to create more complex plots, and to apply aesthetics specifically to different layers. For example, we can plot GDP per capita (`gdpPercap`) against life expectancy (`lifeExp`) as a line plot (`geom_line()`), grouping points by `country`, but coloured by continent. The code for this is:
+
+```r
+p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))
+p + geom_line(aes(group=country))
+```
+
+```{webr-r}
+# Generate plot of GDP per capita against life Expectancy
+# p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))
+# p + geom_line(aes(group=country))
+
+
+```
+
+The layer structure of this plot is shown in @fig-ggplot-layers-2 (and the result in @fig-geom-line-1)
+
+![The layers of the line plot. The blue `ggplot()` layer is the "base layer" and contains `data` and _aesthetics_ (`aes()`). These are inherited by the other layers in the plot, such as the orange `geom_line()` layer, but an additional aesthetic `group`ing points by country is added.](assets/images/ggplot_layers_2.png){#fig-ggplot-layers-2 width=80% .lightbox}
+
+::: { .column-margin }
+
+![Line plot showing data grouped by country, but coloured by continent](assets/images/ggplot_line_1.png){#fig-geom-line-1 .lightbox}
+
+:::
+
+We can go on to _add_ a top-level `geom_point()` scatterplot with each datapoint shown as a semitransparent (`alpha=0.4`) point by changing this code - in the same `WebR` cell to:
+
+```r
+p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))
+p + geom_line(aes(group=country)) + geom_point(alpha=0.4)
+```
+
+This gives the plot in @fig-geom-line-2, which has the layer structure in @fig-ggplot-layers-3.
+
+::: { .column-margin }
+
+![Line plot showing data grouped by country, but coloured by continent](assets/images/ggplot_line_2.png){#fig-geom-line-2 .lightbox}
+
+:::
+
+![The layers of the line plot with scatterplot layer. The blue `ggplot()` layer is the "base layer" and contains `data` and _aesthetics_ (`aes()`). These are inherited by the other layers in the plot, such as the orange `geom_line()` and green `geom_point()` layers, but additional aesthetics `group`ing points by country and changing the transparency of points is added.](assets/images/ggplot_layers_3.png){#fig-ggplot-layers-3 width=80% .lightbox}
+
+::: { .callout-challenge }
+Using the `WebR` cell below, create a plot showing how _life expectancy_ (`lifeExp`) changes as a function of time (`year`), coloured by continent, with two layers:
+
+- a line plot, grouping points by country
+- a scatterplot showing each data point, with 35% opacity
+
+:::
+
+```{webr-r}
+# Using the `WebR` cell below, create a plot showing 
+# how _life expectancy_ (`lifeExp`) changes as a function 
+# of time (`year`), coloured by continent, with two layers:
+#
+# - a line plot, grouping points by country
+# - a scatterplot showing each data point, with 35% opacity
+
+
+```
+
+::: { .callout-tip collapse="true" title="I need a hint"}
+- Can you generate the graph by just changing variables in the code you've already written?
+:::
+
+::: { .callout-warning collapse="true" title="Help, I'm stuck!"}
+Use the same code as above, but put `year` on the `x` aesthetic/axis, and `lifeExp` on the `y` aesthetic/axis, and changing the `alpha` parameter to `0.35`.
+
+```r
+p <- ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent))
+p + geom_line(aes(group=country)) + geom_point(alpha=0.35)
+```
+:::
+
+## Multi-panel figures
+
+All the plots we have made so far have been single-panel figures. With large datasets, this can get a bit messy and obscure the story you want to tell with data.
+
+`ggplot2` has a layer called `facet_wrap()` which allows us to split data into panels on the basis of a variable. For example, the code below allows us to split the plot in @fig-geom-line-2 into separate panels for each continent:
+
+```r
+p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))
+p + geom_line(aes(group=country)) + geom_point(alpha=0.4) + facet_wrap(~continent)
+```
+
+::: { .callout-challenge }
+Using the `WebR` cell below, create a plot showing how _life expectancy_ (`lifeExp`) changes as a function of time (`year`), coloured by continent, with two layers:
+
+- a line plot, grouping points by country
+- a scatterplot showing each data point, with 35% opacity
+
+:::
+
+```{webr-r}
+# Using the `WebR` cell below, create a plot showing 
+# how _life expectancy_ (`lifeExp`) changes as a function 
+# of time (`year`), coloured by continent, with two layers:
+#
+# - a line plot, grouping points by country
+# - a scatterplot showing each data point, with 35% opacity
+#
+# and split into facets by continent
+
+
+```
+
+::: { .callout-tip collapse="true" title="I need a hint"}
+- Can you generate the graph by just changing variables in the code you've already written?
+:::
+
+::: { .callout-warning collapse="true" title="Help, I'm stuck!"}
+Use the same code as above, but put `year` on the `x` aesthetic/axis, and `lifeExp` on the `y` aesthetic/axis, and changing the `alpha` parameter to `0.35`, and adding a `facet_wrap()` layer:
+
+```r
+p <- ggplot(data=gapminder, aes(x=year, y=lifeExp, color=continent))
+p + geom_line(aes(group=country)) + geom_point(alpha=0.35) + facet_wrap(~continent)
+```
+:::
+
+## What's next?
+
+Now that you have learned some of the key features of how to make a `ggplot2` figure, we're ready to think about the experiment that's providing us with data for this workshop, which you'll meet in the next section.
