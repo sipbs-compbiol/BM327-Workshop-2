@@ -1,0 +1,37 @@
+# Summary { #sec-summary }
+
+## Workshop goals
+
+Our goal in this workshop was to help you:
+
+- Plot experimental data using `R` and `ggplot2`
+- Use and interpret box-and-whisker, violin, and 1D scatter plots
+- Use linear modelling to estimate effect sizes of biological interventions in knockout/complement assay
+- Use linear mixed models to correct for experimental batch effects in knockout/complement assay
+
+### Plotting experimental data
+
+In @sec-ggplot2 we introduced the principles of the grammar of graphics that underpin `ggplot2`, `R`'s popular and widely-used data visualisation package. This took you through the concepts behind data, aesthetics, geoms, and layers as components of a `ggplot2` figure, and gave you some practice in using them in combination.
+
+### Use and interpret box-and-whisker, violin, and 1D scatter plots
+
+Then, after describing how the experimental data we presented you with was obtained, we walked through visualising the data with some specific geoms (`geom_jitter()` and `geom_boxplot()`) in @sec-visuaising-data. This visualisation indicated that there was a batch effect that might influence our quantitative results, and our overall interpretation of the experiment.
+
+### Use linear modelling
+
+After an introduction to how a linear model could be constructed to represent the experimental situation, we walked through an application of linear modelling in @sec-modelling-batches. This gave us estimates for the recovery expected from the wild type UPEC, and the effectsof knocking out the _etpD_ gene, introducing a plasmid vector, and complemeting the _etpD_ gene back into the mutant.
+
+Notably, you found that the data did not quite support Falkow's adaptation of Koch's postulates for _etpD_, and it was possible that this was due to the influence of the batch effects we saw in @sec-visuaising-data.
+
+### Use linear mixed models
+
+In @sec-removing-batch-effects you used limear mixed models to account for the influence of these batch effects, resulting in more precise estimates of the effect of knocking out and complementing the _etpD_ gene, which allowed us to satisfy Koch's postulates for _etpD_ with catheter material, but not for human tissue.
+
+## Final summary
+
+We hope you have enjoyed learning more about using `R` and `ggplot2` to generate data visualisations, and how linear modelling can be a powerful tool for interpreting experimental data.
+
+This is the first presentation of this material, and we would be very grateful to hear feedback about it and ideas for improvement [by email](mailto:{{< var admin.email >}}) or through the [GitHub repository Issues page]({{< var github.issues >}}).
+
+
+

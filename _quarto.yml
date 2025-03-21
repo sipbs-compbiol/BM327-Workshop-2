@@ -57,6 +57,9 @@ book:
         - modelling_data.qmd
         - eliminating_batches.qmd
     
+    - part: part_04_conclusion.qmd
+      chapters:
+        - summary.qmd
 #    - part: supplementary.qmd
 #      chapters:
 #        - webr-example.qmd
