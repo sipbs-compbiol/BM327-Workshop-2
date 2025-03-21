@@ -8,7 +8,7 @@
 
 <meta name="author" content="Leighton Pritchard">
 
-<title>5&nbsp; The Experiment – BM327 Workshop 2: Identifying UTI Adhesion Factors</title>
+<title>9&nbsp; Summary – BM327 Workshop 2: Identifying UTI Adhesion Factors</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,8 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./visualising_batches.html" rel="next">
-<link href="./part_02_batches.html" rel="prev">
+<link href="./part_04_conclusion.html" rel="prev">
 <link href="./icon_32.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -82,26 +81,15 @@ div.callout-callout-question.callout-style-default .callout-icon::before, div.ca
   content: '🙋';
   background-image: none;
 }
-div.callout-callout-data.callout {
-  border-left-color: #32CD32;
+div.callout-callout-microbe.callout {
+  border-left-color: #1E90FF;
 }
-div.callout-callout-data.callout-style-default > .callout-header {
-  background-color: rgba(50, 205, 50, 0.13);
+div.callout-callout-microbe.callout-style-default > .callout-header {
+  background-color: rgba(30, 144, 255, 0.13);
 }
-div.callout-callout-data .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-data.callout-style-default .callout-icon::before, div.callout-callout-data.callout-titled .callout-icon::before {
-  content: '📊';
-  background-image: none;
-}
-div.callout-callout-challenge.callout {
-  border-left-color: aquamarine;
-}
-div.callout-callout-challenge.callout-style-default > .callout-header {
-  background-color: rgb(from aquamarine r g b / 13%);
-}
-div.callout-callout-challenge .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-challenge.callout-style-default .callout-icon::before, div.callout-callout-challenge.callout-titled .callout-icon::before {
-  content: '🧑‍🏫';
+div.callout-callout-microbe .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-microbe.callout-style-default .callout-icon::before, div.callout-callout-microbe.callout-titled .callout-icon::before {
+  content: '🧫';
   background-image: none;
 }
 div.callout-callout-discussion.callout {
@@ -115,26 +103,15 @@ div.callout-callout-discussion.callout-style-default .callout-icon::before, div.
   content: '✨';
   background-image: none;
 }
-div.callout-callout-questions.callout {
-  border-left-color: yellow;
+div.callout-callout-todo.callout {
+  border-left-color: pink;
 }
-div.callout-callout-questions.callout-style-default > .callout-header {
-  background-color: rgb(from yellow r g b / 13%);
+div.callout-callout-todo.callout-style-default > .callout-header {
+  background-color: rgb(from pink r g b / 13%);
 }
-div.callout-callout-questions .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-questions.callout-style-default .callout-icon::before, div.callout-callout-questions.callout-titled .callout-icon::before {
-  content: '🙋️';
-  background-image: none;
-}
-div.callout-callout-microbe.callout {
-  border-left-color: #1E90FF;
-}
-div.callout-callout-microbe.callout-style-default > .callout-header {
-  background-color: rgba(30, 144, 255, 0.13);
-}
-div.callout-callout-microbe .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-microbe.callout-style-default .callout-icon::before, div.callout-callout-microbe.callout-titled .callout-icon::before {
-  content: '🧫';
+div.callout-callout-todo .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-todo.callout-style-default .callout-icon::before, div.callout-callout-todo.callout-titled .callout-icon::before {
+  content: '📝';
   background-image: none;
 }
 div.callout-callout-thumbs-up.callout {
@@ -159,48 +136,41 @@ div.callout-callout-case-study.callout-style-default .callout-icon::before, div.
   content: '🔍';
   background-image: none;
 }
-div.callout-callout-todo.callout {
-  border-left-color: pink;
+div.callout-callout-challenge.callout {
+  border-left-color: aquamarine;
 }
-div.callout-callout-todo.callout-style-default > .callout-header {
-  background-color: rgb(from pink r g b / 13%);
+div.callout-callout-challenge.callout-style-default > .callout-header {
+  background-color: rgb(from aquamarine r g b / 13%);
 }
-div.callout-callout-todo .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-todo.callout-style-default .callout-icon::before, div.callout-callout-todo.callout-titled .callout-icon::before {
-  content: '📝';
+div.callout-callout-challenge .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-challenge.callout-style-default .callout-icon::before, div.callout-callout-challenge.callout-titled .callout-icon::before {
+  content: '🧑‍🏫';
+  background-image: none;
+}
+div.callout-callout-questions.callout {
+  border-left-color: yellow;
+}
+div.callout-callout-questions.callout-style-default > .callout-header {
+  background-color: rgb(from yellow r g b / 13%);
+}
+div.callout-callout-questions .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-questions.callout-style-default .callout-icon::before, div.callout-callout-questions.callout-titled .callout-icon::before {
+  content: '🙋️';
+  background-image: none;
+}
+div.callout-callout-data.callout {
+  border-left-color: #32CD32;
+}
+div.callout-callout-data.callout-style-default > .callout-header {
+  background-color: rgba(50, 205, 50, 0.13);
+}
+div.callout-callout-data .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-data.callout-style-default .callout-icon::before, div.callout-callout-data.callout-titled .callout-icon::before {
+  content: '📊';
   background-image: none;
 }
 </style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -213,7 +183,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./experiment_2.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Experiment</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_04_conclusion.html">Conclusion</a></li><li class="breadcrumb-item"><a href="./summary.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Summary</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -303,7 +273,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./experiment_2.html" class="sidebar-item-text sidebar-link active">
+  <a href="./experiment_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Experiment</span></span></a>
   </div>
 </li>
@@ -338,7 +308,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+  <a href="./summary.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
@@ -354,22 +324,23 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#testing-the-postulates" id="toc-testing-the-postulates" class="nav-link active" data-scroll-target="#testing-the-postulates"><span class="header-section-number">5.1</span> Testing the postulates</a>
+  <li><a href="#workshop-goals" id="toc-workshop-goals" class="nav-link active" data-scroll-target="#workshop-goals"><span class="header-section-number">9.1</span> Workshop goals</a>
   <ul class="collapse">
-  <li><a href="#making-a-knockout" id="toc-making-a-knockout" class="nav-link" data-scroll-target="#making-a-knockout"><span class="header-section-number">5.1.1</span> Making a knockout</a></li>
-  <li><a href="#making-a-complemented-strain" id="toc-making-a-complemented-strain" class="nav-link" data-scroll-target="#making-a-complemented-strain"><span class="header-section-number">5.1.2</span> Making a complemented strain</a></li>
-  <li><a href="#one-more-control" id="toc-one-more-control" class="nav-link" data-scroll-target="#one-more-control"><span class="header-section-number">5.1.3</span> One more control</a></li>
+  <li><a href="#plotting-experimental-data" id="toc-plotting-experimental-data" class="nav-link" data-scroll-target="#plotting-experimental-data"><span class="header-section-number">9.1.1</span> Plotting experimental data</a></li>
+  <li><a href="#use-and-interpret-box-and-whisker-violin-and-1d-scatter-plots" id="toc-use-and-interpret-box-and-whisker-violin-and-1d-scatter-plots" class="nav-link" data-scroll-target="#use-and-interpret-box-and-whisker-violin-and-1d-scatter-plots"><span class="header-section-number">9.1.2</span> Use and interpret box-and-whisker, violin, and 1D scatter plots</a></li>
+  <li><a href="#use-linear-modelling" id="toc-use-linear-modelling" class="nav-link" data-scroll-target="#use-linear-modelling"><span class="header-section-number">9.1.3</span> Use linear modelling</a></li>
+  <li><a href="#use-linear-mixed-models" id="toc-use-linear-mixed-models" class="nav-link" data-scroll-target="#use-linear-mixed-models"><span class="header-section-number">9.1.4</span> Use linear mixed models</a></li>
   </ul></li>
-  <li><a href="#what-next" id="toc-what-next" class="nav-link" data-scroll-target="#what-next"><span class="header-section-number">5.2</span> What next?</a></li>
+  <li><a href="#final-summary" id="toc-final-summary" class="nav-link" data-scroll-target="#final-summary"><span class="header-section-number">9.2</span> Final summary</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/experiment_2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/summary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./experiment_2.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Experiment</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_04_conclusion.html">Conclusion</a></li><li class="breadcrumb-item"><a href="./summary.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Summary</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-experiment" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Experiment</span></span></h1>
+<h1 class="title"><span id="sec-summary" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Summary</span></span></h1>
 </div>
 
 
@@ -386,63 +357,37 @@ window.Quarto = {
 </header>
 
 
-<p>Having selected the <em>etpD</em> gene as a likely contributor to adherence, and so pathogenicity, an experiment was devised that could establish whether this gene makes a contribution to pathogen adherence. The experiment aims to satisfy <a href="https://en.wikipedia.org/wiki/Koch's_postulates#Molecular_Koch's_postulates">Falkow’s molecular variant of <em>Koch’s Postulates</em></a>:</p>
-<ol type="1">
-<li>The wild-type/control pathogen containing <em>etpD</em> must be able to adhere to human tissue/catheter material</li>
-<li>The mutant organism lacking only <em>etpD</em> must not adhere to human tissue/catheter material</li>
-<li>A <em>complemented</em> mutant, with <em>etpD</em> restored, must be able to adhere to human tissue/catheter material</li>
-</ol>
-<section id="testing-the-postulates" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="testing-the-postulates"><span class="header-section-number">5.1</span> Testing the postulates</h2>
-<p>The first of these postulates can be tested using the wild-type/control strain of UPEC.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It is not straightforward to measure <em>adherence</em> directly, so an <strong>indirect</strong> assay is performed.</p>
-<p>Rather than measuring adherence directly, <strong>the amount of bacteria recovered from material exposed to the bacteria</strong> is measured (as log(CFU) - log of the colony forming unit/mL count)</p>
-<p>The assumption is made that if the bacteria do not adhere well to a substrate, like catheter material, then after exposure fewer bacteria can be recovered from that material. If the bacteria do adhere well, then we should be able to recover more bacteria. In this way, logCFU is expected to be a proxy for bacterial adherence.</p>
-</div>
-</div>
-<p>For this experiment either (i) strips of catheter tubing or (ii) human urinary tract tissue samples were washed and incubated in bacterial suspension (about <span class="math inline">\(10^7\)</span> CFU in phosphate-buffered saline (PBS), OD=0.02) for two hours at 18degC. On removal from suspension the material was vigorously washed three times with sterile PBS on a vortexer, weighed and homogenised. The samples were then serially diluted and plated on MacConkey’s agar for bacterial counts.</p>
-<section id="making-a-knockout" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="making-a-knockout"><span class="header-section-number">5.1.1</span> Making a knockout</h3>
-<p>The <em>etpD</em> sequence was obtained from the sequencing reads in the earlier experiment, and a defined deletion was constructed using allelic exchange. The deletion was confirmed to be successful using PCR (polymerase chain reaction) and Sanger sequencing. The resulting strain is <span class="math inline">\(\Delta\)</span><em>etpD</em>, and can be used to test the second part of the postulates above.</p>
+<section id="workshop-goals" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="workshop-goals"><span class="header-section-number">9.1</span> Workshop goals</h2>
+<p>Our goal in this workshop was to help you:</p>
+<ul>
+<li>Plot experimental data using <code>R</code> and <code>ggplot2</code></li>
+<li>Use and interpret box-and-whisker, violin, and 1D scatter plots</li>
+<li>Use linear modelling to estimate effect sizes of biological interventions in knockout/complement assay</li>
+<li>Use linear mixed models to correct for experimental batch effects in knockout/complement assay</li>
+</ul>
+<section id="plotting-experimental-data" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="plotting-experimental-data"><span class="header-section-number">9.1.1</span> Plotting experimental data</h3>
+<p>In <a href="ggplot.html" class="quarto-xref"><span>Chapter 2</span></a> we introduced the principles of the grammar of graphics that underpin <code>ggplot2</code>, <code>R</code>’s popular and widely-used data visualisation package. This took you through the concepts behind data, aesthetics, geoms, and layers as components of a <code>ggplot2</code> figure, and gave you some practice in using them in combination.</p>
 </section>
-<section id="making-a-complemented-strain" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="making-a-complemented-strain"><span class="header-section-number">5.1.2</span> Making a complemented strain</h3>
-<p>To test the third and final postulate, the <span class="math inline">\(\Delta\)</span><em>etpD</em> strain must be complemented with an additional plasmid that reintroduces the <em>etpD</em> gene.</p>
-<p>Merely having the gene is not sufficient, though - the gene must also be <em>expressed</em> and produce the corresponding <em>gene product</em> (i.e.&nbsp;the protein EtpD). To ensure this happens, the <em>etpD</em> gene is introduced on a plasmid that contains an upstream promoter. It is convenient to make this promoter respond to a chemical signal that the experimenters provide, turning on expression of the gene and production of the EtpD protein.</p>
-<p>In this experiment, the <em>etpD</em> gene was cloned into the IPTG (Isopropyl β-d-1-thiogalactopyranoside, a lactose mimic)-inducible plasmid pSE380, and this was transformed into the mutant <span class="math inline">\(\Delta\)</span><em>etpD</em> strain.</p>
+<section id="use-and-interpret-box-and-whisker-violin-and-1d-scatter-plots" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="use-and-interpret-box-and-whisker-violin-and-1d-scatter-plots"><span class="header-section-number">9.1.2</span> Use and interpret box-and-whisker, violin, and 1D scatter plots</h3>
+<p>Then, after describing how the experimental data we presented you with was obtained, we walked through visualising the data with some specific geoms (<code>geom_jitter()</code> and <code>geom_boxplot()</code>) in <span class="quarto-unresolved-ref">?sec-visuaising-data</span>. This visualisation indicated that there was a batch effect that might influence our quantitative results, and our overall interpretation of the experiment.</p>
 </section>
-<section id="one-more-control" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="one-more-control"><span class="header-section-number">5.1.3</span> One more control</h3>
-<p>To establish whether or not the plasmid vector pSE380 by itself makes any contribution to adherence, the <span class="math inline">\(\Delta\)</span><em>etpD</em> strain was also transformed with an “empty” pSE380 plasmid vector containing <strong>no</strong> <em>etpD</em> gene.</p>
-<p>This was not necessary to test the postulates above, but it is good practice to eliminate an unexpected effect due only to the plasmid.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Recovery of bacteria, measured as logCFU, was performed identically for wild-type/control, knockout, empty vector, and complemented strains.</p>
-</div>
-</div>
+<section id="use-linear-modelling" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="use-linear-modelling"><span class="header-section-number">9.1.3</span> Use linear modelling</h3>
+<p>After an introduction to how a linear model could be constructed to represent the experimental situation, we walked through an application of linear modelling in <a href="modelling_data.html" class="quarto-xref"><span>Chapter 7</span></a>. This gave us estimates for the recovery expected from the wild type UPEC, and the effectsof knocking out the <em>etpD</em> gene, introducing a plasmid vector, and complemeting the <em>etpD</em> gene back into the mutant.</p>
+<p>Notably, you found that the data did not quite support Falkow’s adaptation of Koch’s postulates for <em>etpD</em>, and it was possible that this was due to the influence of the batch effects we saw in <span class="quarto-unresolved-ref">?sec-visuaising-data</span>.</p>
+</section>
+<section id="use-linear-mixed-models" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="use-linear-mixed-models"><span class="header-section-number">9.1.4</span> Use linear mixed models</h3>
+<p>In <a href="eliminating_batches.html" class="quarto-xref"><span>Chapter 8</span></a> you used limear mixed models to account for the influence of these batch effects, resulting in more precise estimates of the effect of knocking out and complementing the <em>etpD</em> gene, which allowed us to satisfy Koch’s postulates for <em>etpD</em> with catheter material, but not for human tissue.</p>
 </section>
 </section>
-<section id="what-next" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="what-next"><span class="header-section-number">5.2</span> What next?</h2>
-<p>Having collected the bacterial counts for all of these experiments, it now falls to you to carry out the analysis and determine whether the postulates are satisfied.</p>
+<section id="final-summary" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="final-summary"><span class="header-section-number">9.2</span> Final summary</h2>
+<p>We hope you have enjoyed learning more about using <code>R</code> and <code>ggplot2</code> to generate data visualisations, and how linear modelling can be a powerful tool for interpreting experimental data.</p>
+<p>This is the first presentation of this material, and we would be very grateful to hear feedback about it and ideas for improvement <a href="mailto:leighton.pritchardL@strath.ac.uk">by email</a> or through the <a href="https://github.com/sipbs-compbiol/bm327-workshop-1/issues">GitHub repository Issues page</a>.</p>
 
 
 </section>
@@ -867,14 +812,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./part_02_batches.html" class="pagination-link" aria-label="A gene knockout experiment">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">A gene knockout experiment</span>
+      <a href="./part_04_conclusion.html" class="pagination-link" aria-label="Conclusion">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conclusion</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./visualising_batches.html" class="pagination-link" aria-label="Visualising Experimental Data">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -885,7 +827,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/experiment_2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/summary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

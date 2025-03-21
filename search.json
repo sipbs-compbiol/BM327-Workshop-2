@@ -452,5 +452,48 @@
       "A gene knockout experiment",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Eliminating batch effects</span>"
     ]
+  },
+  {
+    "objectID": "part_04_conclusion.html",
+    "href": "part_04_conclusion.html",
+    "title": "Conclusion",
+    "section": "",
+    "text": "This workshop has introduced a lot of new concepts and techniques that we hope will be useful to you in your future career as a scientist, and we will consider these on the next page.",
+    "crumbs": [
+      "Conclusion"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "9  Summary",
+    "section": "",
+    "text": "9.1 Workshop goals\nOur goal in this workshop was to help you:",
+    "crumbs": [
+      "Conclusion",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html#workshop-goals",
+    "href": "summary.html#workshop-goals",
+    "title": "9  Summary",
+    "section": "",
+    "text": "Plot experimental data using R and ggplot2\nUse and interpret box-and-whisker, violin, and 1D scatter plots\nUse linear modelling to estimate effect sizes of biological interventions in knockout/complement assay\nUse linear mixed models to correct for experimental batch effects in knockout/complement assay\n\n\n9.1.1 Plotting experimental data\nIn Chapter 2 we introduced the principles of the grammar of graphics that underpin ggplot2, R’s popular and widely-used data visualisation package. This took you through the concepts behind data, aesthetics, geoms, and layers as components of a ggplot2 figure, and gave you some practice in using them in combination.\n\n\n9.1.2 Use and interpret box-and-whisker, violin, and 1D scatter plots\nThen, after describing how the experimental data we presented you with was obtained, we walked through visualising the data with some specific geoms (geom_jitter() and geom_boxplot()) in ?sec-visuaising-data. This visualisation indicated that there was a batch effect that might influence our quantitative results, and our overall interpretation of the experiment.\n\n\n9.1.3 Use linear modelling\nAfter an introduction to how a linear model could be constructed to represent the experimental situation, we walked through an application of linear modelling in Chapter 7. This gave us estimates for the recovery expected from the wild type UPEC, and the effectsof knocking out the etpD gene, introducing a plasmid vector, and complemeting the etpD gene back into the mutant.\nNotably, you found that the data did not quite support Falkow’s adaptation of Koch’s postulates for etpD, and it was possible that this was due to the influence of the batch effects we saw in ?sec-visuaising-data.\n\n\n9.1.4 Use linear mixed models\nIn Chapter 8 you used limear mixed models to account for the influence of these batch effects, resulting in more precise estimates of the effect of knocking out and complementing the etpD gene, which allowed us to satisfy Koch’s postulates for etpD with catheter material, but not for human tissue.",
+    "crumbs": [
+      "Conclusion",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html#final-summary",
+    "href": "summary.html#final-summary",
+    "title": "9  Summary",
+    "section": "9.2 Final summary",
+    "text": "9.2 Final summary\nWe hope you have enjoyed learning more about using R and ggplot2 to generate data visualisations, and how linear modelling can be a powerful tool for interpreting experimental data.\nThis is the first presentation of this material, and we would be very grateful to hear feedback about it and ideas for improvement by email or through the GitHub repository Issues page.",
+    "crumbs": [
+      "Conclusion",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Summary</span>"
+    ]
   }
 ]
