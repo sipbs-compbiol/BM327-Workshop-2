@@ -1,6 +1,6 @@
 # An introduction to `ggplot2`
 
-`ggplot2` is a very widely-used, expressive, and extremely powerful data visualisation package in `R`. Many of the graphics you may have seen at websites and media organisations like the Financial Times, The Economist, FiveThirtyEight and so on are generated using `R`.
+`ggplot2` is a very widely-used, expressive, and extremely powerful data visualisation package in `R`. Many of the graphics you may have seen at websites and media organisations like the _Financial Times_, _The Economist_, _FiveThirtyEight_, _The Athletic_ and so on are generated using `R`. It is also widely used in the NHS.
 
 In this section, you will be introduced to `ggplot2` and use it interactively to generate complex plots of socioeconomic data, to get some practice and facility with the tool.
 
