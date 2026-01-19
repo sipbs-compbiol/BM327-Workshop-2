@@ -15,7 +15,9 @@ There is new material in this workshop that is not covered in lectures, and **th
 The workshop material will remain live online for the duration of BM327, and you can revisit it whenever you wish, for practice or revision.
 :::
 
+::: { .callout-note }
 **You should be able to complete this workshop in under two hours.**
+:::
 
 ## Learning Objectives
 
