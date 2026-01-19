@@ -17,23 +17,25 @@ library(tidyverse)
 ```
 
 ::: { .callout-note }
-It may take a couple of minutes to install the necessary packages in `WebR` - please be patient.
+It may take a couple of minutes to install the necessary packages for `WebR` in your browser - please be patient.
 :::
+
+## Introduction
 
 In this section you will meet `ggplot2`, a very popular and powerful data visualisation package in `R`. We will also learn about the "grammar of graphics," a way of thinking about constructing data visualisations that also is the source of the `gg` in `ggplot2`.
 
-The grammar of graphics is a set of concepts relevant to visualising data. It separates the data from the way the data is represented, which may be a new approach to you - it's certainly different to the way Excel and Graphpad Prism choose to control visualisation. It is, though, highly effective for generating powerful visualisations.
+The grammar of graphics is a set of concepts relevant to visualising data. It separates the data from the way the data is represented, which may be a new approach to you - it's certainly different to the way Excel and Graphpad Prism choose to control visualisation. It is, though, highly effective for generating powerful visualisations that best get across the message of the specific application, rather than relying on a list of predefined graph types.
 
 ## Load in the data
 
-In order to visualise data using `ggplot2` in `R`, we have to load it. We have provided the data for this walkthrough in the file `gapminder.csv`, which can be loaded with the command:
+In order to visualise data using `ggplot2` in `R`, we have to load that data into `R`. We have provided the data for this walkthrough in the file `gapminder.csv`, which can be loaded with the command:
 
 ```r
 gapminder <- read_csv("gapminder.csv", col_types="fnnfnn")
 ```
 
 ::: { .callout-tip collapse="true" title="Hint"}
-The column types are, in order: factor, number, number, factor, number, number and can be expressed as `"fnnfnn"` for the `col_types` option in `read_csv()`.
+The column types in this data are, in order: factor, number, number, factor, number, number and can be expressed as `"fnnfnn"` for the `col_types` option in `read_csv()`.
 
 Using the `col_types` option means that `R` "knows" what the data in each column should be, and report problems if they arise.
 :::
@@ -45,6 +47,12 @@ Using the `col_types` option means that `R` "knows" what the data in each column
 
 
 ```
+
+::: { .callout-important }
+When you load the data, you will not see any visual indication that the data is loaded. Once you have run the appropriate command in the cell, you should move to the next subsection to see how to inspect the data.
+:::
+
+The data is loaded into a _dataframe_, which is given the name `gapminder`. We can refer to the dataset using that name in our `R` code.
 
 ## Inspect the data
 
@@ -67,6 +75,41 @@ Here, `str` is an abbreviation of "structure" and the command will show us the s
 
 ```
 
+::: { .callout-info collapse="true" title="What does the output mean?" }
+The `str(gapminder)` command shows a detailed account of the types of data contained in the dataset. Focusing on the key part of the output, it shows:
+
+```r
+ $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
+ $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
+ $ continent: Factor w/ 5 levels "Asia","Europe",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+ $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+```
+
+which tells us there are six columns: `country`, `year`, `pop`, `continent`, `lifeExp`, and `gdpPercap`. Four of these columns contain simple numeric data (`num`), and two are "factors" (`Factor`) so are some kind of category. Here the factors are country name and continent.
+
+The `summary(gapminder)` command shows a summary of the data in each column. For the factors, the first six categories are listed, with the count of the number of rows of data belonging to each category. For the numerical columns, the range of values in that column are shown.
+
+```r
+        country          year           pop               continent  
+ Afghanistan:  12   Min.   :1952   Min.   :6.001e+04   Asia    :396  
+ Albania    :  12   1st Qu.:1966   1st Qu.:2.794e+06   Europe  :360  
+ Algeria    :  12   Median :1980   Median :7.024e+06   Africa  :624  
+ Angola     :  12   Mean   :1980   Mean   :2.960e+07   Americas:300  
+ Argentina  :  12   3rd Qu.:1993   3rd Qu.:1.959e+07   Oceania : 24  
+ Australia  :  12   Max.   :2007   Max.   :1.319e+09                 
+ (Other)    :1632                                                    
+    lifeExp        gdpPercap       
+ Min.   :23.60   Min.   :   241.2  
+ 1st Qu.:48.20   1st Qu.:  1202.1  
+ Median :60.71   Median :  3531.8  
+ Mean   :59.47   Mean   :  7215.3  
+ 3rd Qu.:70.85   3rd Qu.:  9325.5  
+ Max.   :82.60   Max.   :113523.1 
+```
+:::
+
 ## A basic scatterplot
 
 You can use `ggplot2` in a similar way to other tools (like Excel and Prism) to produce "canned" visualisations like scatterplots. Here, we need to specify which data go on the _x_ and _y_ axes, and the dataframe we're using, and some options like which variable to use to colour datapoints. For example, the code:
@@ -84,7 +127,11 @@ will generate a (quick, hence `qplot()`) scatterplot of GDP per capita (`gdpPerc
 
 ```
 
-Although the plot looks to be nice enough, it's still constraining and doesn't really express the power of `ggplot2`. 
+Although the plot looks to be nice enough, it's still constraining and doesn't really express the power of `ggplot2`.
+
+::: { .callout-note }
+You may see a message that warns: `qplot() was deprecated in ggplot2 3.4.0`. This message tells us that, eventually, `qplot()` will be removed from `ggplot2`, as a way of encouraging users to learn `ggplot()`, as we will in the rest of this workshop.
+:::
 
 ## The grammar of graphics
 
