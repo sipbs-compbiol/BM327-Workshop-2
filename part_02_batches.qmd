@@ -17,9 +17,9 @@ In real life experiments are not always "clean," in the sense that we cannot alw
 In this part of the workshop you will work with real experimental data which, due to the need to spread the work over a period of months required parts of the experiment to be performed by different people at different times.
 
 ::: { .callout-caution }
-The situation we consider here, where more than one researcher carries out sections of the experiment months apart, is quite obvious. The scientists involved knew that there might be an infuence on the outcome and took it into account when recording their data.
+The situation we consider here, where more than one researcher carries out sections of the experiment months apart, is possibly obvious. The scientists involved considered this ahead of time. They knew that there might be an influence of the individual conducting the experiment on the outcome, and took it into account when recording their data.
 
-However, many such interfering effects can creep into experimental data without our realising it. **It is always good practice to investigate your experimental data to look for evidence of similar kinds of effects.**
+However, many such interfering effects can creep into experimental data without our realising it. **It is always good practice to investigate your experimental data to look for evidence of similar kinds of effects.** (But teaching you _how_ to do this is beyond the scope of this workshop.)
 
 As you will see, it can be possible to account and correct for these effects when they arise.
 :::
