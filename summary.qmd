@@ -21,7 +21,7 @@ Then, after describing how the experimental data we presented you with was obtai
 
 After an introduction to how a linear model could be constructed to represent the experimental situation, we walked through an application of linear modelling in @sec-modelling-batches. This gave us estimates for the recovery expected from the wild type UPEC, and the effectsof knocking out the _etpD_ gene, introducing a plasmid vector, and complemeting the _etpD_ gene back into the mutant.
 
-Notably, you found that the data did not quite support Falkow's adaptation of Koch's postulates for _etpD_, and it was possible that this was due to the influence of the batch effects we saw in @sec-visuaising-data.
+Notably, you found that the data did not quite support Falkow's adaptation of Koch's postulates for _etpD_, and it was possible that this was due to the influence of the batch effects we saw in @sec-visualising-data.
 
 ### Use linear mixed models
 
@@ -31,7 +31,8 @@ In @sec-removing-batch-effects you used limear mixed models to account for the i
 
 We hope you have enjoyed learning more about using `R` and `ggplot2` to generate data visualisations, and how linear modelling can be a powerful tool for interpreting experimental data.
 
-This is the first presentation of this material, and we would be very grateful to hear feedback about it and ideas for improvement [by email](mailto:{{< var admin.email >}}) or through the [GitHub repository Issues page]({{< var github.issues >}}).
-
+::: { .callout-note }
+We would be very grateful to hear feedback about this material, and any ideas for improvement, [by email](mailto:{{< var admin.email >}}) or through the [GitHub repository Issues page]({{< var github.issues >}}).
+:::
 
 

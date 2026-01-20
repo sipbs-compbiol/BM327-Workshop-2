@@ -2,7 +2,7 @@
 
 Welcome to BM327 (Being a Biomolecular Scientist 3) bioinformatics workshop 2 for {{< var ay >}}.
 
-This is the first presentation of this material, and we would be very grateful to hear feedback about it [by email](mailto:{{< var admin.email >}}) or through the [GitHub repository Issues page]({{< var github.issues >}}).
+We would be very grateful to hear feedback about this material [by email](mailto:{{< var admin.email >}}) or through the [GitHub repository Issues page]({{< var github.issues >}}).
 
 ## Overview
 
