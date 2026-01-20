@@ -1,49 +1,23 @@
----
-webr:
-    packages: ["tidyverse"]
-filters:
-  - webr
----
-
 # Modelling Experimental Data { #sec-modelling-batches }
-
-```{webr-r}
-#| context: setup
-
-# Download experiment data
-download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/tissue.csv", "tissue.csv")
-download.file("https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/catheter.csv", "catheter.csv")
-
-library(tidyverse)
-
-tissue <- read_csv("tissue.csv", col_types="fniniii")
-catheter <- read_csv("catheter.csv", col_types="fniniii")
-```
-
-::: { .callout-note }
-It may take a couple of minutes to install the necessary packages in `WebR` - please be patient.
-
-**This page preloads the datasets as `tissue` and `catheter` for use in `R` cells.**
-:::
 
 ## Introduction
 
 In @sec-visualising-data we used boxplots and scatterplots to visualise the data obtained from the adherence experiments with the wild-type (`WT`), knockout (`KO`), empty vector (`empty`), and complemented gene (`complement`) lines.
 
-We saw that there appeared to be an effect of knocking out the _etpD_ gene on the adherence (_stickiness_) of bacteria to both human tissue and to the catheter material. However, restoring the _etpD_ gene appeared only to make a difference to adherence to the catheter material.
+We saw that there appeared to be an effect of knocking out the _etpD_ gene on the adherence (_stickiness_) of bacteria to both human tissue and to the catheter material. However, restoring the _etpD_ gene appeared only to make a difference for adherence to the catheter material.
 
 ::: { .callout-important }
 We also observed an apparent batch effect in both sets of experiments, where the results obtained appeared to be strongly affected by which experimental batch they were obtained in.
 
-**We should like to remove the influence of these _batch effects_ as they make our results less reliable as a representation of the biological influence of the _etpD_ gene.**
+**We should like to remove the influence of these _batch effects_ as they would be expected make our results less reliable as a representation of the biological influence of the _etpD_ gene.**
 
 (we will do this in the next section, @sec-removing-batch-effects)
 :::
 
 ::: { .callout-caution }
-All our conclusions so far have been drawn from visual inspection of graphs, but we can do better than this by _modelling_ the influence of biological factors of interest on our outcome (i.e. logCFU/mL).
+All our conclusions so far have been drawn from visual inspection of graphs, but we can do better than this by _modelling_ the influence of biological factors of interest on our outcome (i.e. logCFU/mL) _statistically_.
 
-**By using statistical modelling approaches, we can _estimate_ the _quantitative_ influence of (i) knocking out the gene, (ii) introducing an empty plasmid, and (iii) reintroducing the gene as a complement** and we shall do this below.
+**By using statistical modelling approaches, we can _estimate_ the _quantitative_ influence of (i) knocking out the gene, (ii) introducing an empty plasmid, and (iii) reintroducing the gene as a complement.** We shall do this below.
 :::
 
 ## The Model
@@ -54,45 +28,49 @@ First though, we start with a baseline level of "stickiness…"
 
 ### The baseline: wild-type adherence (`WT`)
 
-The wild-type (control) line is expected to display the baseline level of adherence for the bacteria.
+The wild-type (control) line is expected to display a baseline level of adherence for the bacteria: how "sticky" the bacterium is when we don't interfere with it.
 
 So, when we measure the `WT` line we are establishing the natural baseline "stickiness" of the bacterium, measured as logCFU recovered from the substrate. In statistical terms we might make this into an equation like:
 
-$$ \textrm{measured logCFU} = \textrm{baseline} $$ {#eq-baseline}
+$$ \textrm{measured logCFU (WT)} = \textrm{baseline} $$ {#eq-baseline}
 
-and @eq-baseline says "the logCFU we measure for any wild-type bacterium is that of the baseline, wild-type organism."
+and @eq-baseline says "the logCFU we measure for any wild-type bacterial sample is representative of the baseline, wild-type organism."
 
+::: { .callout-important }
 In reality though, we always expect some completely random experimental measurement error, which we can represent with the symbol $\epsilon$ (epsilon) as @eq-baseline-eps:
 
-$$ \textrm{measured logCFU} = \textrm{baseline} + \epsilon $$ {#eq-baseline-eps}
+$$ \textrm{measured logCFU (WT)} = \textrm{baseline} + \epsilon $$ {#eq-baseline-eps}
 
-i.e. "the logCFU we measure for any wild-type bacterium is that of the baseline, wild-type organism, plus or minus some measurement error."
+i.e. "the logCFU we measure for any wild-type bacterial sample is representative of the baseline, wild-type organism, plus or minus some measurement error ($\epsilon$)."
+
+**(statistics is all about estimating the representative value, in the presence of errors like this)**
+:::
 
 ### The first intervention: knocking out a gene of interest (`KO`)
 
-If we don't knock out a gene from a bacterium it is just the same as the wild type. We'd expect the logCFU we recover from the substrate to be the baseline logCFU.
+If we don't knock out a gene from a bacterium it is just the same as the wild type, and we'd expect the logCFU we recover from the substrate to be the baseline logCFU.
 
-But, if we do knock out a gene, we can represent the measured logCFU for that bacterium by @eq-ko:
+But, if we _do_ knock out a gene, we can represent the measured logCFU for that bacterium by @eq-ko:
 
-$$ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \epsilon $$ {#eq-ko}
+$$ \textrm{measured logCFU (KO)} = \textrm{baseline} + \textrm{knockout} + \epsilon $$ {#eq-ko}
 
-which says "the logCFU we measure for the bacterium is the baseline level, _plus the effect of knocking out the gene_."
+which says "the logCFU we measure for the bacterium is the baseline level, _plus the effect of knocking out the gene_ (plus random error)."
 
 Essentially the difference in measured logCFU between the `WT` and `KO` groups is taken to be due to the effect of knocking out the gene of interest (plus or minus a bit of measurement error).
 
 ### Introducing the empty vector (`empty`)
 
-Introducing an empty plasmid vector puts strain on a bacterium and might affect its "stickiness." As we only introduce the empty vector into a knockout strain, the measured logCFU for that bacterium is that of the baseline plus the effect of the knockout, and any effect of including the empty vector. We can describe this in @eq-empty:
+Introducing an empty plasmid vector puts strain on a bacterium and might affect its "stickiness," even if only indirectly. We only introduce the empty vector into the knockout strain as a control for complementation, so the measured logCFU for that bacterium is that of the baseline plus the effect of the knockout, _and any effect of including the empty vector (plus random error). We can describe this in @eq-empty:
 
-$$ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \epsilon $$ {#eq-empty}
+$$ \textrm{measured logCFU (empty)} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \epsilon $$ {#eq-empty}
 
-which says "the logCFU we measure for the bacterium is the baseline level, plus the effect of knocking out the gene of interest, and the effect of introducing an empty vector (plus or minus some measurement error)."
+which says "the logCFU we measure for the bacterium is the baseline level, plus the effect of knocking out the gene of interest, plus the effect of introducing an empty vector (plus or minus some measurement error)."
 
 ### Complementing the gene (`complement`)
 
-Finally, reintroducing the gene on the plasmid vector (complementing the gene) is expected to change the logCFU recovered. The effect of introducing the gene is added on to the effect of knocking it out and introducing an empty plasmid, and is described in @eq-complement:
+Finally, reintroducing the gene on a plasmid vector (complementing the gene) is expected to change the logCFU recovered. The effect of introducing the gene is added on to the effect of knocking it out and introducing an empty plasmid, and is described in @eq-complement:
 
-$$ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \epsilon $$ {#eq-complement}
+$$ \textrm{measured logCFU (complement)} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \epsilon $$ {#eq-complement}
 
 ### So what?
 
@@ -101,265 +79,6 @@ By now you might be thinking: "we've made an equation that represents the quanti
 To get those numbers, we can use a statistical technique called _linear modelling_ (aka _linear regression_). It is very powerful and useful, and remarkably straightforward to use in `R`.
 
 ::: { .callout-note }
-We will walk through the modelling process for the catheter data, but modelling the tissue data is left as an exercise for you to solve.
+We will walk through the linear regression fitting process for the catheter data in @sec-fitting-data, but modelling the tissue data is left as an exercise for you to solve.
 :::
 
-## Fitting the catheter model
-
-We will use the `R` built-in function `lm()` to fit the model in @eq-complement to our `catheter` dataset in the `WebR` cells below.
-
-### Load the data
-
-::: { .callout-important }
-**We have preloaded the data for you as the dataframes `tissue` and `catheter`.**
-
-Use the `WebR` cell below to confirm the catheter data is loaded
-:::
-
-```{webr-r}
-# Use head(catheter) to inspect the catheter data
-
-
-```
-
-Note that the data contains three columns: `KO`, `empty`, and `complement` that contain either a `1` or `0` value.
-
-These columns describe whether the logCFU measurement in the row corresponds to a line that is affected by a gene knockout (`KO` = `1`), the presence of a plasmid vector (`empty` = `1`), or the reintroduced gene (`complement` = `1`). **These columns allow us to use the `lm()` function to estimate the influence of each biological intervention.**
-
-::: { .callout-note }
-We assume that measurements of the bacteria all share the same (wild-type) baseline.
-:::
-
-### Define the model
-
-`R` uses a specific syntax for defining a _model_, where factors of interest influence a measured value.
-
-Here, our measured value is in the column `logCFU`, and is assumed to be influenced by factors in the columns `KO`, `empty`, and `complement` (where they apply/are equal to one). We represent this with the `R` statement below:
-
-```r
-logCFU ~ KO + empty + complement
-```
-
-which reads: "`logCFU` is influenced by (`~`) the sum of effects of `KO`, `empty`, and `complement` (where they apply)."
-
-### Fit the model
-
-To fit our data to this model, we use this _model definition_ in the `lm()` function as below (specifying that the dataframe we're using is `catheter`):
-
-```r
-catheter_model <- lm(logCFU ~ KO + empty + complement, data=catheter)
-```
-
-::: { .callout-challenge }
-**Fit the catheter data to this model in the `WebR` cell below.**
-
-Use the `R` code:
-
-```r
-catheter_model <- lm(logCFU ~ KO + empty + complement, data=catheter)
-```
-:::
-
-```{webr-r}
-# Fit the catheter data to the model
-# Use the R function below
-# catheter_model <- lm(logCFU ~ KO + empty + complement, data=catheter)
-
-
-```
-
-## Interpreting the catheter model
-
-The fitted model is stored in the variable `catheter_model`, and we can obtain useful information from it in a number of ways.
-
-### Coefficients and confidence intervals
-
-The _coefficients_ that the model reports are the estimated effects of each factor of interest. To obtain the coefficients, use the `R` code below to produce a summary of the fitted model:
-
-```r
-coef(catheter_model)
-```
-
-The _confidence intervals_ reported by the model are the range of values that the model thinks are most likely for the _coefficients_. These work the same way as coefficients for _t_-tests and similar statistical methods: the range of values bounded by the 2.5% and 97.5% confidence limits is a 95% confidence interval. We would expect that the _true_ value of the coefficient being estimated would lie in this range 95% of the time.
-
-To find the confidence intervals for the coefficients of the model, use the `R` code below:
-
-```r
-confint(catheter_model)
-```
-
-::: { .callout-challenge }
-**Find the estimated coefficients and corresponding confidence intervals for the catheter model in the `WebR` cell below.**
-
-Use the `R` code:
-
-```r
-coef(catheter_model)
-confint(catheter_model)
-```
-:::
-
-```{webr-r}
-# Find the estimated values for the model coefficients
-# coef(catheter_model)
-# confint(catheter_model)
-
-
-```
-
-### Reading the output
-
-You should see output that resembles the data below:
-
-```text
-(Intercept)          KO       empty  complement 
-  6.3382829  -0.3213144  -0.1465880   0.3986531 
-
-                  2.5 %      97.5 %
-(Intercept)  6.10862926 6.567936607
-KO          -0.64609377 0.003464903
-empty       -0.47136735 0.178191328
-complement   0.07387378 0.723432458
-```
-
-#### Coefficients
-
-The output of `coef(catheter_model)` shows values for each factor of interest in the column `Estimate`, plus a value for "`(Intercept)`."
-
-```text
-(Intercept)          KO       empty  complement 
-  6.3382829  -0.3213144  -0.1465880   0.3986531 
-```
-
-- `(Intercept)` is the wild-type (`WT`)/control logCFU value coefficient estimate. Here this is `6.34`, which looks to be a reasonable value by visual comparison with @fig-catheter-boxplot.
-- The `KO` coefficient estimate is `-0.32`, which indicates that knocking out the _etpD_ gene reduces the logCFU value by 0.32 units (as this is a log scale, that corresponds approximately to halving the number of recovered CFUs).
-- The `empty` coefficient estimate is `-0.15`, which indicates a further reduction in bacterial recovery is seen due to inserting the plasmid.
-- The `complement` coefficient estimate is `0.40` - of the same order as the reduction in logCFU seen for the gene knockout. This implies that returning the gene also restores bacterial recovery to the original, wild-type level.
-
-#### Confidence intervals
-
-The `confint(catheter_model)` output lists the expected 95% confidence intervals for the coefficients.
-
-```text
-                  2.5 %      97.5 %
-(Intercept)  6.10862926 6.567936607
-KO          -0.64609377 0.003464903
-empty       -0.47136735 0.178191328
-complement   0.07387378 0.723432458
-```
-
-::: { .callout-tip }
-**This is the more useful output for deciding whether there is a real effect due to a factor of interest**
-:::
-
-::: { .callout-warning }
-The point estimate of a coefficient may be non-zero, implying a negative or positive effect of that factor on the measured outcome but, **if the confidence interval includes zero it is not reasonable to exclude the possibility that there is actually no effect.**
-:::
-
-In this experiment, the confidence intervals tell us the following:
-
-- The `(Intercept)`/`WT`/baseline logCFU is likely to lie between `6.11` and `6.57` units
-- The effect of knocking out the gene (`KO`) is likely to lie between `-0.646` and `0.003` units which appears to be a negative effect, but as the interval includes zero we cannot strictly rule out that there is no effect
-- Introduction of the plasmid vector changes logCFU by between `-0.47` and `0.18` units which includes zero, and so we can't rule out that there is no effect
-- Complementing the _etpD_ gene (`complement`) increases logCFU by between `0.074` and `0.72` units, enhancing recovery of bacteria
-
-::: { .callout-caution }
-These results taken together suggest that knocking out the _etpD_ gene diminishes recovery of bacteria (implying reduced adherence) and that complementing the gene restores the recovery level. However, the statistics are equivoval because the `KO` confidence interval includes zero.
-
-We can, however, be reasonably certain that addition of the empty vector does not appear to influence logCFU strongly, as the confidence interval includes zero.
-:::
-
-## Fitting and interpreting the tissue model
-
-::: { .callout-challenge }
-**Fit the tissue data to this model, using the `WebR` cell below.**
-:::
-
-```{webr-r}
-# Fit the tissue data to the model
-# Use the WebR cells and instructions above
-# as a guide
-
-
-```
-
-::: { .callout-tip collapse="true" title="I need a hint"}
-Use the same functions as for the catheter model, but be sure to use the `tissue` dataset instead
-
-- Use `lm()` to fit the model
-- Use `coef()` and `confint()` to find the coefficients for the `WT`, `KO`, `empty`, and `complement` factors of interest
-:::
-
-::: { .callout-warning collapse="true" title="Help, I'm stuck!"}
-Use the `R` code below to fit the model
-
-```r
-tissue_model <- lm(logCFU ~ KO + empty + complement, data=tissue)
-```
-
-Use the `R` code below to see the estimated coefficients and confidence intervals
-
-```r
-coef(tissue_model)
-confint(tissue_model)
-```
-:::
-
-### Interpreting the results
-
-::: { .callout-questions }
-What are the coefficients of the four factors of interest, and what do they imply about the effects of each factor?
-
-- `WT`/`(Intercept)`
-- `KO`
-- `empty`
-- `complement`
-:::
-
-::: { .callout-tip collapse="true" title="Answers"}
-```r
-> coef(tissue_model)
-(Intercept)          KO       empty  complement 
- 6.54455199 -0.30834731 -0.06356898 -0.05806111 
-```
-
-- The `(Intercept)` value is `6.54`, which is consistent with the baseline recovery from the catheter experiment
-- The `KO` value is `-0.31`, which is negative, so consistent with _etpD_ deletion resulting in reduced recovery of bacteria/reduced adhesion
-- The `empty` value is `-0.06` which is close to zero and consistent with there being no strong effect on logCFU due to incorporation of the plasmid vector
-- The `complement` value is `-0.06` which is also small and close to zero, consistent with there being no strong effect on logCFU due to reintroduction of the _etpD_ gene
-:::
-
-::: { .callout-questions }
-What are the confidence intervals for the coefficients of the four factors of interest, and what do they imply about the effects of each factor?
-
-- `WT`/`(Intercept)`
-- `KO`
-- `empty`
-- `complement`
-:::
-
-::: { .callout-tip collapse="true" title="Answers"}
-```r
-> confint(tissue_model)
-                 2.5 %     97.5 %
-(Intercept)  6.4070598  6.6820442
-KO          -0.5027906 -0.1139040
-empty       -0.2580123  0.1308744
-complement  -0.2525044  0.1363822
-```
-
-- The `(Intercept)` value lies between `6.41` and `6.68`, which is consistent with the baseline recovery from the catheter experiment
-- The `KO` value lies between `-0.50` and `-0.11`, which are both negative so this is consistent with _etpD_ deletion resulting in reduced recovery of bacteria/reduced adhesion
-- The `empty` confidence interval includes zero and is consistent with there being no strong effect on logCFU due to incorporation of the plasmid vector
-- The `complement` confidence interval includes zero and is consistent with there being no strong effect on logCFU due to reintroduction of the _etpD_ gene
-:::
-
-## But wait!
-
-Back in @sec-visualising-data we saw that the experimental data was affected by _batch effects_ - systematic influences on the measured values that seemed to come from the way the experiment was conducted, not the biological factors whose influence we actually wanted to measure.
-
-::: { .callout-caution }
-**Maybe the results we have just obtained aren't as correct, or at least as accurate, as they seem because of these systematic batch effects?**
-
-We should try to account for systematic batch effects as much as possible, and we'll do this in the next section.
-:::
