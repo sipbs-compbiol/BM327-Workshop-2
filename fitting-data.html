@@ -8,7 +8,7 @@
 
 <meta name="author" content="Leighton Pritchard">
 
-<title>6&nbsp; Visualising Experimental Data – BM327 Workshop 2: Identifying UTI Adhesion Factors</title>
+<title>8&nbsp; Fitting Experimental Data – BM327 Workshop 2: Identifying UTI Adhesion Factors</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./modelling_data.html" rel="next">
-<link href="./experiment_2.html" rel="prev">
+<link href="./eliminating_batches.html" rel="next">
+<link href="./modelling_data.html" rel="prev">
 <link href="./icon_32.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -80,9 +80,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-0dd2bd5de344125cf763a379ddc3eb04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,6 +108,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>
+div.callout-callout-questions.callout {
+  border-left-color: yellow;
+}
+div.callout-callout-questions.callout-style-default > .callout-header {
+  background-color: rgb(from yellow r g b / 13%);
+}
+div.callout-callout-questions .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-questions.callout-style-default .callout-icon::before, div.callout-callout-questions.callout-titled .callout-icon::before {
+  content: '🙋️';
+  background-image: none;
+}
+div.callout-callout-data.callout {
+  border-left-color: #32CD32;
+}
+div.callout-callout-data.callout-style-default > .callout-header {
+  background-color: rgba(50, 205, 50, 0.13);
+}
+div.callout-callout-data .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-data.callout-style-default .callout-icon::before, div.callout-callout-data.callout-titled .callout-icon::before {
+  content: '📊';
+  background-image: none;
+}
 div.callout-callout-microbe.callout {
   border-left-color: #1E90FF;
 }
@@ -133,15 +152,15 @@ div.callout-callout-thumbs-up.callout-style-default .callout-icon::before, div.c
   content: '👍';
   background-image: none;
 }
-div.callout-callout-challenge.callout {
-  border-left-color: aquamarine;
+div.callout-callout-case-study.callout {
+  border-left-color: #FFA500;
 }
-div.callout-callout-challenge.callout-style-default > .callout-header {
-  background-color: rgb(from aquamarine r g b / 13%);
+div.callout-callout-case-study.callout-style-default > .callout-header {
+  background-color: rgba(255, 165, 0, 0.13);
 }
-div.callout-callout-challenge .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-challenge.callout-style-default .callout-icon::before, div.callout-callout-challenge.callout-titled .callout-icon::before {
-  content: '🧑‍🏫';
+div.callout-callout-case-study .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-case-study.callout-style-default .callout-icon::before, div.callout-callout-case-study.callout-titled .callout-icon::before {
+  content: '🔍';
   background-image: none;
 }
 div.callout-callout-question.callout {
@@ -155,48 +174,15 @@ div.callout-callout-question.callout-style-default .callout-icon::before, div.ca
   content: '🙋';
   background-image: none;
 }
-div.callout-callout-data.callout {
-  border-left-color: #32CD32;
+div.callout-callout-challenge.callout {
+  border-left-color: aquamarine;
 }
-div.callout-callout-data.callout-style-default > .callout-header {
-  background-color: rgba(50, 205, 50, 0.13);
+div.callout-callout-challenge.callout-style-default > .callout-header {
+  background-color: rgb(from aquamarine r g b / 13%);
 }
-div.callout-callout-data .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-data.callout-style-default .callout-icon::before, div.callout-callout-data.callout-titled .callout-icon::before {
-  content: '📊';
-  background-image: none;
-}
-div.callout-callout-questions.callout {
-  border-left-color: yellow;
-}
-div.callout-callout-questions.callout-style-default > .callout-header {
-  background-color: rgb(from yellow r g b / 13%);
-}
-div.callout-callout-questions .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-questions.callout-style-default .callout-icon::before, div.callout-callout-questions.callout-titled .callout-icon::before {
-  content: '🙋️';
-  background-image: none;
-}
-div.callout-callout-todo.callout {
-  border-left-color: pink;
-}
-div.callout-callout-todo.callout-style-default > .callout-header {
-  background-color: rgb(from pink r g b / 13%);
-}
-div.callout-callout-todo .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-todo.callout-style-default .callout-icon::before, div.callout-callout-todo.callout-titled .callout-icon::before {
-  content: '📝';
-  background-image: none;
-}
-div.callout-callout-case-study.callout {
-  border-left-color: #FFA500;
-}
-div.callout-callout-case-study.callout-style-default > .callout-header {
-  background-color: rgba(255, 165, 0, 0.13);
-}
-div.callout-callout-case-study .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
-div.callout-callout-case-study.callout-style-default .callout-icon::before, div.callout-callout-case-study.callout-titled .callout-icon::before {
-  content: '🔍';
+div.callout-callout-challenge .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-challenge.callout-style-default .callout-icon::before, div.callout-callout-challenge.callout-titled .callout-icon::before {
+  content: '🧑‍🏫';
   background-image: none;
 }
 div.callout-callout-discussion.callout {
@@ -208,6 +194,17 @@ div.callout-callout-discussion.callout-style-default > .callout-header {
 div.callout-callout-discussion .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
 div.callout-callout-discussion.callout-style-default .callout-icon::before, div.callout-callout-discussion.callout-titled .callout-icon::before {
   content: '✨';
+  background-image: none;
+}
+div.callout-callout-todo.callout {
+  border-left-color: pink;
+}
+div.callout-callout-todo.callout-style-default > .callout-header {
+  background-color: rgb(from pink r g b / 13%);
+}
+div.callout-callout-todo .callout-toggle::before {  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(33, 37, 41)" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');}
+div.callout-callout-todo.callout-style-default .callout-icon::before, div.callout-callout-todo.callout-titled .callout-icon::before {
+  content: '📝';
   background-image: none;
 }
 </style>
@@ -511,7 +508,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Download experiment data\ndownload.file(\"https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/tissue.csv\", \"tissue.csv\")\ndownload.file(\"https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/catheter.csv\", \"catheter.csv\")\n\nlibrary(tidyverse)","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Load data from \"tissue.csv\" into a dataframe\n# Load data from \"catheter.csv\" into a dataframe\n# Use glimpse() or head() to inspect your data\n","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Use ggplot2 to visualise the catheter dataset\n# Use geom_boxplot() to show overall data distribution\n# Use geom_jitter() to show individual datapoints\n# Colour the datapoints to show batch-level variation\n","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Use ggplot2 to visualise the tissue dataset\n# Use geom_boxplot() to show overall data distribution\n# Use geom_jitter() to show individual datapoints\n# Colour the datapoints to show batch-level variation\n","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"# Download experiment data\ndownload.file(\"https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/tissue.csv\", \"tissue.csv\")\ndownload.file(\"https://raw.githubusercontent.com/sipbs-compbiol/BM327-Workshop-2/refs/heads/main/assets/data/catheter.csv\", \"catheter.csv\")\n\nlibrary(tidyverse)\n\ntissue <- read_csv(\"tissue.csv\", col_types=\"fniniii\")\ncatheter <- read_csv(\"catheter.csv\", col_types=\"fniniii\")","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Use head(catheter) to inspect the catheter data\n","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Fit the catheter data to the model\n# Use the R function below\n# catheter_model <- lm(logCFU ~ KO + empty + complement, data=catheter)\n","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Find the estimated values for the model coefficients\n# coef(catheter_model)\n# confint(catheter_model)\n","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Fit the tissue data to the model\n# Use the WebR cells and instructions above\n# as a guide\n","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1797,7 +1794,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating slimcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -1806,7 +1803,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./visualising_batches.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./fitting-data.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Fitting Experimental Data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1902,7 +1899,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./visualising_batches.html" class="sidebar-item-text sidebar-link active">
+  <a href="./visualising_batches.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></span></a>
   </div>
 </li>
@@ -1914,7 +1911,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fitting-data.html" class="sidebar-item-text sidebar-link">
+  <a href="./fitting-data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Fitting Experimental Data</span></span></a>
   </div>
 </li>
@@ -1953,27 +1950,27 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">6.1</span> Introduction</a></li>
-  <li><a href="#task-1-load-and-inspect-your-data" id="toc-task-1-load-and-inspect-your-data" class="nav-link" data-scroll-target="#task-1-load-and-inspect-your-data"><span class="header-section-number">6.2</span> Task 1: Load and inspect your data</a>
+  <li><a href="#fitting-the-catheter-model" id="toc-fitting-the-catheter-model" class="nav-link active" data-scroll-target="#fitting-the-catheter-model"><span class="header-section-number">8.1</span> Fitting the catheter model</a>
   <ul class="collapse">
-  <li><a href="#the-format-of-your-dataset" id="toc-the-format-of-your-dataset" class="nav-link" data-scroll-target="#the-format-of-your-dataset"><span class="header-section-number">6.2.1</span> The format of your dataset</a></li>
+  <li><a href="#load-the-data" id="toc-load-the-data" class="nav-link" data-scroll-target="#load-the-data"><span class="header-section-number">8.1.1</span> Load the data</a></li>
+  <li><a href="#define-the-model" id="toc-define-the-model" class="nav-link" data-scroll-target="#define-the-model"><span class="header-section-number">8.1.2</span> Define the model</a></li>
+  <li><a href="#fit-the-model" id="toc-fit-the-model" class="nav-link" data-scroll-target="#fit-the-model"><span class="header-section-number">8.1.3</span> Fit the model</a></li>
   </ul></li>
-  <li><a href="#visualise-the-datasets" id="toc-visualise-the-datasets" class="nav-link" data-scroll-target="#visualise-the-datasets"><span class="header-section-number">6.3</span> Visualise the datasets</a>
+  <li><a href="#interpreting-the-catheter-model" id="toc-interpreting-the-catheter-model" class="nav-link" data-scroll-target="#interpreting-the-catheter-model"><span class="header-section-number">8.2</span> Interpreting the catheter model</a>
   <ul class="collapse">
-  <li><a href="#the-catheter-material-dataset" id="toc-the-catheter-material-dataset" class="nav-link" data-scroll-target="#the-catheter-material-dataset"><span class="header-section-number">6.3.1</span> The catheter material dataset</a></li>
-  <li><a href="#the-human-tissue-dataset" id="toc-the-human-tissue-dataset" class="nav-link" data-scroll-target="#the-human-tissue-dataset"><span class="header-section-number">6.3.2</span> The human tissue dataset</a></li>
+  <li><a href="#coefficients-and-confidence-intervals" id="toc-coefficients-and-confidence-intervals" class="nav-link" data-scroll-target="#coefficients-and-confidence-intervals"><span class="header-section-number">8.2.1</span> Coefficients and confidence intervals</a></li>
+  <li><a href="#reading-the-output" id="toc-reading-the-output" class="nav-link" data-scroll-target="#reading-the-output"><span class="header-section-number">8.2.2</span> Reading the output</a></li>
   </ul></li>
-  <li><a href="#interpret-the-data" id="toc-interpret-the-data" class="nav-link" data-scroll-target="#interpret-the-data"><span class="header-section-number">6.4</span> Interpret the data</a>
+  <li><a href="#fitting-and-interpreting-the-tissue-model" id="toc-fitting-and-interpreting-the-tissue-model" class="nav-link" data-scroll-target="#fitting-and-interpreting-the-tissue-model"><span class="header-section-number">8.3</span> Fitting and interpreting the tissue model</a>
   <ul class="collapse">
-  <li><a href="#the-catheter-material-dataset-1" id="toc-the-catheter-material-dataset-1" class="nav-link" data-scroll-target="#the-catheter-material-dataset-1"><span class="header-section-number">6.4.1</span> The catheter material dataset</a></li>
-  <li><a href="#the-tissue-material-dataset" id="toc-the-tissue-material-dataset" class="nav-link" data-scroll-target="#the-tissue-material-dataset"><span class="header-section-number">6.4.2</span> The tissue material dataset</a></li>
-  <li><a href="#the-influence-of-batch-effects" id="toc-the-influence-of-batch-effects" class="nav-link" data-scroll-target="#the-influence-of-batch-effects"><span class="header-section-number">6.4.3</span> The influence of batch effects</a></li>
+  <li><a href="#interpreting-the-results" id="toc-interpreting-the-results" class="nav-link" data-scroll-target="#interpreting-the-results"><span class="header-section-number">8.3.1</span> Interpreting the results</a></li>
   </ul></li>
+  <li><a href="#but-wait" id="toc-but-wait" class="nav-link" data-scroll-target="#but-wait"><span class="header-section-number">8.4</span> But wait!</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/visualising_batches.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/fitting-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
 <script type="module" id="qwebr-monaco-editor-init">
 
@@ -2259,9 +2256,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./visualising_batches.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./part_02_batches.html">A gene knockout experiment</a></li><li class="breadcrumb-item"><a href="./fitting-data.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Fitting Experimental Data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-visualising-data" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualising Experimental Data</span></span></h1>
+<h1 class="title"><span id="sec-fitting-data" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Fitting Experimental Data</span></span></h1>
 </div>
 
 
@@ -2291,92 +2288,33 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>It may take a couple of minutes to install the necessary packages in <code>WebR</code> - please be patient.</p>
+<p><strong>This page preloads the datasets as <code>tissue</code> and <code>catheter</code> for use in <code>R</code> cells.</strong></p>
 </div>
 </div>
-<section id="introduction" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">6.1</span> Introduction</h2>
-<p>The experiment that was actually run to gather data on adherence to human tissue and catheter material ran into a few scheduling problems.</p>
-<p>In the end, the experiment was run by multiple scientists in the group, and measurements were taken in groups of five datapoints, where all five measurements (corresponding to a single bacterial line) were collected in the course of an afternoon.</p>
-<p>Each group, or <em>batch</em>, of five measurements contained results for only <em>one</em> of the <code>WT</code> (control), <code>KO</code> (knockout), <code>empty</code> (empty vector), and <code>complement</code> (complemented gene) lines.</p>
-<p>There were eight such groups or <em>batches</em> for the human tissue experiment, and four for the catheter material experiment.</p>
-</section>
-<section id="task-1-load-and-inspect-your-data" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="task-1-load-and-inspect-your-data"><span class="header-section-number">6.2</span> Task 1: Load and inspect your data</h2>
-<p>There are two data files containing your experimental data: <code>tissue.csv</code> and <code>catheter.csv</code>.</p>
-<div class="callout callout-style-default callout-callout-challenge callout-titled">
+<section id="fitting-the-catheter-model" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="fitting-the-catheter-model"><span class="header-section-number">8.1</span> Fitting the catheter model</h2>
+<p>We will use the <code>R</code> built-in function <code>lm()</code> to fit the model in <a href="#eq-complement" class="quarto-xref">Equation&nbsp;<span>8.1</span></a> (see <a href="modelling_data.html" class="quarto-xref"><span>Chapter 7</span></a>) to our <code>catheter</code> dataset in the <code>WebR</code> cells below.</p>
+<p><span id="eq-complement"><span class="math display">\[ \textrm{measured logCFU (complement)} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \epsilon  \tag{8.1}\]</span></span></p>
+<section id="load-the-data" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="load-the-data"><span class="header-section-number">8.1.1</span> Load the data</h3>
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-challenge</span>Load your data from file
+Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use the <code>WebR</code> cell below to load your data into two variables: <code>tissue</code> for the human tissue experiment, and <code>catheter</code> for the catheter material experiment.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Hint">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The column types are, in order: factor, number, integer, number, integer, integer, integer and can be expressed as <code>"fniniii"</code> for the <code>col_types</code> option in <code>read_csv()</code></p>
-</div>
-</div>
-</div>
+<p><strong>We have preloaded the data for you as the dataframes <code>tissue</code> and <code>catheter</code>.</strong></p>
+<p>Use the <code>WebR</code> cell below to confirm the catheter data is loaded</p>
 </div>
 </div>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled" title="I need a hint">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>I need a hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ul>
-<li>Use <code>read_csv()</code> to load your data into two different dataframes</li>
-<li>Use <code>glimpse()</code> or <code>head()</code> to inspect the format of your data</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled" title="Help, I'm stuck!">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Help, I’m stuck!
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Use the <code>R</code> code below to load your data</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tissue <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"tissue.csv"</span>, <span class="at">col_types=</span><span class="st">"fniniii"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>catheter <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"catheter.csv"</span>, <span class="at">col_types=</span><span class="st">"fniniii"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Use the <code>R</code> code below to inspect your data</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(tissue)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(catheter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<section id="the-format-of-your-dataset" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="the-format-of-your-dataset"><span class="header-section-number">6.2.1</span> The format of your dataset</h3>
-<p>Your dataset has been provided in a specific format to make plotting and analysis easier for this workshop.</p>
+<p>Note that the data contains three columns: <code>KO</code>, <code>empty</code>, and <code>complement</code> that contain either a <code>1</code> or <code>0</code> value.</p>
+<p>These columns describe whether the logCFU measurement in the row corresponds to a line that is affected by a gene knockout (<code>KO</code> = <code>1</code>), the presence of a plasmid vector (<code>empty</code> = <code>1</code>), or the reintroduced gene (<code>complement</code> = <code>1</code>). <strong>These columns allow us to use the <code>lm()</code> function to estimate the influence of each biological intervention.</strong></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2387,98 +2325,182 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This workshop focuses on demonstrating how to visualise, analyse, and interpret experimental data. The principles and techniques of cleaning and manipulating raw data into a suitable form for analysis is outside the scope of this material.</p>
+<p>We assume that measurements of the bacteria all share the same (wild-type) baseline. This will be represented by the <em>intercept</em> in our linear model fit.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-callout-todo callout-titled">
+</section>
+<section id="define-the-model" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="define-the-model"><span class="header-section-number">8.1.2</span> Define the model</h3>
+<p><code>R</code> uses a specific syntax for defining a <em>model</em>, where factors of interest influence a measured value.</p>
+<p>Here, our measured value is in the column <code>logCFU</code>, and is assumed to be influenced by factors in the columns <code>KO</code>, <code>empty</code>, and <code>complement</code> (where they apply/are equal to one). We represent this with the <code>R</code> statement below:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>logCFU <span class="sc">~</span> KO <span class="sc">+</span> empty <span class="sc">+</span> complement</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>which reads: “<code>logCFU</code> is influenced by (<code>~</code>) the sum of the effects of <code>KO</code>, <code>empty</code>, and <code>complement</code> (where they apply).”</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-todo</span>Callout-todo
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Explain the meanings of the columns and why they are the datatypes they are.</p>
+<p>In statistical jargon, <code>logCFU</code> is the <em>dependent variable</em>, because its value is assumed to <em>depend</em> on the values of <code>KO</code>, <code>empty</code>, and <code>complement</code>.</p>
+<p>The values of <code>KO</code>, <code>empty</code>, and <code>complement</code> are under experimenter control and not dependent on anything else, so these are called <em>independent variables</em>.</p>
 </div>
 </div>
 </section>
-</section>
-<section id="visualise-the-datasets" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="visualise-the-datasets"><span class="header-section-number">6.3</span> Visualise the datasets</h2>
-<section id="the-catheter-material-dataset" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="the-catheter-material-dataset"><span class="header-section-number">6.3.1</span> The catheter material dataset</h3>
+<section id="fit-the-model" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="fit-the-model"><span class="header-section-number">8.1.3</span> Fit the model</h3>
+<p>To fit our data to this model, we use this <em>model definition</em> in the <code>lm()</code> function as below (specifying that the dataframe we’re using is <code>catheter</code>) to create a result that is stored in <code>catheter_model</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>catheter_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(logCFU <span class="sc">~</span> KO <span class="sc">+</span> empty <span class="sc">+</span> complement, <span class="at">data=</span>catheter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-callout-challenge callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-challenge</span>Visualise the catheter dataset
+<span class="screen-reader-only">Callout-challenge</span>Challenge
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use the <code>WebR</code> cell below to visualise the data from the catheter material experiment.</p>
-<p>See if you can give the graph these properties:</p>
-<ul>
-<li>The categories/labels should be in this order on the x-axis, from left to right: <code>WT</code>, <code>KO</code>, <code>empty</code>, <code>complement</code></li>
-<li>There should be one boxplot per category/label</li>
-<li>Each batch should be assigned a different colour for easy identification</li>
-</ul>
+<p><strong>Fit the catheter data to this model in the <code>WebR</code> cell below.</strong></p>
+<p>Use the <code>R</code> code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>catheter_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(logCFU <span class="sc">~</span> KO <span class="sc">+</span> empty <span class="sc">+</span> complement, <span class="at">data=</span>catheter)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled" title="I need a hint!">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+</section>
+</section>
+<section id="interpreting-the-catheter-model" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="interpreting-the-catheter-model"><span class="header-section-number">8.2</span> Interpreting the catheter model</h2>
+<p>The fitted model is stored in the variable <code>catheter_model</code>, and we can obtain useful information from it in a number of ways.</p>
+<section id="coefficients-and-confidence-intervals" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="coefficients-and-confidence-intervals"><span class="header-section-number">8.2.1</span> Coefficients and confidence intervals</h3>
+<p>The <em>coefficients</em> that the model reports are the estimated effects of each factor of interest, i.e.&nbsp;the <em>intercept</em> and each <em>independent variable</em>. To obtain the coefficients, use the <code>R</code> code below to produce a summary of the fitted model:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(catheter_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <em>confidence intervals</em> reported by the model are the range of values that the model thinks are most likely for the <em>coefficients</em>. These work the same way as coefficients for <em>t</em>-tests and similar statistical methods: the range of values bounded by the 2.5% and 97.5% confidence limits is a 95% confidence interval. We would expect that the <em>true</em> value of the coefficient being estimated would lie in this range, in 95 out of 100 estimates.</p>
+<p>To find the confidence intervals for the coefficients of the model, use the <code>R</code> code below:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(catheter_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-callout-challenge callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>I need a hint!
+<span class="screen-reader-only">Callout-challenge</span>Challenge
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<p><strong>Find the estimated coefficients and corresponding confidence intervals for the catheter model in the <code>WebR</code> cell below.</strong></p>
+<p>Use the <code>R</code> code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(catheter_model)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(catheter_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="reading-the-output" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="reading-the-output"><span class="header-section-number">8.2.2</span> Reading the output</h3>
+<p>You should see output that resembles the data below:</p>
+<pre class="text"><code>(Intercept)          KO       empty  complement 
+  6.3382829  -0.3213144  -0.1465880   0.3986531 
+
+                  2.5 %      97.5 %
+(Intercept)  6.10862926 6.567936607
+KO          -0.64609377 0.003464903
+empty       -0.47136735 0.178191328
+complement   0.07387378 0.723432458</code></pre>
+<section id="coefficients" class="level4" data-number="8.2.2.1">
+<h4 data-number="8.2.2.1" class="anchored" data-anchor-id="coefficients"><span class="header-section-number">8.2.2.1</span> Coefficients</h4>
+<p>The output of <code>coef(catheter_model)</code> shows values for each factor of interest in the column <code>Estimate</code>, plus a value for “<code>(Intercept)</code>.”</p>
+<pre class="text"><code>(Intercept)          KO       empty  complement 
+  6.3382829  -0.3213144  -0.1465880   0.3986531 </code></pre>
 <ul>
-<li>You can order the categories on the <span class="math inline">\(x\)</span>-axis by replacing <code>x=label</code> with <code>x=factor(label, level=c("WT", "KO", "empty", "complement")</code></li>
-<li>If you use <code>aes(colour=batch)</code> in the <code>ggplot()</code> base layer, then the boxplots will be split. To avoid this, use <code>aes(colour=factor(batch))</code> in <code>geom_jitter()</code> instead.</li>
+<li><code>(Intercept)</code> is the wild-type (<code>WT</code>)/control logCFU value coefficient estimate. Here this is <code>6.34</code>, which looks to be a reasonable value by visual comparison with <a href="visualising_batches.html#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>.</li>
+<li>The <code>KO</code> coefficient estimate is <code>-0.32</code>, which indicates that knocking out the <em>etpD</em> gene reduces the logCFU value by 0.32 units (as this is a log scale, that corresponds approximately to halving the number of recovered CFUs).</li>
+<li>The <code>empty</code> coefficient estimate is <code>-0.15</code>, which indicates a further reduction in bacterial recovery is seen due to inserting the empty plasmid, even though it doesn’t contain any genes we would think are active in adherence.</li>
+<li>The <code>complement</code> coefficient estimate is <code>0.40</code> - of the same order of magnitued as the reduction in logCFU seen for the gene knockout. This implies that returning the gene also restores bacterial recovery to the original, wild-type level.</li>
 </ul>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled" title="Help, I'm stuck!">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+</section>
+<section id="confidence-intervals" class="level4" data-number="8.2.2.2">
+<h4 data-number="8.2.2.2" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">8.2.2.2</span> Confidence intervals</h4>
+<p>The <code>confint(catheter_model)</code> output lists the expected 95% confidence intervals for the coefficients.</p>
+<pre class="text"><code>                  2.5 %      97.5 %
+(Intercept)  6.10862926 6.567936607
+KO          -0.64609377 0.003464903
+empty       -0.47136735 0.178191328
+complement   0.07387378 0.723432458</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Help, I’m stuck!
+Tip
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Use the <code>R</code> code below to render your graph:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(catheter,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(label, <span class="at">level=</span><span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"KO"</span>, <span class="st">"empty"</span>, <span class="st">"complement"</span>)),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y=</span>logCFU)) <span class="sc">+</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span><span class="fl">0.2</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">colour=</span><span class="fu">factor</span>(batch))) <span class="sc">+</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"experiment"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>This is the more useful output for deciding whether there is a real effect due to a factor of interest</strong></p>
 </div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The point estimate of a coefficient may be non-zero, implying a negative or positive effect of that factor on the measured outcome <strong>but if the confidence interval includes zero it is not reasonable to exclude the possibility that there is in reality no effect on the outcome.</strong></p>
+</div>
+</div>
+<p>In this experiment, the confidence intervals tell us the following:</p>
+<ul>
+<li>The <code>(Intercept)</code>/<code>WT</code>/baseline logCFU is likely to lie between <code>6.11</code> and <code>6.57</code> units</li>
+<li>The effect of knocking out the <em>etpD</em> gene (<code>KO</code>) is likely to lie between <code>-0.646</code> and <code>0.003</code> units which appears to be a negative effect but, as the interval includes zero we cannot strictly rule out that there is no effect</li>
+<li>Introduction of the plasmid vector changes logCFU by between <code>-0.47</code> and <code>0.18</code> units. This range includes zero, and so we can’t rule out that there is no effect due to introducing the empty vector.</li>
+<li>Complementing the <em>etpD</em> gene (<code>complement</code>) increases logCFU by between <code>0.074</code> and <code>0.72</code> units, enhancing recovery of bacteria</li>
+</ul>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These results taken together suggest that knocking out the <em>etpD</em> gene diminishes recovery of bacteria (implying reduced adherence) and that complementing the gene restores the recovery level. However, the statistics are equivocal because the <code>KO</code> confidence interval includes zero and the observed change may just be due to happenstance. This may be surprising.</p>
+<p>We can, however, be reasonably certain that addition of the empty vector does not appear to influence logCFU strongly, as the confidence interval includes zero.</p>
 </div>
 </div>
 </section>
-<section id="the-human-tissue-dataset" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="the-human-tissue-dataset"><span class="header-section-number">6.3.2</span> The human tissue dataset</h3>
-<div id="qwebr-insertion-location-4"></div>
+</section>
+</section>
+<section id="fitting-and-interpreting-the-tissue-model" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="fitting-and-interpreting-the-tissue-model"><span class="header-section-number">8.3</span> Fitting and interpreting the tissue model</h2>
+<div class="callout callout-style-default callout-callout-challenge callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Callout-challenge</span>Challenge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Fit the tissue data to this model, using the <code>WebR</code> cell below.</strong></p>
+</div>
+</div>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="I need a hint">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2490,15 +2512,15 @@ Note
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>You can use almost exactly the same solution as for the <code>catheter</code> dataset, but:</p>
+<p>Use the same functions as for the catheter model, but be sure to use the <code>tissue</code> dataset instead</p>
 <ul>
-<li>change <code>p1</code> to <code>p2</code> to create a new graph rather than overwriting the old one</li>
-<li>make sure you are working with the <code>tissue</code> dataset</li>
+<li>Use <code>lm()</code> to fit the model</li>
+<li>Use <code>coef()</code> and <code>confint()</code> to find the coefficients for the <code>WT</code>, <code>KO</code>, <code>empty</code>, and <code>complement</code> factors of interest</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-warning callout-titled" title="Help, I'm stuck!">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2510,42 +2532,16 @@ Note
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Use the <code>R</code> code below to render your graph:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tissue,</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">factor</span>(label, <span class="at">level=</span><span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"KO"</span>, <span class="st">"empty"</span>, <span class="st">"complement"</span>)),</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y=</span>logCFU)) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width=</span><span class="fl">0.2</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>              <span class="fu">aes</span>(<span class="at">colour=</span><span class="fu">factor</span>(batch))) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"experiment"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use the <code>R</code> code below to fit the model</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tissue_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(logCFU <span class="sc">~</span> KO <span class="sc">+</span> empty <span class="sc">+</span> complement, <span class="at">data=</span>tissue)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use the <code>R</code> code below to see the estimated coefficients and confidence intervals</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(tissue_model)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(tissue_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="interpret-the-data" class="level2 page-columns page-full" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="interpret-the-data"><span class="header-section-number">6.4</span> Interpret the data</h2>
-<section id="the-catheter-material-dataset-1" class="level3 page-columns page-full" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="the-catheter-material-dataset-1"><span class="header-section-number">6.4.1</span> The catheter material dataset</h3>
-<p>Your plot of the catheter data should look similar to that in <a href="#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>.</p>
-<p>The <span class="math inline">\(y\)</span>-axis shows the log of the colony-forming units (CFU) per millilitre, and is a measure of the amount of each type of bacteria (wild-type/control, <em>etpD</em> knockout, knockout with empty vector, and complemented knockout) that were recovered. The <span class="math inline">\(x\)</span>-axis gathers the datpoints for each type of bacteria.</p>
-<p>Each boxplot shows the median value as a thick horizontal line, a box between the 25th and 75th percentiles, and whiskers extending to no more than 1.5 <span class="math inline">\(\times\)</span> the interquartile range (IQR) of the data. Datapoints beyond the whiskers can be considered as outliers.</p>
-<p>Examine your plot (or <a href="#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>) and consider the questions below.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<div id="fig-catheter-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-catheter-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/images/catheter_boxplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;6.1: "><img src="assets/images/catheter_boxplot.png" id="fig-catheter-boxplot" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-catheter-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.1
-</figcaption>
-</figure>
-</div>
-</div></div><section id="what-is-the-overall-effect-of-each-bacterial-variant" class="level4" data-number="6.4.1.1">
-<h4 data-number="6.4.1.1" class="anchored" data-anchor-id="what-is-the-overall-effect-of-each-bacterial-variant"><span class="header-section-number">6.4.1.1</span> What is the overall effect of each bacterial variant?</h4>
+<section id="interpreting-the-results" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="interpreting-the-results"><span class="header-section-number">8.3.1</span> Interpreting the results</h3>
 <div class="callout callout-style-default callout-callout-questions callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2556,11 +2552,12 @@ Figure&nbsp;6.1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The median logCFU of the wild-type (<code>WT</code>) control is approximately 6.35. What is the approximate logCFU of each of the three other bacterial lines?</p>
+<p>What are the coefficients of the four factors of interest, and what do they imply about the effects of each factor?</p>
 <ul>
-<li><code>KO</code> (the <em>etpD</em> knockout)</li>
-<li><code>empty</code> (the <em>etpD</em> knockout carrying an empty plasmid vector)</li>
-<li><code>complement</code> (the <em>etpD</em> knockout carrying a plasmid vector that expresses the <em>etpD</em> gene)</li>
+<li><code>WT</code>/<code>(Intercept)</code></li>
+<li><code>KO</code></li>
+<li><code>empty</code></li>
+<li><code>complement</code></li>
 </ul>
 </div>
 </div>
@@ -2576,11 +2573,15 @@ Figure&nbsp;6.1
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>The <code>KO</code> line has a median logCFU of 6.13</li>
-<li>The <code>empty</code> line has a median logCFU of 5.86</li>
-<li>The <code>complement</code> line has a median logCFU of 6.46</li>
-</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">coef</span>(tissue_model)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>(Intercept)          KO       empty  complement </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> <span class="fl">6.54455199</span> <span class="sc">-</span><span class="fl">0.30834731</span> <span class="sc">-</span><span class="fl">0.06356898</span> <span class="sc">-</span><span class="fl">0.05806111</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>The <code>(Intercept)</code> value is <code>6.54</code>, which is consistent with the baseline recovery from the catheter experiment</li>
+<li>The <code>KO</code> value is <code>-0.31</code>, which is negative, so consistent with <em>etpD</em> deletion resulting in reduced recovery of bacteria/reduced adhesion</li>
+<li>The <code>empty</code> value is <code>-0.06</code> which is close to zero and consistent with there being no strong effect on logCFU due to incorporation of the plasmid vector</li>
+<li>The <code>complement</code> value is <code>-0.06</code> which is also small and close to zero, consistent with there being no strong effect on logCFU due to reintroduction of the <em>etpD</em> gene</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2594,11 +2595,12 @@ Figure&nbsp;6.1
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Taking the wild-type <code>WT</code> line as a baseline level of “stickiness” to the catheter material. Based only on your graph (or <a href="#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>) Is the “stickiness” of each of the three remaining bacterial lines approximately greater than, less than, or about the same as the wild type?</p>
+<p>What are the confidence intervals for the coefficients of the four factors of interest, and what do they imply about the effects of each factor?</p>
 <ul>
-<li><code>KO</code> (the <em>etpD</em> knockout)</li>
-<li><code>empty</code> (the <em>etpD</em> knockout carrying an empty plasmid vector)</li>
-<li><code>complement</code> (the <em>etpD</em> knockout carrying a plasmid vector that expresses the <em>etpD</em> gene)</li>
+<li><code>WT</code>/<code>(Intercept)</code></li>
+<li><code>KO</code></li>
+<li><code>empty</code></li>
+<li><code>complement</code></li>
 </ul>
 </div>
 </div>
@@ -2614,236 +2616,26 @@ Figure&nbsp;6.1
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>Fewer CFU/mL are recovered from the <code>KO</code> line, so it seems to be less “sticky” than the wild type</li>
-<li>Fewer CFU/mL are recovered from the <code>empty</code> line, so it seems to be less “sticky” than the wild type</li>
-<li>About the same CFU/mL are recovered from the <code>complement</code> line, so it seems to be about as “sticky” as the wild type</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-callout-question callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-question</span>Question
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Does the <code>empty</code> line appear to be more “sticky”, less “sticky”, or just about as “sticky” as the <code>KO</code> line?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Answers">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answers
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Fewer CFU/mL are recovered from the <code>empty</code> line, so it appears to be less “sticky” than the <code>KO</code> line.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-callout-question callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-question</span>Question
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Based on your answers above, do you think there is evidence that the <em>etpD</em> gene might contribute to adhesion of the bacteria to catheter material?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Answers">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answers
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>When the <em>etpD</em> gene is knocked out (<code>KO</code>) fewer CFUs are recovered from the substrate, which we can interpret as the bacteria being less “sticky.”</p>
-<p>Similarly, when the <em>etpD</em> gene is expressed from a plasmid (<code>complement</code>) more CFUs are recovered than was the case for the <code>KO</code>, so it appears that restoration of the <em>etpD</em> gene might make the bacteria more “sticky,” i.e.&nbsp;contribute to increased adherence.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="the-tissue-material-dataset" class="level3 page-columns page-full" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="the-tissue-material-dataset"><span class="header-section-number">6.4.2</span> The tissue material dataset</h3>
-<p>Your plot of the tissue data should look similar to that in <a href="#fig-tissue-boxplot" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>.</p>
-<p>The <span class="math inline">\(y\)</span>-axis here also shows the log of the colony-forming units (CFU) per millilitre, and is a measure of the amount of each type of bacteria (wild-type/control, <em>etpD</em> knockout, knockout with empty vector, and complemented knockout) that were recovered. The <span class="math inline">\(x\)</span>-axis gathers the datpoints for each type of bacteria.</p>
-<p>Each boxplot again shows the median value as a thick horizontal line, a box between the 25th and 75th percentiles, and whiskers extending to no more than 1.5 <span class="math inline">\(\times\)</span> the interquartile range (IQR) of the data. Datapoints beyond the whiskers can once more be considered as outliers.</p>
-<p>Examine your plot (or <a href="#fig-tissue-boxplot" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>) and consider the questions below.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<div id="fig-tissue-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-tissue-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/images/tissue_boxplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;6.2: "><img src="assets/images/tissue_boxplot.png" id="fig-tissue-boxplot" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-tissue-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6.2
-</figcaption>
-</figure>
-</div>
-</div></div><section id="what-is-the-overall-effect-of-each-bacterial-variant-1" class="level4" data-number="6.4.2.1">
-<h4 data-number="6.4.2.1" class="anchored" data-anchor-id="what-is-the-overall-effect-of-each-bacterial-variant-1"><span class="header-section-number">6.4.2.1</span> What is the overall effect of each bacterial variant?</h4>
-<div class="callout callout-style-default callout-callout-questions callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-questions</span>Questions
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The median logCFU of the wild-type (<code>WT</code>) control is approximately 6.61. What is the approximate logCFU of each of the three bacterial lines?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">confint</span>(tissue_model)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                 <span class="fl">2.5</span> <span class="sc">%     97.5 %</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>(Intercept)  <span class="fl">6.4070598</span>  <span class="fl">6.6820442</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>KO          <span class="sc">-</span><span class="fl">0.5027906</span> <span class="sc">-</span><span class="fl">0.1139040</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>empty       <span class="sc">-</span><span class="fl">0.2580123</span>  <span class="fl">0.1308744</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>complement  <span class="sc">-</span><span class="fl">0.2525044</span>  <span class="fl">0.1363822</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li><code>KO</code> (the <em>etpD</em> knockout)</li>
-<li><code>empty</code> (the <em>etpD</em> knockout carrying an empty plasmid vector)</li>
-<li><code>complement</code> (the <em>etpD</em> knockout carrying a plasmid vector that expresses the <em>etpD</em> gene)</li>
+<li>The <code>(Intercept)</code> value lies between <code>6.41</code> and <code>6.68</code>, which is consistent with the baseline recovery from the catheter experiment</li>
+<li>The <code>KO</code> value lies between <code>-0.50</code> and <code>-0.11</code>. The entire range is negative so this is consistent with <em>etpD</em> deletion resulting in reduced recovery of bacteria/reduced adhesion</li>
+<li>The <code>empty</code> confidence interval includes zero and is consistent with there being no strong effect on logCFU due to incorporation of the plasmid vector</li>
+<li>The <code>complement</code> confidence interval includes zero and so is consistent with there being no strong effect on logCFU due to reintroduction of the <em>etpD</em> gene</li>
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Answers">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answers
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>The <code>KO</code> line has a median logCFU of 6.24</li>
-<li>The <code>empty</code> line has a median logCFU of 6.22</li>
-<li>The <code>complement</code> line has a median logCFU of 6.24</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-callout-questions callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-questions</span>Questions
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Taking the wild-type <code>WT</code> line as a baseline level of “stickiness” to the catheter material. Based only on your graph (or <a href="#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>) Is the “stickiness” of each of the three remaining bacterial lines approximately greater than, less than, or about the same as the wild type?</p>
-<ul>
-<li><code>KO</code> (the <em>etpD</em> knockout)</li>
-<li><code>empty</code> (the <em>etpD</em> knockout carrying an empty plasmid vector)</li>
-<li><code>complement</code> (the <em>etpD</em> knockout carrying a plasmid vector that expresses the <em>etpD</em> gene)</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Answers">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answers
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Fewer CFU/mL are recovered from the <code>KO</code> line, so it seems to be less “sticky” than the wild type</li>
-<li>Fewer CFU/mL are recovered from the <code>empty</code> line, so it seems to be less “sticky” than the wild type</li>
-<li>Fewer CFU/mL are recovered from the <code>complement</code> line, so it seems to be less “sticky” than the wild type</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-callout-question callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-question</span>Question
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Does the <code>empty</code> line appear to be more “sticky”, less “sticky”, or just about as “sticky” as the <code>KO</code> line?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Answers">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answers
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>About the same CFU/mL are recovered from the <code>empty</code> line, so it appears to be approximately as “sticky” as the <code>KO</code> line.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-callout-question callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-question</span>Question
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Based on your answers above, do you think there is evidence that the <em>etpD</em> gene might contribute to adhesion of the bacteria to catheter material?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Answers">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answers
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>When the <em>etpD</em> gene is knocked out (<code>KO</code>) fewer CFU are recovered from the substrate, which we can interpret as the bacteria being less “sticky.”</p>
-<p>However, when the <em>etpD</em> gene is expressed from a plasmid (<code>complement</code>) no more CFU are recovered than was the case for the <code>KO</code>, so it appears that restoration of the <em>etpD</em> gene <strong>does not</strong> by itself make the bacteria more “sticky,” i.e.&nbsp;contribute to increased adherence.</p>
-</div>
-</div>
 </div>
 </section>
 </section>
-<section id="the-influence-of-batch-effects" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="the-influence-of-batch-effects"><span class="header-section-number">6.4.3</span> The influence of batch effects</h3>
-<p>As noted above, the experiment as performed involved obtaining measurements in groups of five. Each group of five measurements may have been obtained on a different day, by a different scientist.</p>
-<p>Small differences between the way scientists work, or batches of chemicals, tissue, media, and reagents, can lead to <em>systematic</em> differences in results that are due to those changes and not to the biological influence under investigation (here, the effect of the <em>etpD</em> gene on bacterial adherence).</p>
+<section id="but-wait" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="but-wait"><span class="header-section-number">8.4</span> But wait!</h2>
+<p>Back in <a href="visualising_batches.html" class="quarto-xref"><span>Chapter 6</span></a> we saw that the experimental data was affected by <em>batch effects</em> - systematic influences on the measured values that seemed to come from the way the experiment was conducted, not the biological factors whose influence we actually wanted to measure.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2854,62 +2646,12 @@ Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When inspecting experimental data, you should check for potential signs of <em>batch effects</em> using exploratory data visualisation. The visualisation you performed above is exploratory data visualisation.</p>
-<ul>
-<li>Do datapoints that are meant to measure the same thing seem to form a consistent grouping, or distinct and separate clusters?</li>
-<li>If you see clusters and colour the datapoints by a factor that is not meant to be a factor of interest in the experimental design (e.g.&nbsp;individual experimenter, date the measurement was obtained, media batch number) do these correlate with the clusters?</li>
-</ul>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Some common visualisation and ordination techniques for identifying batch effects include <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA</a> (principal component analysis) and <a href="https://en.wikipedia.org/wiki/Multidimensional_scaling">MDS</a> (multidimenstional scaling).</p>
-<p><strong>Rigorous experimental design is the best way to avoid batch effects and confounding.</strong> Techniques such as sample randomisation and statistical balancing can help to avoid unwanted and unanticipated batch effects.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-callout-question callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Callout-question</span>Question
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Do you see evidence of batch effects in <a href="#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> and/or <a href="#fig-tissue-boxplot" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>? Why do you think this?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Answers">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Answers
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-32" class="callout-32-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>There is clear visual evidence of batch effects in both <a href="#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> and/or <a href="#fig-tissue-boxplot" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>.</p>
-<p>For example, in <a href="#fig-catheter-boxplot" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> the logCFU values for batches 1 and 2 are obviously grouped together and differ from each other, despite apparently measuring the same values. The evidence for a batch effect is less obvious for batches 3 and 4.</p>
-<p>Likewise in <a href="#fig-tissue-boxplot" class="quarto-xref">Figure&nbsp;<span>6.2</span></a> the values for batch 5 are much lower than those for the other <code>empty</code> and <code>complement</code> batches. Values for batches 1 and 2 also appear to be systematically lower than for the other batches in the <code>WT</code> and <code>KO</code> lines.</p>
-<p>If left uncorrected, these likely batch effects could introduce variation into the experimental results that prevents the correct (statistical) interpretation being made from the data.</p>
-</div>
+<p><strong>Maybe the results we have just obtained aren’t as correct, or at least as accurate, as they seem because of these systematic batch effects?</strong></p>
+<p>We should try to account for systematic batch effects as much as possible, and we’ll do this in the next section, <a href="eliminating_batches.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -3315,13 +3057,13 @@ Tip
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./experiment_2.html" class="pagination-link" aria-label="The Experiment">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The Experiment</span></span>
+      <a href="./modelling_data.html" class="pagination-link" aria-label="Modelling Experimental Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./modelling_data.html" class="pagination-link" aria-label="Modelling Experimental Data">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Experimental Data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./eliminating_batches.html" class="pagination-link" aria-label="Eliminating batch effects">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Eliminating batch effects</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -3333,7 +3075,7 @@ Tip
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/visualising_batches.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/edit/main/fitting-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/sipbs-compbiol/bm327-workshop-2/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
@@ -3455,38 +3197,6 @@ qwebrInstance.then(
   }
 );
 </script>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 
