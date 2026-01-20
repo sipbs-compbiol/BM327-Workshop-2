@@ -154,7 +154,7 @@ In this plot, every row in the table (we call each row an _observation_) is repr
 - The colour of the point is an aesthetic
 - The transparency of the point is an aesthetic
 
-In `ggplot2` these _aesthetics_ can be constant (like shape in @fig-scatterplot), or _mapped_ to - under the control of - variables in the dataset (like colour in @fig-scatterplot).
+In `ggplot2` these _aesthetics_ can be constant (like shape in @fig-scatterplot - datapoints are all filled circles), or _mapped_ to - under the control of - variables in the dataset (like colour in @fig-scatterplot - the colour depends on the continent).
 
 ::: { .callout-tip }
 We can generate many different kinds of plot from the same data just by changing the _aesthetics_
@@ -269,7 +269,7 @@ The layer structure of this plot is shown in @fig-ggplot-layers-2 (and the resul
 
 :::
 
-We can go on to _add_ a top-level `geom_point()` scatterplot with each datapoint shown as a semitransparent (`alpha=0.4`) point by changing this code - in the same `WebR` cell to:
+We can go on to _add_ a top-level `geom_point()` scatterplot with each datapoint shown as a semitransparent (`alpha=0.4`) point by changing this code - in the same `WebR` cell:
 
 ```r
 p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))
@@ -322,7 +322,7 @@ p + geom_line(aes(group=country)) + geom_point(alpha=0.35)
 
 All the plots we have made so far have been single-panel figures. With large datasets, this can get a bit messy and obscure the story you want to tell with data.
 
-`ggplot2` has a layer called `facet_wrap()` which allows us to split data into panels on the basis of a variable. For example, the code below allows us to split the plot in @fig-geom-line-2 into separate panels for each continent:
+`ggplot2` has a layer called `facet_wrap()` which allows us to split data into panels on the basis of a variable. For example, the code below allows us to split the plot in @fig-geom-line-2 into separate panels (or _facets_) for each continent:
 
 ```r
 p <- ggplot(data=gapminder, aes(x=lifeExp, y=gdpPercap, color=continent))
@@ -335,6 +335,7 @@ Using the `WebR` cell below, create a plot showing how _life expectancy_ (`lifeE
 - a line plot, grouping points by country
 - a scatterplot showing each data point, with 35% opacity
 
+and split this plot into facets by continent.
 :::
 
 ```{webr-r}
