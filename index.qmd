@@ -2,7 +2,7 @@
 
 Welcome to BM327 (Being a Biomolecular Scientist 3) bioinformatics workshop 2 for {{< var ay >}}.
 
-This is the first presentation of this material, and we would be very grateful to hear feedback about it [by email](mailto:{{< var admin.email >}}) or through the [GitHub repository Issues page]({{< var github.issues >}}).
+We would be very grateful to hear feedback about this material [by email](mailto:{{< var admin.email >}}) or through the [GitHub repository Issues page]({{< var github.issues >}}).
 
 ## Overview
 
@@ -15,7 +15,9 @@ There is new material in this workshop that is not covered in lectures, and **th
 The workshop material will remain live online for the duration of BM327, and you can revisit it whenever you wish, for practice or revision.
 :::
 
+::: { .callout-note }
 **You should be able to complete this workshop in under two hours.**
+:::
 
 ## Learning Objectives
 

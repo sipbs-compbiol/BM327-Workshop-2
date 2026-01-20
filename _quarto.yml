@@ -55,6 +55,7 @@ book:
         - experiment_2.qmd
         - visualising_batches.qmd
         - modelling_data.qmd
+        - fitting-data.qmd
         - eliminating_batches.qmd
     
     - part: part_04_conclusion.qmd

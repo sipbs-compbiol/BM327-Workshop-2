@@ -36,7 +36,7 @@ In this experiment, the _etpD_ gene was cloned into the IPTG (Isopropyl β-d-1-t
 
 To establish whether or not the plasmid vector pSE380 by itself makes any contribution to adherence, the $\Delta$_etpD_ strain was also transformed with an "empty" pSE380 plasmid vector containing **no** _etpD_ gene. 
 
-This was not necessary to test the postulates above, but it is good practice to eliminate an unexpected effect due only to the plasmid.
+This was not necessary to test the postulates above, but it is good practice to eliminate from consideration any unexpected effects due only to the plasmid.
 
 ::: { .callout-important }
 Recovery of bacteria, measured as logCFU, was performed identically for wild-type/control, knockout, empty vector, and complemented strains.
@@ -44,4 +44,4 @@ Recovery of bacteria, measured as logCFU, was performed identically for wild-typ
 
 ## What next?
 
-Having collected the bacterial counts for all of these experiments, it now falls to you to carry out the analysis and determine whether the postulates are satisfied.
+Having collected the bacterial counts for all of these experiments, it now falls to you to carry out the analysis and determine whether the postulates are satisfied. This will tell us whether the _etpD_ gene contributes to adherence.

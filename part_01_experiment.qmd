@@ -2,7 +2,7 @@
 
 In this section of the workshop we introduce the experiment that provides the data you will be working with.
 
-The motivation of the experiment is to identify candidate adhesion factors in a uropathogenic _Escherichia coli_ (UPEC). UPECs are the most common cause of community-acquired urinary tract infections (UTIs), and imfection can cause milder symptoms like discomfort, polyuria, and fever, but in some cases can lead to kidney damage, sepsis and death.
+The motivation of the experiment is to identify candidate adhesion factors in a uropathogenic _Escherichia coli_ (UPEC). UPECs are the most common cause of community-acquired urinary tract infections (UTIs), and infection can cause milder symptoms like discomfort, [polyuria](https://en.wikipedia.org/wiki/Polyuria), and fever, but in some cases can lead to kidney damage, sepsis and death.
 
 One of the features of UPECs that facilitaties infection is their ability to _adhere_ (stick) to human tissue, and also to materials that might be inserted into the urinary tract, such as catheter tubes. The better, and longer, a pathogen can hang around in the urinary tract, the more chance it has to contribute to illness. If we can identify the molecular components contributing to adherence, we might be able to target them with drugs or produce materials to which they stick less well, reducing the disease burden.
 

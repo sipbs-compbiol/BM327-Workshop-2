@@ -25,9 +25,11 @@ It may take a couple of minutes to install the necessary packages in `WebR` - pl
 
 The experiment that was actually run to gather data on adherence to human tissue and catheter material ran into a few scheduling problems.
 
-Ultimately the experiment was run by multiple scientists in the group, and measurements were taken in groups of five datapoints, where all five measurements - corresponding to a single bacterial line - were collected in the course of an afternoon.
+In the end, the experiment was run by multiple scientists in the group, and measurements were taken in groups of five datapoints, where all five measurements (corresponding to a single bacterial line) were collected in the course of an afternoon.
+
 Each group, or _batch_, of five measurements contained results for only _one_ of the `WT` (control), `KO` (knockout), `empty` (empty vector), and `complement` (complemented gene) lines.
-There were four such groups or _batches_ for the human tissue experiment, and eight for the catheter material experiment. with four such batches of five measurements for each 
+
+There were eight such groups or _batches_ for the human tissue experiment, and four for the catheter material experiment.
 
 ## Task 1: Load and inspect your data
 
@@ -108,7 +110,7 @@ See if you can give the graph these properties:
 ```
 
 ::: { .callout-tip collapse="true" title="I need a hint!"}
-- You can order the categories on the x-axis by replacing `x=label` with `x=factor(label, level=c("WT", "KO", "empty", "complement")`
+- You can order the categories on the $x$-axis by replacing `x=label` with `x=factor(label, level=c("WT", "KO", "empty", "complement")`
 - If you use `aes(colour=batch)` in the `ggplot()` base layer, then the boxplots will be split. To avoid this, use `aes(colour=factor(batch))` in `geom_jitter()` instead.
 :::
 
@@ -170,9 +172,9 @@ p2
 
 Your plot of the catheter data should look similar to that in @fig-catheter-boxplot.
 
-The y-axis shows the log of the colony-forming units (CFU) per millilitre, and is a measure of the amount of each type of bacteria (wild-type/control, etpD knockout, knockout with empty vector, and complemented knockout) that were recovered. The x-axis gathers the datpoints for each type of bacteria.
+The $y$-axis shows the log of the colony-forming units (CFU) per millilitre, and is a measure of the amount of each type of bacteria (wild-type/control, _etpD_ knockout, knockout with empty vector, and complemented knockout) that were recovered. The $x$-axis gathers the datpoints for each type of bacteria.
 
-Each boxplot shows the median value as a thick horizontal line, a box extending from the 25th and 75th percentiles, and whiskers extending to no more than 1.5 $\times$ the interquartile range (IQR) of the data. Datapoints beyond the whiskers can be considered as outliers.
+Each boxplot shows the median value as a thick horizontal line, a box between the 25th and 75th percentiles, and whiskers extending to no more than 1.5 $\times$ the interquartile range (IQR) of the data. Datapoints beyond the whiskers can be considered as outliers.
 
 Examine your plot (or @fig-catheter-boxplot) and consider the questions below.
 
@@ -184,11 +186,11 @@ Examine your plot (or @fig-catheter-boxplot) and consider the questions below.
 #### What is the overall effect of each bacterial variant?
 
 ::: { .callout-questions }
-The median logCFU of the wild-type (`WT`) control is approximately 6.35. What is the approximate logCFU of each of the three bacterial lines?
+The median logCFU of the wild-type (`WT`) control is approximately 6.35. What is the approximate logCFU of each of the three other bacterial lines?
 
 - `KO` (the _etpD_ knockout)
 - `empty` (the _etpD_ knockout carrying an empty plasmid vector)
-- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the `etpD` gene)
+- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the _etpD_ gene)
 :::
 
 ::: { .callout-tip collapse="true" title="Answers"}
@@ -202,13 +204,13 @@ Taking the wild-type `WT` line as a baseline level of "stickiness" to the cathet
 
 - `KO` (the _etpD_ knockout)
 - `empty` (the _etpD_ knockout carrying an empty plasmid vector)
-- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the `etpD` gene)
+- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the _etpD_ gene)
 :::
 
 ::: { .callout-tip collapse="true" title="Answers"}
-1. Fewer CFUs/mL are recovered from the `KO` line, so it seems to be less "sticky" than the wild type
-2. Fewer CFUs/mL are recovered from the `empty` line, so it seems to be less "sticky" than the wild type
-3. About the same CFUs/mL are recovered from the `complement` line, so it seems to be about as "sticky" as the wild type
+1. Fewer CFU/mL are recovered from the `KO` line, so it seems to be less "sticky" than the wild type
+2. Fewer CFU/mL are recovered from the `empty` line, so it seems to be less "sticky" than the wild type
+3. About the same CFU/mL are recovered from the `complement` line, so it seems to be about as "sticky" as the wild type
 :::
 
 ::: { .callout-question }
@@ -216,7 +218,7 @@ Does the `empty` line appear to be more "sticky", less "sticky", or just about a
 :::
 
 ::: { .callout-tip collapse="true" title="Answers"}
-Fewer CFUs/mL are recovered from the `empty` line, so it appears to be less "sticky" than the `KO` line.
+Fewer CFU/mL are recovered from the `empty` line, so it appears to be less "sticky" than the `KO` line.
 :::
 
 ::: { .callout-question }
@@ -233,9 +235,9 @@ Similarly, when the _etpD_ gene is expressed from a plasmid (`complement`) more 
 
 Your plot of the tissue data should look similar to that in @fig-tissue-boxplot.
 
-The y-axis shows the log of the colony-forming units (CFU) per millilitre, and is a measure of the amount of each type of bacteria (wild-type/control, etpD knockout, knockout with empty vector, and complemented knockout) that were recovered. The x-axis gathers the datpoints for each type of bacteria.
+The $y$-axis here also shows the log of the colony-forming units (CFU) per millilitre, and is a measure of the amount of each type of bacteria (wild-type/control, _etpD_ knockout, knockout with empty vector, and complemented knockout) that were recovered. The $x$-axis gathers the datpoints for each type of bacteria.
 
-Each boxplot shows the median value as a thick horizontal line, a box extending from the 25th and 75th percentiles, and whiskers extending to no more than 1.5 $\times$ the interquartile range (IQR) of the data. Datapoints beyond the whiskers can be considered as outliers.
+Each boxplot again shows the median value as a thick horizontal line, a box between the 25th and 75th percentiles, and whiskers extending to no more than 1.5 $\times$ the interquartile range (IQR) of the data. Datapoints beyond the whiskers can once more be considered as outliers.
 
 Examine your plot (or @fig-tissue-boxplot) and consider the questions below.
 
@@ -251,7 +253,7 @@ The median logCFU of the wild-type (`WT`) control is approximately 6.61. What is
 
 - `KO` (the _etpD_ knockout)
 - `empty` (the _etpD_ knockout carrying an empty plasmid vector)
-- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the `etpD` gene)
+- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the _etpD_ gene)
 :::
 
 ::: { .callout-tip collapse="true" title="Answers"}
@@ -265,13 +267,13 @@ Taking the wild-type `WT` line as a baseline level of "stickiness" to the cathet
 
 - `KO` (the _etpD_ knockout)
 - `empty` (the _etpD_ knockout carrying an empty plasmid vector)
-- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the `etpD` gene)
+- `complement` (the _etpD_ knockout carrying a plasmid vector that expresses the _etpD_ gene)
 :::
 
 ::: { .callout-tip collapse="true" title="Answers"}
-1. Fewer CFUs/mL are recovered from the `KO` line, so it seems to be less "sticky" than the wild type
-2. Fewer CFUs/mL are recovered from the `empty` line, so it seems to be less "sticky" than the wild type
-3. Fewer CFUs/mL are recovered from the `complement` line, so it seems to be less "sticky" than the wild type
+1. Fewer CFU/mL are recovered from the `KO` line, so it seems to be less "sticky" than the wild type
+2. Fewer CFU/mL are recovered from the `empty` line, so it seems to be less "sticky" than the wild type
+3. Fewer CFU/mL are recovered from the `complement` line, so it seems to be less "sticky" than the wild type
 :::
 
 ::: { .callout-question }
@@ -279,7 +281,7 @@ Does the `empty` line appear to be more "sticky", less "sticky", or just about a
 :::
 
 ::: { .callout-tip collapse="true" title="Answers"}
-About the same level of CFUs/mL are recovered from the `empty` line, so it appears to be approximately as "sticky" as the `KO` line.
+About the same CFU/mL are recovered from the `empty` line, so it appears to be approximately as "sticky" as the `KO` line.
 :::
 
 ::: { .callout-question }
@@ -287,26 +289,26 @@ Based on your answers above, do you think there is evidence that the _etpD_ gene
 :::
 
 ::: { .callout-tip collapse="true" title="Answers"}
-When the _etpD_ gene is knocked out (`KO`) fewer CFUs are recovered from the substrate, which we can interpret as the bacteria being less "sticky."
+When the _etpD_ gene is knocked out (`KO`) fewer CFU are recovered from the substrate, which we can interpret as the bacteria being less "sticky."
 
-However, when the _etpD_ gene is expressed from a plasmid (`complement`) no more CFUs are recovered than was the case for the `KO`, so it appears that restoration of the _etpD_ gene **does not** by itself make the bacteria more "sticky," i.e. contribute to increased adherence.
+However, when the _etpD_ gene is expressed from a plasmid (`complement`) no more CFU are recovered than was the case for the `KO`, so it appears that restoration of the _etpD_ gene **does not** by itself make the bacteria more "sticky," i.e. contribute to increased adherence.
 :::
 
 ### The influence of batch effects
 
 As noted above, the experiment as performed involved obtaining measurements in groups of five. Each group of five measurements may have been obtained on a different day, by a different scientist.
 
-Small differences between the way scientists work, or batches of chemicals, media, and reagents, can lead to _systematic_ differences in results that are due to those changes and not to the biological influence under investigation (here, the effect of the _etpD_ gene on bacterial adherence).
+Small differences between the way scientists work, or batches of chemicals, tissue, media, and reagents, can lead to _systematic_ differences in results that are due to those changes and not to the biological influence under investigation (here, the effect of the _etpD_ gene on bacterial adherence).
 
 ::: { .callout-caution }
 When inspecting experimental data, you should check for potential signs of _batch effects_ using exploratory data visualisation. The visualisation you performed above is exploratory data visualisation.
 
-- Do datapoints that are meant to measure the same thing seem to form distinct and separate clusters?
-- If you colour the datapoints by a factor that is not meant to be a factor of interest in the experimental design (e.g. individual experimenter, date the measurement was obtained, media batch number) do these correlate with the clusters?
+- Do datapoints that are meant to measure the same thing seem to form a consistent grouping, or distinct and separate clusters?
+- If you see clusters and colour the datapoints by a factor that is not meant to be a factor of interest in the experimental design (e.g. individual experimenter, date the measurement was obtained, media batch number) do these correlate with the clusters?
 :::
 
 ::: { .callout-tip }
-Some common visualisation and ordination techniques for identifying batch effects include PCA (principal components analysis) and MDS (multidimenstional scaling).
+Some common visualisation and ordination techniques for identifying batch effects include [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) (principal component analysis) and [MDS](https://en.wikipedia.org/wiki/Multidimensional_scaling) (multidimenstional scaling).
 
 **Rigorous experimental design is the best way to avoid batch effects and confounding.** Techniques such as sample randomisation and statistical balancing can help to avoid unwanted and unanticipated batch effects.
 :::
@@ -321,4 +323,6 @@ There is clear visual evidence of batch effects in both @fig-catheter-boxplot an
 For example, in @fig-catheter-boxplot the logCFU values for batches 1 and 2 are obviously grouped together and differ from each other, despite apparently measuring the same values. The evidence for a batch effect is less obvious for batches 3 and 4.
 
 Likewise in @fig-tissue-boxplot the values for batch 5 are much lower than those for the other `empty` and `complement` batches. Values for batches 1 and 2 also appear to be systematically lower than for the other batches in the `WT` and `KO` lines.
+
+If left uncorrected, these likely batch effects could introduce variation into the experimental results that prevents the correct (statistical) interpretation being made from the data.
 :::

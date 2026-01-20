@@ -2,7 +2,7 @@
 
 As noted in @sec-experiment, we aim to identify UPEC-specific genes that are overrepresented in the final mixtures that have been through mouse passage, but that are not overrepresented in the control passage through culture alone.
 
-These results were obtained using a Bayesian statistical multilevel regression technique, and are presented graphically below. As the UPEC genome comprises a chromosome and an accompanying plasmid, these are shown separately.
+These results were obtained using a [Bayesian multilevel regression](https://widdowquinn.github.io/Teaching-Stan-Hierarchical-Modelling/) statistical approach, and are presented graphically below. As the UPEC genome comprises a chromosome and an accompanying plasmid, these are shown separately.
 
 Results are shown for both post-control, and post-mouse passage arms of the experiment.
 
@@ -20,17 +20,17 @@ The statistical methodology is beyond the scope of this workshop. But please do 
 
 ## Interpreting the experimental results
 
-We are interested in genes that are more abundant than expected after mouse passage, but not after control passage.
+We are interested in genes that are more abundant than expected after mouse passage, but not after control passage: The genes indicated in _green_ in @fig-chrom-treat and @fig-plasmid-treat.
 
 ### Chromosomal genes
 
 Comparing @fig-chrom-control and @fig-chrom-treat we can see that in both cases there are clusters of genes that appear to be overrepresented, and they are different for the control- and mouse-passaged arms of the experiment.
 
-In the mouse-passaged isolates, four regions known as "S-loops" were seen to be enriched. These encode for urea degradation, effector proteins associated with adherence to bovine tissue, a surfactin, and hæm utilisation. The known functions of these genes are consistent with a role in adherence to tissue, and infection.
+In the mouse-passaged isolates, four regions known as "S-loops" were seen to be enriched. These encode for proteins annotated as being involved with urea degradation, effector proteins associated with adherence to bovine tissue, a surfactin, and hæm utilisation. The known functions of these genes are consistent with a role in adherence to tissue, and infection.
 
 ### Plasmid-borne genes
 
-A comparison of @fig-plasmid-control and @fig-plasmid-treat shows that no plasmid-borne genes are overrepresented in the control arm, but that a run of several genes corresponding to an operon for a Type II Secretion System (T2SS) are highlighted in the mouse arm. This T2SS has been reported to play a role in adherence to mammalian host tissues, biofilm formation, and is considered an important virulence factor. 
+A comparison of @fig-plasmid-control and @fig-plasmid-treat shows that no plasmid-borne genes are overrepresented in the control arm, but that a run of several genes corresponding to an operon for a Type II Secretion System (T2SS) are highlighted in the mouse arm. This T2SS has been reported to play a role in adherence to mammalian host tissues, and in biofilm formation. It is considered an important virulence factor. 
 
 ### Identifying a candidate
 

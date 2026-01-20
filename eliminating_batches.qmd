@@ -31,7 +31,15 @@ It may take a couple of minutes to install the necessary packages in `WebR` - pl
 
 In @sec-modelling-batches we saw how to use a _linear modelling_ approach to estimate directly the influence of gene knockout and other interventions on the amount of viable bacteria recovered (and so infer a difference in "stickiness" or adherence to a substrate). 
 
-This is an extremely powerful method not just because it lets us identify the strengths of multiple effects _directly_ and _simultaneously_ from our data (rather than testing for "a difference" as with ANOVA/_t_-tests), but because we can also use them to _exclude_ the effects of interfering influences such as batch effects.
+This is an extremely powerful method not just because it lets us identify the strengths of multiple effects _directly_ and _simultaneously_ from our data (rather than testing for "a difference" as with ANOVA/_t_-tests), but because **we can also use them to account for the effects of interfering influences such as batch effects**.
+
+::: { .callout-important title="Accounting for variation" collapse="true" }
+By one interpretation of this process, our model _accounts_ for sources of variation in the complete dataset.
+
+Some sources of variation are important to our experiment - the _independent variables_. These are factors we control as experimenters and for which we want to understand their influence on the experiment's outcome.
+
+Other sources of variation are not important in this way, as we are not experimentally interested in their effect. We can still include these in our model. If we do not include these foreseeable influences on the outcome, any variation they introduce may be _wrongly_ assigned to our _independent variables_, making our statistical analysis less reliable.
+:::
 
 In this section, we will see how to use the `R` package `lme4` to account for and remove the effects of those unwanted influences.
 
@@ -41,18 +49,18 @@ In this section, we will see how to use the `R` package `lme4` to account for an
 
 ## The Model
 
-We take as our starting point the model we had in @sec-modelling-batches:
+We take as our starting point the model we devised in @sec-modelling-batches:
 
-$$ \textrm{measured logCFU} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \epsilon $$ {#eq-base-model}
+$$ \textrm{measured logCFU (complement)} = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \epsilon $$ {#eq-base-model}
 
-We want to extend @eq-base-model to account for the influence of each individual batch, separately. That is, we want to represent a situation where all measurements in batch 1 are under a similar influence, but that influence is different to the one affecting batches 2-8, and so on.
+We want to extend @eq-base-model to account for the influence of each individual batch, separately. That is, we want to represent a situation where all measurements in batch 1 are under a similar influence from that specific experimental run, where that influence is different to the one affecting batches 2-8, and so on.
 
 In mathematical notation, we could modify @eq-base-model to represent the measurement for a row $i$ in the table as:
 
 
 $$ \textrm{measured logCFU}_i = \textrm{baseline} + \textrm{knockout} + \textrm{empty} + \textrm{complement} + \textrm{batch}_i + \epsilon  $$ {#eq-mixed-model}
 
-where $\textrm{batch}_i$ represents "influence due to the corresponding batch for measurement $i$." This is quite a small adjustment on paper (or the screen!), but it can have very wide-ranging effects.
+where $\textrm{batch}_i$ represents "influence due to the corresponding batch for measurement $i$." This is quite a small adjustment on paper (or the screen!), but it can have very wide-ranging effects and improve the performance of our statistical analysis.
 
 ::: { .callout-caution collapse="true" }
 We're taking some liberties with formal mathematical notation here and leaving out some components of the equation to make the connection between biology and the equation clearer.
@@ -78,9 +86,9 @@ So, what does `(1 | batch)` mean?
 
 The model we have built is now what's called a "mixed model" that incorporates _fixed effects_ and _random effects_. But what are they and why do they differ?
 
-_Fixed effects_ are the influences that we focus our practical experiments on. In our experiments we make a specific, intentional change to the system (e.g. knocking out a gene) that we expect to have a consistent effect on the outcome. The term "fixed" in "fixed effect" refers to the expectation of this effect being constant across individual runs of the experiment.
+_Fixed effects_ is a technical term describing the influences that we focus our practical experiments on. In our experiments we make a specific, intentional change to the system (e.g. knocking out a gene) that we expect to have a consistent effect on the outcome. The term "fixed" in "fixed effect" refers to the expectation of this effect being constant across individual runs of the experiment.
 
-_Random effects_ are influences on the outcome that can vary between individual runs (such as the "measurement error $\epsilon$ which reflects small random variations in each measurement), or between groups of runs - such as the batch-level differences we saw in @sec-modelling-batches. We expect that every measurement in the same batch is affected in approximately the same way, with some random error, but that the effect can differ between batches.
+_Random effects_ is a similar technical term describing influences on the outcome that can vary between individual runs (such as the "measurement error" $\epsilon$ which reflects small random variations in each measurement), or between groups of runs - such as the batch-level differences we saw in @sec-modelling-batches. We expect that every measurement in the same batch is affected in approximately the same way, with some random error, but that the effect can differ between batches.
 
 The part of the `R` model expressed by `(1 | batch)` represents this _random effect_ due to a measurement being made in a particular batch.
 
@@ -131,10 +139,10 @@ which reads: "`logCFU` is influenced by (`~`) the sum of effects of `KO`, `empty
 
 ### Fit the model
 
-To fit our data to this model, we use this _model definition_ in the `lmer()` function as below (specifying that the dataframe we're using is `catheter`):
+To fit our data to this model, we use this _model definition_ in the `lmer()` function as below (specifying that the dataframe we're using is `catheter`) and store the result in `catheter_mixed_model`:
 
 ```r
-catheter_model <- lmer(logCFU ~ KO + empty + complement + (1 | batch), data=catheter)
+catheter_mixed_model <- lmer(logCFU ~ KO + empty + complement + (1 | batch), data=catheter)
 ```
 
 ::: { .callout-challenge }
@@ -306,7 +314,7 @@ complement    0.3987     0.1130   3.528
 
 The estimated coefficients for the `(Intercept)`/`WT`, `KO`, `empty`, and `complement` fixed effects are essentially identical to four decimal places.
 
-There is no difference between the two models in their estimates of effect sizes. This suggests that both models converge to consistent estimates which gives confidence in the result.
+There is no difference between the two models in their estimates of effect sizes. This suggests that both models converge to consistent estimates which should give is confidence in this result.
 :::
 
 ::: { .callout-question }
@@ -336,9 +344,9 @@ complement   0.1775290  0.6197772
 ```
 
 - The confidence interval for `(Intercept)`/`WT` is wider for the mixed model, but both models estimate an interval that does not include zero (so is confidently positive), and they estimate the same `logCFU` of `6.3383`.
-- The confidence interval for `KO` includes zero in the original model (`catheter_model`) and so cannot confidently be assumed to be negative. The mixed model (`catheter_mixed_model`) confidence interval does not include zero, and is narrower. We can be more confident that the data shows a reduction in `logCFU` when correcting for batch effects.
+- The confidence interval for `KO` includes zero in the original model (`catheter_model`) and so cannot confidently be assumed to indicate that _etpD_ knockout reduces adherence. However, the mixed model (`catheter_mixed_model`) confidence interval _does not_ include zero, and is narrower. **We can be more confident that the data shows a reduction in `logCFU` when we have corrected for batch effects that introduce their own variation**.
 - The confidence interval for `empty` is wider for the mixed model, but both models estimate an interval that includes zero, so we cannot exclude that there is no effect on `logCFU` of introducing the plasmid, in either model. Both models estimate the same `logCFU` of `-0.1466`.
-- The confidence interval for `complement` is positive and does not include zero in both model results, so we can be confident that the data shows complementation increases the `logCFU`. The confidence interval is narrower for the mixed model suggesting that our estimate is more precise, though both models estimate the same effect size.
+- The confidence interval for `complement` is positive and does not include zero in both model results, so we can be confident that the data shows complementation increases the `logCFU`. The confidence interval is narrower for the mixed model suggesting that our estimate is more precise, even though both models estimate the same effect size.
 :::
 
 ::: { .callout-tip collapse="true" title="A note on the answer"}
@@ -443,7 +451,7 @@ Specifically, by taking batches into account we have made the estimates of the e
 
 Here, the results give us confidence that knocking out _etpD_ results in reduced `logCFU`, but that restoring/complementing the gene does not affect `logCFU`. This is an intriguing result that requires explanation and, because we have been able to account for systematic sources of experimental error, i.e. batch effects, we can be confident in our conclusions and that there is a new question to be answered:
 
-Why does knocking out _etpD_ reduce recovery from catheter material and human tissue, but only restore recovery from catheter material?
+Why does knocking out _etpD_ reduce recovery from catheter material and human tissue, but complementation only restores recovery from catheter material?
 :::
 
 ## Summary
@@ -457,4 +465,4 @@ In this section taken real experimental data through a fairly advanced statistic
 - obtained estimates of _confidence_ in the sizes of those effects, including whether the effects are really different from zero
 :::
 
-Now proceed to @sec-conclusions to wrap up the workshop.
+Now proceed to @sec-summary to wrap up the workshop.
