@@ -8,7 +8,7 @@ To remain in the urinary tract UPEC employs _adherence factors_, molecules that 
 
 The overall plan of the experiment is sketched in @fig-experiment.
 
-![Overview of the experimental protocol. 1: a BAC library is constructed for UPEC in a DH10B _E.coli_ background. 2: a triplicate library of 384clones is produced. The library is passaged three times through (3a) a control arm or (3b) a mouse/catheter model. 4: After serial passage, total gDNA from the resulting cultures is Illumina sequenced.](assets/images/experiment.png){#fig-experiment width=80% .lightbox}
+![Overview of the experimental protocol. 1: a BAC library is constructed for UPEC in a DH10B _E.coli_ background. 2: a triplicate library of 384 clones is produced. The library is passaged three times through (3a) a control arm or (3b) a mouse/catheter model arm. 4: After serial passage, total gDNA from the resulting cultures is Illumina sequenced.](assets/images/experiment.png){#fig-experiment width=80% .lightbox}
 
 A bacterial artificial chromosome (BAC) library is constructed for an _E. coli_ UPEC isolate.
 
@@ -17,10 +17,10 @@ A bacterial artificial chromosome is a DNA construct that introduces a large gen
 :::
 
 ::: { .callout-note collapse="true" title="Experimental detail" }
-The UPEC genome was partially digested with _Hind_III and cloned into a pV41 vector. This was used to generate three pools of 384 BAC clones to facilitate replication.
+The UPEC genome was partially digested with _Hind_ III and cloned into a pV41 vector. This was used to generate three pools of 384 BAC clones to facilitate replication.
 :::
 
-The BAC library is then passaged through a mouse model (catheterised mouse) to emulate introduction to the human catheterised urinary tract. After passage and washing of the extracted catheter tube, the tube was used as inoculum for a further round of incubation to culture adherent bacteria.
+The BAC library is then passaged through a mouse model (i.e. a catheterised mouse) to emulate introduction to the human catheterised urinary tract. After passage and washing of the extracted catheter tube, the tube was used as inoculum for a further round of incubation to culture adherent bacteria.
 
 ::: { .callout-tip title="Passage" }
 Passage is the serial, iterated growth of bacteria under a particular environment or series of environments. This approach is usually taken to subject the bacteria to a specific selection pressure so that we can observe how it evolves in response to that pressure.
@@ -44,11 +44,13 @@ After passage, the total gDNA from the three control and three mouse system cult
 
 ## Expected interpretation
 
-We are most interested in the genes that are present only in UPEC, but which form part of the BAC library.
+We are most interested in the genes that are present only in UPEC, and which form part of the BAC library.
 
-We expect that the serial passage process enriches our cultures for bacteria that adhere better to the urinary tract and/or catheter material. As individual clones contain only fragments of the UPEC genome, those clones that don't contain adherence factors are expected to be selected out of the mixture, leaving only clones with UPEC genes that promote adherence.
+We expect that the serial passage process in the mouse model arm of the experiment enriches our cultures for bacteria that adhere better to the urinary tract and/or catheter material. As individual clones contain only fragments of the UPEC genome, those clones that don't contain adherence factors are expected to be selected out of the mixture, leaving only clones with UPEC genes that promote adherence.
 
-By statistical analysis of the read counts, we aim to identify UPEC-specific genes that are overrepresented in the final mixtures that have been through mouse passage, but that are not overrepresented in the control passage through culture alone.
+It is also possible that some UPEC genes confer an advantage for survival in the passage process itself, rather than an advantage specific to adherence. Both the control and mouse model arms of the experiment are assumed to enrich for these genes equally.
+
+By statistical analysis of the read counts, we aim to identify UPEC-specific genes that are overrepresented in the final mixtures that have been through mouse passage, but that are not overrepresented in the control passage through culture alone. These are the genes we will take forward as candidates for involvement in catheter adherence.
 
 ::: { .callout-caution title="How did that work out?"}
 You can see how well this worked, if at all, in the next section.
