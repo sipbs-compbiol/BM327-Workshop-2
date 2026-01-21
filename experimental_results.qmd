@@ -1,4 +1,4 @@
-# Experimental results { #sec-experimental-results }
+# Experimental Results { #sec-experimental-results }
 
 As noted in @sec-experiment, we aim to identify UPEC-specific genes that are overrepresented in the final mixtures that have been through mouse passage, but that are not overrepresented in the control passage through culture alone.
 
