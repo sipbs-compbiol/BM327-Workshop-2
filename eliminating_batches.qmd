@@ -5,7 +5,7 @@ filters:
   - webr
 ---
 
-# Eliminating batch effects { #sec-removing-batch-effects }
+# Eliminating Batch Effects { #sec-removing-batch-effects }
 
 ```{webr-r}
 #| context: setup
