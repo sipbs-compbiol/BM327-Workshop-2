@@ -23,7 +23,7 @@ It may take a couple of minutes to install the necessary packages for `WebR` in 
 ::: { .callout-warning title="Download the data for local use" }
 Right-click on the link below to download the `gapminder` data
 
-- [data](assets/data/gapminder.csv)
+- [`gapminder.csv`](assets/data/gapminder.csv)
 :::
 
 ## Introduction
