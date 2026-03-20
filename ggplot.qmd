@@ -20,6 +20,12 @@ library(tidyverse)
 It may take a couple of minutes to install the necessary packages for `WebR` in your browser - please be patient.
 :::
 
+::: { .callout-warning title="Download the data for local use" }
+Right-click on the link below to download the `gapminder` data
+
+- [data](assets/data/gapminder.csv)
+:::
+
 ## Introduction
 
 In this section you will meet `ggplot2`, a very popular and powerful data visualisation package in `R`. We will also learn about the "grammar of graphics," a way of thinking about constructing data visualisations that also is the source of the `gg` in `ggplot2`.
