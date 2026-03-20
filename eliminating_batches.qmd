@@ -27,6 +27,14 @@ It may take a couple of minutes to install the necessary packages in `WebR` - pl
 **This page preloads the datasets as `tissue` and `catheter` for use in `R` cells.**
 :::
 
+::: { .callout-warning title="Download the data for local use" }
+Right-click on the links below to download the `catheter` and `tissue` data
+
+- [`catheter.csv`](assets/data/catheter.csv)
+- [`tissue.csv`](assets/data/tissue.csv)
+:::
+
+
 ## Introduction
 
 In @sec-modelling-batches we saw how to use a _linear modelling_ approach to estimate directly the influence of gene knockout and other interventions on the amount of viable bacteria recovered (and so infer a difference in "stickiness" or adherence to a substrate). 

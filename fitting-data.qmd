@@ -26,6 +26,14 @@ It may take a couple of minutes to install the necessary packages in `WebR` - pl
 **This page preloads the datasets as `tissue` and `catheter` for use in `R` cells.**
 :::
 
+::: { .callout-warning title="Download the data for local use" }
+Right-click on the links below to download the `catheter` and `tissue` data
+
+- [`catheter.csv`](assets/data/catheter.csv)
+- [`tissue.csv`](assets/data/tissue.csv)
+:::
+
+
 ## Fitting the catheter model
 
 We will use the `R` built-in function `lm()` to fit the model in @eq-complement (see @sec-modelling-batches) to our `catheter` dataset in the `WebR` cells below.

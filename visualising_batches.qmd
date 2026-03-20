@@ -21,6 +21,13 @@ library(tidyverse)
 It may take a couple of minutes to install the necessary packages in `WebR` - please be patient.
 :::
 
+::: { .callout-warning title="Download the data for local use" }
+Right-click on the links below to download the `catheter` and `tissue` data
+
+- [`catheter.csv`](assets/data/catheter.csv)
+- [`tissue.csv`](assets/data/tissue.csv)
+:::
+
 ## Introduction
 
 The experiment that was actually run to gather data on adherence to human tissue and catheter material ran into a few scheduling problems.
